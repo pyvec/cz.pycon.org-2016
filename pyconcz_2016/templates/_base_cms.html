@@ -1,0 +1,12 @@
+{% extends "_base.html" %}
+{% load cms_tags sekizai_tags %}
+
+{% block meta_title %}{% page_attribute "page_title" %}{% endblock %}
+{% block meta_head %}{% render_block "css" %}{% endblock %}
+
+{% block body %}
+  {% cms_toolbar %}
+  {% placeholder base_content %}
+  {% block base_content %}{% endblock %}
+  {% render_block "js" %}
+{% endblock %}
