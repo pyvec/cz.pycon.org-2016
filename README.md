@@ -1,7 +1,7 @@
 PyConCZ 2016
 ============
 
-PyCon CZ is coming back to Brno for it's second edition on 1-4th Semptember 2016.
+PyCon CZ is coming back to Brno for it's second edition on 28-30th October 2016.
 
 Contributing
 ------------
@@ -18,4 +18,3 @@ License
 -------
 
 This work is licensed under a [MIT](./LICENSE.md)
-
