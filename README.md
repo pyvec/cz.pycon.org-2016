@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/pyvec/cz.pycon.org-2016.png?label=ready&title=Ready)](https://waffle.io/pyvec/cz.pycon.org-2016)
 PyConCZ 2016
 ============
 
