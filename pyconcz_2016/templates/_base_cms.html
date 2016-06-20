@@ -1,9 +1,0 @@
-{% extends "_base.html" %}
-{% load cms_tags %}
-
-{% block meta_title %}{% page_attribute "page_title" %}{% endblock %}
-
-{% block body %}
-  {% placeholder base_content %}
-  {% block base_content %}{% endblock %}
-{% endblock %}
