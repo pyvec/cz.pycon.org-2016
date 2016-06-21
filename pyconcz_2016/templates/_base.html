@@ -7,7 +7,98 @@
   {% block meta_head %}{% endblock %}
 </head>
 <body>
-  {% block body %}{% endblock %}
-  {% render_bundle 'main' %}
+{% block body %}{% endblock %}
+
+<footer>
+  <div class="container">
+    <nav>
+      <ul class="nav-footer">
+        <li class="nav-section">
+          <a href="/2016/" class="nav-title">About</a>
+          
+          <ul>
+{#            <li><a href="/2016/about/team.html">Team</a></li>#}
+{#            <li>#}
+{#              <a href="/2016/about/speakers.html"><strong>Speakers</strong></a>#}
+{#            </li>#}
+{#            <li><a href="/2016/about/tickets.html">Tickets</a></li>#}
+{#            <li><a href="/2016/about/pycontest.html">#PyConTest</a></li>#}
+            
+            <li class="nav-highlight">
+              <a href="/2016/about/cfp">Call for Papers</a>
+            </li>
+            <li><a href="/2016/sponsors/offer">Sponsorship</a></li>
+            <li class="nav-highlight">
+              <a href="/2016/about/code">Code of Conduct</a>
+            </li>
+          </ul>
+        </li>
+        
+        {# Getting here #}
+{#        <li class="nav-section">#}
+{#          <a href="/2016/getting-here/" class="nav-title">Getting Here</a>#}
+{#          #}
+{#          <ul>#}
+{#            <li><a href="/2016/getting-here/#travelling">Travelling</a></li>#}
+{#            <li><a href="/2016/getting-here/#accommodation">Accommodation</a>#}
+{#            </li>#}
+{#          </ul>#}
+{#        </li>#}
+        
+        {# Programe #}
+{#        <li class="nav-section">#}
+{#          <a href="/2016/cfp/" class="nav-title">Talks</a>#}
+{#          <a href="/2016/talks/" class="nav-title">Talks</a>#}
+{#          #}
+{#          <ul>#}
+{#            <li><a href="/2016/talks/">Schedule</a></li>#}
+{#            <li><a href="/2016/talks/#directions">Directions</a></li>#}
+{#          </ul>#}
+{#        </li>#}
+        
+{#        <li class="nav-section"><a href="/2016/workshops/" class="nav-title">Sprints#}
+{#          &amp; Workshops</a>#}
+{#          <ul>#}
+{#            <li><a href="/2016/workshops/">Schedule</a></li>#}
+{#            <li><a href="/2016/workshops/#directions">Directions</a></li>#}
+{#          </ul>#}
+{#        </li>#}
+      </ul>
+    </nav>
+    
+    <div class="social-links">Spread the word about <strong>PyCon CZ!</strong>
+      <ul>
+        <li><a href="https://twitter.com/pyconcz"><i class="fa fa-twitter"></i></a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/events/1624916497723396/"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li>
+          <a href="http://lanyrd.com/2016/pyconcz/"><i class="fa fa-calendar-check-o"></i></a>
+        </li>
+        <li>
+          <a href="https://github.com/pyvec/cz.pycon.org-2016"><i class="fa fa-github"></i></a>
+        </li>
+        <li><a href="https://pyconcz.slack.com"><i class="fa fa-slack"></i></a>
+        </li>
+        <li><a href="mailto:info@pycon.cz"><i class="fa fa-envelope"></i></a>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="psf-trademark">
+      <p>
+        <a href="https://www.python.org/psf/trademarks/pycon/">PyCon™</a>
+        is a trademark for worldwide conference activities claimed by
+        <a href="https://www.python.org/psf-landing/">Python Software
+          Foundation</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+
+{% render_bundle 'main' %}
+<script src="https://use.fontawesome.com/c0f5df5d14.js"></script>
+
 </body>
 </html>
