@@ -5,7 +5,7 @@ __pycache__/
 db.sqlite3
 
 # Node packages, tmp files
-pyconcz_2016/node_modules/
+node_modules/
 npm-debug.log
 
 pyconcz_2016/static/_build/

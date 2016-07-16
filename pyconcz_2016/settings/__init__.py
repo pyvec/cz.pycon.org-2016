@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'webpack_loader',
+
+    'pyconcz_2016.conferences',
 ]
 
 MIDDLEWARE_CLASSES = [
