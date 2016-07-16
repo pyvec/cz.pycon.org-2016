@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.timezone import now
 
 from pyconcz_2016.conferences.models import Conference
 
@@ -40,3 +41,4 @@ class Proposal(models.Model):
 
     # Private notes (for reviewers only)
     note = models.TextField()
+    date = models.DateTimeField(default=now)
