@@ -5,11 +5,11 @@ class Conference(models.Model):
     title = models.CharField(max_length=100)
     edition = models.CharField(max_length=50)
 
-    date_started = models.DateField()
-    date_ended = models.DateField()
+    date_start = models.DateField()
+    date_end = models.DateField()
 
     class Meta:
-        ordering = ['date_started']
+        ordering = ['date_start']
 
     def __str__(self):
         return '{0} {1}'.format(self.title, self.edition)
