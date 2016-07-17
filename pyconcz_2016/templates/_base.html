@@ -2,10 +2,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block meta_title %}PyCon CZ 2016{% endblock %}</title>
   {% block meta_head %}{% endblock %}
+  <link rel="icon" type="image/ico" href="/static/img/favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700" rel="stylesheet">
 </head>
+
+<header>
+  <div class="container">
+    <img src="/static/img/pyconlogo.svg" alt="PyConCZ 2016" class="pyconlogo">
+    <h1 class="header-title">PyCon CZ 2016 Brno<br>28-30. October</h1>
+  </div>
+</header>
 <body>
 {% block body %}{% endblock %}
 
@@ -15,7 +26,7 @@
       <ul class="nav-footer">
         <li class="nav-section">
           <a href="/2016/" class="nav-title">About</a>
-          
+
           <ul>
 {#            <li><a href="/2016/about/team.html">Team</a></li>#}
 {#            <li>#}
@@ -23,7 +34,7 @@
 {#            </li>#}
 {#            <li><a href="/2016/about/tickets.html">Tickets</a></li>#}
 {#            <li><a href="/2016/about/pycontest.html">#PyConTest</a></li>#}
-            
+
             <li class="nav-highlight">
               <a href="/2016/about/cfp">Call for Papers</a>
             </li>
@@ -33,7 +44,7 @@
             </li>
           </ul>
         </li>
-        
+
         {# Getting here #}
 {#        <li class="nav-section">#}
 {#          <a href="/2016/getting-here/" class="nav-title">Getting Here</a>#}
@@ -44,7 +55,7 @@
 {#            </li>#}
 {#          </ul>#}
 {#        </li>#}
-        
+
         {# Programe #}
 {#        <li class="nav-section">#}
 {#          <a href="/2016/cfp/" class="nav-title">Talks</a>#}
@@ -55,7 +66,7 @@
 {#            <li><a href="/2016/talks/#directions">Directions</a></li>#}
 {#          </ul>#}
 {#        </li>#}
-        
+
 {#        <li class="nav-section"><a href="/2016/workshops/" class="nav-title">Sprints#}
 {#          &amp; Workshops</a>#}
 {#          <ul>#}
@@ -65,27 +76,18 @@
 {#        </li>#}
       </ul>
     </nav>
-    
+
     <div class="social-links">Spread the word about <strong>PyCon CZ!</strong>
       <ul>
-        <li><a href="https://twitter.com/pyconcz"><i class="fa fa-twitter"></i></a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/events/1624916497723396/"><i class="fa fa-facebook"></i></a>
-        </li>
-        <li>
-          <a href="http://lanyrd.com/2016/pyconcz/"><i class="fa fa-calendar-check-o"></i></a>
-        </li>
-        <li>
-          <a href="https://github.com/pyvec/cz.pycon.org-2016"><i class="fa fa-github"></i></a>
-        </li>
-        <li><a href="https://pyconcz.slack.com"><i class="fa fa-slack"></i></a>
-        </li>
-        <li><a href="mailto:info@pycon.cz"><i class="fa fa-envelope"></i></a>
-        </li>
+        <li><a href="https://twitter.com/pyconcz"><i class="fa fa-fw fa-twitter"></i></a</li>
+        <li><a href="https://www.facebook.com/events/1624916497723396/"><i class="fa fa-fw fa-facebook"></i></a</li>
+        <li><a href="http://lanyrd.com/2016/pyconcz/"><i class="fa fa-fw fa-calendar-check-o"></i></a</li>
+        <li><a href="https://github.com/pyvec/cz.pycon.org-2016"><i class="fa fa-fw fa-github"></i></a</li>
+        <li><a href="https://pyconcz.slack.com"><i class="fa fa-fw fa-slack"></i></a</li>
+        <li><a href="mailto:info@pycon.cz"><i class="fa fa-fw fa-envelope"></i></a</li>
       </ul>
     </div>
-    
+
     <div class="psf-trademark">
       <p>
         <a href="https://www.python.org/psf/trademarks/pycon/">PyCon™</a>
