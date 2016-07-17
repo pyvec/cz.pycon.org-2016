@@ -38,3 +38,9 @@ def proposal_create(request, *, slug):
 def proposal_success(request, *, slug):
     context = RequestContext(request, {'cfp_slug': slug})
     return TemplateResponse(request, 'cfp/proposal_success.html', context)
+
+
+def cfp_about(request, *, slug):
+    cfp = get_object_or_404(Cfp, slug=slug)
+    context = RequestContext(request, {'cfp': cfp})
+    return TemplateResponse(request, cfp.template_about, context)

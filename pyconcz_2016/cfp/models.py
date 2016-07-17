@@ -9,6 +9,8 @@ class Cfp(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField()
 
+    template_about = models.CharField(max_length=50)
+
     date_start = models.DateTimeField()
     date_end = models.DateTimeField()
 
