@@ -1,0 +1,15 @@
+{% extends "cfp/_base.html" %}
+
+{% block meta_title %}Call for Papers{% endblock %}
+
+{% block content %}
+  <h1>Call for Papers</h1>
+  <div class="form">
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Send</button>
+    </form>
+
+  </div>
+{% endblock %}
