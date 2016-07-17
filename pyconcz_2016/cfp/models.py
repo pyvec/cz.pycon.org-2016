@@ -7,6 +7,7 @@ from pyconcz_2016.conferences.models import Conference
 class Cfp(models.Model):
     conference = models.ForeignKey(Conference, related_name="cfps")
     title = models.CharField(max_length=200)
+    slug = models.SlugField()
 
     date_start = models.DateTimeField()
     date_end = models.DateTimeField()
