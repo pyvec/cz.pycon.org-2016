@@ -33,3 +33,21 @@ header {
     padding-bottom: 10px;
   }
 }
+
+.nav-header {
+  display: inline;
+  
+  ul {
+    padding-left: 0;
+
+    li {
+      list-style: none;
+      a {
+        display: block;
+        padding: 10px;
+        margin: 10px 0;
+        border: solid 1px black;
+      }
+    }
+  }
+}

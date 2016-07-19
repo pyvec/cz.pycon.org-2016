@@ -24,7 +24,7 @@ footer {
 }
 
 .social-links {
-  height: 70px;
+  padding: 10px;
 
   ul {
     list-style: none;
@@ -32,23 +32,25 @@ footer {
 
     li {
       display: inline-block;
-      font-size: 2.2rem;
-      padding: 5px 10px 5px 0;
-      height: 25px;
+      transition: transform 0.3s, padding-top 0.3s;
+      transform-origin: middle center;
 
-      &:hover {
-        font-size: 2.5rem;
-        padding-top: 0;
-        -moz-transition: all 0.3s ease;
-        -o-transition: all 0.3s ease;
-        -webkit-transition: all 0.3s ease;
-        transition: all 0.3s ease;
+      a {
+        display: block;
+        font-size: 2.2rem;
+        padding: 5px;
+        height: 25px;
       }
 
       a:active {
         color: darken($main-color, 5%);
-        font-size: 2.2rem;
-        padding: 5px 10px 5px 0;
+        transition: unset;
+        transform: scale(0.8);
+      }
+
+      &:hover {
+        transform: scale(1.15);
+        padding-top: 0;
       }
     }
   }
