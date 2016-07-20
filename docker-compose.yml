@@ -20,3 +20,5 @@ services:
       - .:/app
   db:
     image: postgres
+    environment:
+      - POSTGRES_USER=pyconcz

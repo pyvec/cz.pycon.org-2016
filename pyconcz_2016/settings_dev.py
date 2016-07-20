@@ -10,9 +10,9 @@ SESSION_COOKIE_SECURE = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'NAME': 'pyconcz',
+        'USER': 'pyconcz',
+        'PASSWORD': 'pyconcz',
         'HOST': 'db',
         'PORT': '5432',
     }
