@@ -1,6 +1,7 @@
 django-webpack-loader==0.3.0
 Django==1.9.3
 html5lib==0.9999999
+psycopg2==2.6.2
 pytz==2016.4
 six==1.10.0
 wheel==0.24.0
