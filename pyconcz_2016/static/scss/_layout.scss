@@ -4,6 +4,12 @@ body {
   font-family: $main-font;
 }
 
+.homepage {
+  header {
+    display: none;
+  }
+}
+
 .container {
   margin: 0 auto;
   padding: 15px;
