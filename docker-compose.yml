@@ -1,0 +1,22 @@
+version: '2'
+services:
+  django:
+    build:
+      context: .
+      dockerfile: ./docker/django.docker
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    links:
+      - db
+  webpack:
+    build:
+      context: .
+      dockerfile: ./docker/webpack.docker
+    ports:
+      - "8001:8001"
+    volumes:
+      - .:/app
+  db:
+    image: postgres
