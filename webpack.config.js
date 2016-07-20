@@ -15,7 +15,7 @@ module.exports = {
   output: {
       path: context,
       filename: "[name]-[hash].js",
-      publicPath: 'http://localhost:8001/static/_build/'
+      publicPath: 'http://lan.pycon.cz:8001/static/_build/'
   },
 
   plugins: [
