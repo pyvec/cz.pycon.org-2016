@@ -88,7 +88,7 @@ RDS_USER = os.environ['RDS_USER']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': os.environ.get('RDS_NAME', RDS_USER),
+        'HOST': os.environ['RDS_HOST'],
         'NAME': os.environ.get('RDS_NAME', RDS_USER),
         'USER': RDS_USER,
         'PASSWORD': os.environ['RDS_PASSWORD'],
