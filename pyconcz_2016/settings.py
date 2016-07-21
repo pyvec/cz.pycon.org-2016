@@ -21,7 +21,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = False
 
 SITE_ID = 1
-ALLOWED_HOSTS = ['cz.pycon.org']
+ALLOWED_HOSTS = [
+    'dev.pycon.cz',  # test new deployment
+    'cz.pycon.org'
+]
 CSRF_COOKIE_SECURE = True
 SESSION_COOKIE_SECURE = True
 
