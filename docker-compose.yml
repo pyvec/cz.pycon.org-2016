@@ -1,15 +1,14 @@
 version: '2'
 services:
   django:
-    build:
-      context: .
-      dockerfile: ./docker/django.docker
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
+    extends:
+      file: ./docker/compose-common.yml
+      service: django
     links:
       - db
+    environment:
+      - DJANGO_SETTINGS_MODULE=pyconcz_2016.settings_dev
+
   webpack:
     build:
       context: .
@@ -18,6 +17,7 @@ services:
       - "8001:8001"
     volumes:
       - .:/app
+
   db:
     image: postgres
     environment:
