@@ -2,10 +2,10 @@ version: '2'
 services:
   django:
     build:
-      context: .
+      context: ..
       dockerfile: ./docker/django.docker
     restart: always
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - ..:/app
