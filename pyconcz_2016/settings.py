@@ -12,6 +12,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TMP_DIR = os.path.join(BASE_DIR, '..', 'tmp')
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -139,7 +140,10 @@ TIME_ZONE = 'Europe/Prague'
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/2016/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(TMP_DIR, 'static')
+
+MEDIA_URL = '/2016/media/'
+MEDIA_ROOT = os.path.join(TMP_DIR, 'media')
 
 WEBPACK_LOADER = {
     'DEFAULT': {
