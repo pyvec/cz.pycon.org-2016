@@ -8,6 +8,7 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var debug = !process.argv.includes('--release');
 var checkConfig = process.argv.includes('--check');
 
+// Shared config values
 var context = path.resolve('pyconcz_2016', 'static');
 var outputPath = path.resolve('pyconcz_2016', 'static_build');
 var entry = ['./index'];
@@ -24,7 +25,9 @@ var output = {
     filename: "js/[name]-[hash].js",
     publicPath: 'http://lan.pycon.cz:8001/'
 };
+var scssLoader;
 
+// Release specific config
 if (!debug) {
   plugins.push(
     new ExtractTextPlugin("css/styles.css")
@@ -32,6 +35,10 @@ if (!debug) {
 
   output.publicPath = '/2016/static/';
 
+  scssLoader = {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract('style', ['css', 'sass'])
+  }
 } else {
   entry.unshift(
     'webpack-dev-server/client?http://lan.pycon.cz:8001',
@@ -42,6 +49,11 @@ if (!debug) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   );
+
+  scssLoader = {
+    test: /\.scss$/,
+      loaders: ['style', 'css', 'sass']
+  }
 }
 
 
@@ -52,12 +64,7 @@ var config = {
   output: output,
 
   module: {
-    loaders: [
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', ['css', 'sass'])
-      }
-    ]
+    loaders: [scssLoader]
   },
 
   resolve: {
