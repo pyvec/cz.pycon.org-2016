@@ -14,25 +14,17 @@ body {
   margin: 0 auto;
   padding: 15px;
   background: rgba(255, 255, 255, 0.7);
-}
 
-@media (max-width: 767px) {
-  .container {
+  @media (max-width: 767px) {
     width: $container-xs;
   }
-}
-@media (min-width: 768px) {
-  .container {
+  @media (min-width: 768px) {
     width: $container-sm;
   }
-}
-@media (min-width: 992px) {
-  .container {
+  @media (min-width: 992px) {
     width: $container-md;
   }
-}
-@media (min-width: 1200px) {
-  .container {
+  @media (min-width: 1200px) {
     width: $container-lg;
   }
 }

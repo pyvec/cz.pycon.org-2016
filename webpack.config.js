@@ -1,34 +1,47 @@
 var path = require("path");
 var webpack = require('webpack');
 var BundleTracker = require('webpack-bundle-tracker');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
-var debug = !process.argv.includes('release');
+var debug = !process.argv.includes('--release');
 var checkConfig = process.argv.includes('--check');
 
-
+// Shared config values
 var context = path.resolve('pyconcz_2016', 'static');
+var outputPath = path.resolve('pyconcz_2016', 'static_build');
 var entry = ['./index'];
 var plugins = [
   new BundleTracker({
-    filename: './pyconcz_2016/static/_build/webpack-stats.json'
-  })
+    filename: './pyconcz_2016/static_build/webpack-stats.json'
+  }),
+  new CopyWebpackPlugin([
+    { from: 'img', to: 'img' }
+  ])
 ];
 var output = {
-    path: context,
-    filename: "[name]-[hash].js",
-    publicPath: 'http://lan.pycon.cz:8001/static/_build/'
+    path: outputPath,
+    filename: "js/[name]-[hash].js",
+    publicPath: 'http://lan.pycon.cz:8001/'
 };
+var scssLoader;
 
+// Release specific config
 if (!debug) {
   plugins.push(
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin("css/styles.css")
   );
 
+  output.publicPath = '/2016/static/';
+
+  scssLoader = {
+    test: /\.scss$/,
+    loader: ExtractTextPlugin.extract('style', ['css', 'sass'])
+  }
 } else {
   entry.unshift(
-    'webpack-dev-server/client?http://localhost:8001',
+    'webpack-dev-server/client?http://lan.pycon.cz:8001',
     'webpack/hot/only-dev-server'
   );
 
@@ -37,7 +50,10 @@ if (!debug) {
     new webpack.NoErrorsPlugin()
   );
 
-  output.publicPath = 'https://static.pycon.cz';
+  scssLoader = {
+    test: /\.scss$/,
+      loaders: ['style', 'css', 'sass']
+  }
 }
 
 
@@ -48,9 +64,7 @@ var config = {
   output: output,
 
   module: {
-    loaders: [
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass']}
-    ]
+    loaders: [scssLoader]
   },
 
   resolve: {

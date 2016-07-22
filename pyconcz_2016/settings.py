@@ -12,6 +12,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TMP_DIR = os.path.join(BASE_DIR, '..', 'tmp')
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -84,18 +85,20 @@ WSGI_APPLICATION = 'pyconcz_2016.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 try:
-    RDS_USER = os.environ['RDS_USER']
+    DB_USER = os.environ['DB_USER']
+    DB_HOST = os.environ['DB_HOST']
+    DB_PASS = os.environ['DB_PASS']
 except KeyError:
     DATABASES = {}
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'HOST': os.environ['RDS_HOST'],
-            'NAME': os.environ.get('RDS_NAME', RDS_USER),
-            'USER': RDS_USER,
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'PORT': os.environ.get('RDS_POST', 5432),
+            'HOST': DB_HOST,
+            'NAME': os.environ.get('DB_NAME', DB_USER),
+            'USER': DB_USER,
+            'PASSWORD': DB_PASS,
+            'PORT': os.environ.get('DB_PORT', 5432),
         }
     }
 
@@ -136,14 +139,17 @@ TIME_ZONE = 'Europe/Prague'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+STATIC_URL = '/2016/static/'
+STATIC_ROOT = os.path.join(TMP_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_build')
+]
 
+MEDIA_URL = '/2016/media/'
+MEDIA_ROOT = os.path.join(TMP_DIR, 'media')
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'STATS_FILE': os.path.join(BASE_DIR, 'static', '_build', 'webpack-stats.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, 'static_build', 'webpack-stats.json'),
     }
 }
