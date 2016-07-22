@@ -1,29 +1,33 @@
 var path = require("path");
 var webpack = require('webpack');
 var BundleTracker = require('webpack-bundle-tracker');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
-var debug = !process.argv.includes('release');
+var debug = !process.argv.includes('--release');
 var checkConfig = process.argv.includes('--check');
 
-
 var context = path.resolve('pyconcz_2016', 'static');
+var outputPath = path.resolve('pyconcz_2016', 'static_build');
 var entry = ['./index'];
 var plugins = [
   new BundleTracker({
-    filename: './pyconcz_2016/webpack-stats.json'
-  })
+    filename: './pyconcz_2016/static_build/webpack-stats.json'
+  }),
+  new CopyWebpackPlugin([
+    { from: 'img', to: 'img' }
+  ])
 ];
 var output = {
-    path: context,
-    filename: "[name]-[hash].js",
+    path: outputPath,
+    filename: "js/[name]-[hash].js",
     publicPath: 'http://lan.pycon.cz:8001/'
 };
 
 if (!debug) {
   plugins.push(
-    new ExtractTextPlugin("styles.css")
+    new ExtractTextPlugin("css/styles.css")
   );
 
 } else {
@@ -37,7 +41,7 @@ if (!debug) {
     new webpack.NoErrorsPlugin()
   );
 
-  output.publicPath = 'https://static.pycon.cz';
+  output.publicPath = '/2016/static/';
 }
 
 
@@ -49,7 +53,10 @@ var config = {
 
   module: {
     loaders: [
-      { test: /\.scss$/, loaders: ['style', 'css', 'sass']}
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', ['css', 'sass'])
+      }
     ]
   },
 
