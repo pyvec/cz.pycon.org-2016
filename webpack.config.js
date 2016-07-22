@@ -12,13 +12,13 @@ var context = path.resolve('pyconcz_2016', 'static');
 var entry = ['./index'];
 var plugins = [
   new BundleTracker({
-    filename: './pyconcz_2016/static/_build/webpack-stats.json'
+    filename: './pyconcz_2016/webpack-stats.json'
   })
 ];
 var output = {
     path: context,
     filename: "[name]-[hash].js",
-    publicPath: 'http://lan.pycon.cz:8001/static/_build/'
+    publicPath: 'http://lan.pycon.cz:8001/'
 };
 
 if (!debug) {
@@ -28,7 +28,7 @@ if (!debug) {
 
 } else {
   entry.unshift(
-    'webpack-dev-server/client?http://localhost:8001',
+    'webpack-dev-server/client?http://lan.pycon.cz:8001',
     'webpack/hot/only-dev-server'
   );
 

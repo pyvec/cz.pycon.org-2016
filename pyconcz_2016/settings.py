@@ -136,14 +136,11 @@ TIME_ZONE = 'Europe/Prague'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
+STATIC_URL = 'https://static.pycon.cz'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'STATS_FILE': os.path.join(BASE_DIR, 'static', '_build', 'webpack-stats.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
