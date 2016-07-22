@@ -83,18 +83,21 @@ WSGI_APPLICATION = 'pyconcz_2016.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-RDS_USER = os.environ['RDS_USER']
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': os.environ['RDS_HOST'],
-        'NAME': os.environ.get('RDS_NAME', RDS_USER),
-        'USER': RDS_USER,
-        'PASSWORD': os.environ['RDS_PASSWORD'],
-        'PORT': os.environ.get('RDS_POST', 5432),
+try:
+    RDS_USER = os.environ['RDS_USER']
+except KeyError:
+    DATABASES = {}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'HOST': os.environ['RDS_HOST'],
+            'NAME': os.environ.get('RDS_NAME', RDS_USER),
+            'USER': RDS_USER,
+            'PASSWORD': os.environ['RDS_PASSWORD'],
+            'PORT': os.environ.get('RDS_POST', 5432),
+        }
     }
-}
 
 
 # Password validation
