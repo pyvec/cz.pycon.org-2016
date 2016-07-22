@@ -5,8 +5,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 
-var debug = !process.argv.includes('--release');
-var checkConfig = process.argv.includes('--check');
+var debug = process.argv.indexOf('--release') === -1;
+var checkConfig = process.argv.indexOf('--check') !== -1;
 
 // Shared config values
 var context = path.resolve('pyconcz_2016', 'static');
