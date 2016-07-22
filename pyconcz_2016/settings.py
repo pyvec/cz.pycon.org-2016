@@ -141,12 +141,15 @@ TIME_ZONE = 'Europe/Prague'
 
 STATIC_URL = '/2016/static/'
 STATIC_ROOT = os.path.join(TMP_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_build')
+]
 
 MEDIA_URL = '/2016/media/'
 MEDIA_ROOT = os.path.join(TMP_DIR, 'media')
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+        'STATS_FILE': os.path.join(BASE_DIR, 'static_build', 'webpack-stats.json'),
     }
 }

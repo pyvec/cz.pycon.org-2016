@@ -30,6 +30,8 @@ if (!debug) {
     new ExtractTextPlugin("css/styles.css")
   );
 
+  output.publicPath = '/2016/static/';
+
 } else {
   entry.unshift(
     'webpack-dev-server/client?http://lan.pycon.cz:8001',
@@ -40,8 +42,6 @@ if (!debug) {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   );
-
-  output.publicPath = '/2016/static/';
 }
 
 
