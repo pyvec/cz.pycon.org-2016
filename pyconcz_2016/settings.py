@@ -84,18 +84,20 @@ WSGI_APPLICATION = 'pyconcz_2016.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 try:
-    RDS_USER = os.environ['RDS_USER']
+    DB_USER = os.environ['DB_USER']
+    DB_HOST = os.environ['DB_HOST']
+    DB_PASS = os.environ['DB_PASS']
 except KeyError:
     DATABASES = {}
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'HOST': os.environ['RDS_HOST'],
-            'NAME': os.environ.get('RDS_NAME', RDS_USER),
-            'USER': RDS_USER,
-            'PASSWORD': os.environ['RDS_PASSWORD'],
-            'PORT': os.environ.get('RDS_POST', 5432),
+            'HOST': DB_HOST,
+            'NAME': os.environ.get('DB_NAME', DB_USER),
+            'USER': DB_USER,
+            'PASSWORD': DB_PASS,
+            'PORT': os.environ.get('DB_PORT', 5432),
         }
     }
 
