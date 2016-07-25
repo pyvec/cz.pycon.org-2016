@@ -1,4 +1,4 @@
-{% extends "cfp/_base.html" %}
+{% extends "proposals/_base.html" %}
 
 {% block meta_title %}Thank you!{% endblock %}
 
@@ -9,5 +9,5 @@
     Thank you! We're received your proposal.
   </p>
 
-  <a href="{% url "cfp_form" slug=cfp_slug %}">Send another</a>
+  <a href="{% url "proposal_form" key=proposal_config_key %}">Send another</a>
 {% endblock %}

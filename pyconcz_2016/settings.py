@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'webpack_loader',
 
     'pyconcz_2016.conferences',
+    'pyconcz_2016.proposals',
 ]
 
 MIDDLEWARE_CLASSES = [
