@@ -1,15 +1,18 @@
 .pyconlogo {
-  width: 280px;
-  margin: 40px 0;
-  display: inline-block;
+  img {
+    width: 280px;
+    margin: 40px 0;
+    display: inline-block;
+    float: left;
 
-  @media (max-width: 992px) {
-    margin-left: 0;
-  }
+    @media (max-width: 992px) {
+      margin-left: 0;
+    }
 
-  @media (max-width: 768px) {
-    display: block;
-    margin: 40px auto 0 auto;
+    @media (max-width: 768px) {
+      display: block;
+      margin: 40px auto 0 auto;
+    }
   }
 }
 
@@ -35,18 +38,33 @@ header {
 }
 
 .nav-header {
-  display: inline;
-  
+  display: block;
+  padding-left: 55px;
+
   ul {
     padding-left: 0;
+    display: flex;
+    padding-left: 45px;
 
     li {
       list-style: none;
+      display: inline-block;
+      width: 33%;
+      margin-left: 30px;
+      text-align: center;
+
       a {
         display: block;
         padding: 10px;
         margin: 10px 0;
-        border: solid 1px black;
+        border: solid 1px $light-color;
+        transition: border 0.3s, font-weight 0.3s;
+
+        &:hover {
+          font-weight: 700;
+          text-decoration: none;
+          border: solid 1px black;
+        }
       }
     }
   }

@@ -371,15 +371,16 @@ textarea {
 html {
   font-size: 62.5%; }
 
-.pyconlogo {
+.pyconlogo img {
   width: 280px;
   margin: 40px 0;
-  display: inline-block; }
+  display: inline-block;
+  float: left; }
   @media (max-width: 992px) {
-    .pyconlogo {
+    .pyconlogo img {
       margin-left: 0; } }
   @media (max-width: 768px) {
-    .pyconlogo {
+    .pyconlogo img {
       display: block;
       margin: 40px auto 0 auto; } }
 
@@ -400,16 +401,28 @@ header .container {
   padding-bottom: 10px; }
 
 .nav-header {
-  display: inline; }
+  display: block;
+  padding-left: 55px; }
   .nav-header ul {
-    padding-left: 0; }
+    padding-left: 0;
+    display: flex;
+    padding-left: 45px; }
     .nav-header ul li {
-      list-style: none; }
+      list-style: none;
+      display: inline-block;
+      width: 33%;
+      margin-left: 30px;
+      text-align: center; }
       .nav-header ul li a {
         display: block;
         padding: 10px;
         margin: 10px 0;
-        border: solid 1px black; }
+        border: solid 1px #e0e1fd;
+        transition: border 0.3s, font-weight 0.3s; }
+        .nav-header ul li a:hover {
+          font-weight: 700;
+          text-decoration: none;
+          border: solid 1px black; }
 
 body {
   font-size: 1.6rem;
@@ -423,22 +436,18 @@ body {
   margin: 0 auto;
   padding: 15px;
   background: rgba(255, 255, 255, 0.7); }
-
-@media (max-width: 767px) {
-  .container {
-    width: auto; } }
-
-@media (min-width: 768px) {
-  .container {
-    width: 750px; } }
-
-@media (min-width: 992px) {
-  .container {
-    width: 970px; } }
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px; } }
+  @media (max-width: 767px) {
+    .container {
+      width: auto; } }
+  @media (min-width: 768px) {
+    .container {
+      width: 750px; } }
+  @media (min-width: 992px) {
+    .container {
+      width: 970px; } }
+  @media (min-width: 1200px) {
+    .container {
+      width: 1170px; } }
 
 h1 {
   font-size: 3.6rem;
@@ -541,7 +550,8 @@ blockquote {
         font-family: "Roboto Mono", monospace;
         display: block;
         padding: 10px;
-        margin: 15px 0; }
+        margin: 15px 0;
+        transition: font-weight 0.3s; }
         .nav-main ul li a:hover {
           text-decoration: none;
           font-weight: 700; }

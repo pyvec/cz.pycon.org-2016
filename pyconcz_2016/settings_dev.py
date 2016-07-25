@@ -9,11 +9,7 @@ SESSION_COOKIE_SECURE = False
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pyconcz',
-        'USER': 'pyconcz',
-        'PASSWORD': 'pyconcz',
-        'HOST': 'db',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
