@@ -42,7 +42,6 @@ INSTALLED_APPS = [
 
     'webpack_loader',
 
-    'pyconcz_2016.cfp',
     'pyconcz_2016.conferences',
 ]
 
