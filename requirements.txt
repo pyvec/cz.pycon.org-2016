@@ -1,6 +1,7 @@
 django-webpack-loader==0.3.0
 Django==1.9.3
 html5lib==0.9999999
+newrelic==2.68.0.50
 psycopg2==2.6.2
 pytz==2016.4
 six==1.10.0
