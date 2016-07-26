@@ -4,6 +4,8 @@ __pycache__/
 
 db.sqlite3
 
+mydatabase
+
 # Node packages, tmp files
 node_modules/
 npm-debug.log
