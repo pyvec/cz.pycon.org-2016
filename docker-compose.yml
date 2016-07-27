@@ -4,8 +4,8 @@ services:
     extends:
       file: ./docker/compose-common.yml
       service: django
-    links:
-      - db
+#    links:
+#      - db
     environment:
       - DJANGO_SETTINGS_MODULE=pyconcz_2016.settings_dev
 
@@ -19,7 +19,7 @@ services:
       - /app/node_modules
       - .:/app
 
-  db:
-    image: postgres
-    environment:
-      - POSTGRES_USER=pyconcz
+#  db:
+#    image: postgres
+#    environment:
+#      - POSTGRES_USER=pyconcz
