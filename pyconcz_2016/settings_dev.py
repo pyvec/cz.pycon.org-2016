@@ -13,3 +13,6 @@ DATABASES = {
         'NAME': 'mydatabase',
     }
 }
+
+WEBPACK_LOADER['DEFAULT']['STATS_FILE'] = (
+    os.path.join(BASE_DIR, 'static_build', 'webpack-stats-dev.json'))

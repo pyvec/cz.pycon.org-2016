@@ -10,7 +10,9 @@ Contributing
 PyCon CZ website is using Python 3.5/Django for the backend, NodeJS/webpack for
 bundling frontend assets and Postgresql as a database.
 
-### Using docker
+### Setup dev environment
+
+#### Using docker
 
 Easiest way is to use [docker-compose](https://docs.docker.com/compose/):
 
@@ -28,7 +30,7 @@ non-existing db which results in error message. Don't panic, just wait few
 seconds :) After DB is created, you can continue and run migrations without
 shutting down `docker-compose`.
 
-### Manually
+#### Manually
 
 Prepare your database: user, password and database name is `pyconcz`. Add
 `127.0.0.1 db` to your `/etc/hosts`.
@@ -47,8 +49,18 @@ Inside root directory (the same directory where `manage.py` is) run following co
 1. `npm install`
 2. `npm start`
 
-Now open `http://localhost:8000` and you should have development version of
-website with webpack hot realoading enabled.
+Now open [http://localhost:8000]() and you should have development version of
+website with webpack hot realoaing enabled.
+
+### Building
+
+Webpack creates static files with unique filenames (appending file hash). After
+each production build, you have to commit new files. Don't care about the old
+ones at the moment.
+
+1. `npm run build` (or `docker-compose run webpack npm run build` when using docker)
+2. `git add pyconcz_2016/static_build`
+
 
 License
 -------

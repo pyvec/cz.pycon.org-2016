@@ -13,9 +13,6 @@ var context = path.resolve('pyconcz_2016', 'static');
 var outputPath = path.resolve('pyconcz_2016', 'static_build');
 var entry = ['./index'];
 var plugins = [
-  new BundleTracker({
-    filename: './pyconcz_2016/static_build/webpack-stats.json'
-  }),
   new CopyWebpackPlugin([
     { from: 'img', to: 'img' }
   ])
@@ -30,7 +27,10 @@ var scssLoader;
 // Release specific config
 if (!debug) {
   plugins.push(
-    new ExtractTextPlugin("css/styles.css")
+    new ExtractTextPlugin("css/styles.css"),
+    new BundleTracker({
+      filename: './pyconcz_2016/static_build/webpack-stats.json'
+    })
   );
 
   output.publicPath = '/2016/static/';
@@ -47,7 +47,10 @@ if (!debug) {
 
   plugins.unshift(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new BundleTracker({
+      filename: './pyconcz_2016/static_build/webpack-stats-dev.json'
+    })
   );
 
   scssLoader = {
