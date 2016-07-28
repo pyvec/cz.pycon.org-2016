@@ -1,10 +1,11 @@
-{% extends "proposals/_base.html" %}
+{% extends "_base.html" %}
 
 {% block meta_title %}Call for Papers{% endblock %}
 
 {% block content %}
+<div class="container">
   <h1>Call for Papers</h1>
-  <div class="form">
+  <div class="form cfp-form">
     <form action="" method="post">
       {% csrf_token %}
       {{ form.as_p }}
@@ -12,4 +13,5 @@
     </form>
 
   </div>
+</div>
 {% endblock %}

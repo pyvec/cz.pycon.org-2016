@@ -1,0 +1,62 @@
+.cfp-form {
+  label {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-family: $secondary-font;
+    color: $font-color;
+  }
+  input,
+  textarea,
+  select {
+    border-color: $main-color;
+    border-width: 1px;
+    border-style: solid;
+    width: 36rem;
+  }
+  input,
+  select {
+    height: 3rem;
+  }
+  select {
+    background: white;
+  }
+
+  input,
+  textarea,
+  select {
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+
+  button {
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 10px 25px;
+    border-radius: 2px;
+    background: $light-color;
+    border: solid 1px $main-color;
+    transition: background-color 0.3s, font-weight 0.3s;
+
+    &:active {
+      font-weight: 700;
+    }
+    &:hover {
+      background-color: $main-color;
+    }
+  }
+  .errorlist {
+    position: absolute;
+    margin-left: 355px;
+    margin-top: 35px;
+    color: $accent-color;
+    font-size: 11pt;
+
+    @media (max-width: 480px) {
+      position: relative;
+      margin: 20px 0 -10px;
+      padding-left: 20px;
+    }
+  }
+}
