@@ -8,14 +8,14 @@
   }
 
   .logo-lg {
-    background-image: url("/2016/static/img/pyconlogo.svg");
     display: block;
     width: 670px;
     height: 340px;
+    background-image: url("/2016/static/img/pyconlogo.svg");
     background-repeat: no-repeat;
     background-position: center 50%;
     background-size: contain;
-    transition: background-image 0.3s ease-out;
+    //transition: all 0.3s ease-out;
 
     &:hover {
       background-image: url("/2016/static/img/pyconlogo_grid.svg");
