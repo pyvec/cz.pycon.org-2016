@@ -2,7 +2,6 @@
 *.pyc
 __pycache__/
 
-mydatabase
 db.sqlite3
 
 # Node packages, tmp files
