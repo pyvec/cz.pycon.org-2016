@@ -506,9 +506,8 @@ a {
   a:hover {
     text-decoration: underline; }
 
-p {
-  line-height: 2.3rem;
-  padding: 0 15px; }
+p, ul {
+  line-height: 2.3rem; }
 
 blockquote {
   -webkit-margin-before: 2rem;
@@ -523,15 +522,25 @@ blockquote {
     .homepage .header-title {
       margin: 20px auto 40px auto; } }
 
-@media (max-width: 1200px) {
-  .homepage .logo-lg {
-    width: 550px;
-    margin-left: 40px; } }
-
-@media (max-width: 768px) {
-  .homepage .logo-lg {
-    width: 100%;
-    margin: 0; } }
+.homepage .logo-lg {
+  background-image: url("/2016/static/img/pyconlogo.svg");
+  display: block;
+  width: 670px;
+  height: 340px;
+  background-repeat: no-repeat;
+  background-position: center 50%;
+  background-size: contain;
+  transition: background-image 0.3s ease-out; }
+  .homepage .logo-lg:hover {
+    background-image: url("/2016/static/img/pyconlogo_grid.svg"); }
+  @media (max-width: 1200px) {
+    .homepage .logo-lg {
+      width: 550px;
+      margin-left: 40px; } }
+  @media (max-width: 768px) {
+    .homepage .logo-lg {
+      width: 100%;
+      margin: 0; } }
 
 .nav-main {
   margin-left: 150px; }
@@ -570,12 +579,66 @@ blockquote {
 
 .main-column-1,
 .main-column-2 {
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: middle; }
   @media (max-width: 992px) {
     .main-column-1,
     .main-column-2 {
       width: 100%;
       text-align: center; } }
+
+.cfp-form label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: "Roboto Mono", monospace;
+  color: #333333; }
+
+.cfp-form input,
+.cfp-form textarea,
+.cfp-form select {
+  border-color: #999ae6;
+  border-width: 1px;
+  border-style: solid;
+  width: 36rem; }
+
+.cfp-form input,
+.cfp-form select {
+  height: 3rem; }
+
+.cfp-form select {
+  background: white; }
+
+@media (max-width: 480px) {
+  .cfp-form input,
+  .cfp-form textarea,
+  .cfp-form select {
+    width: 100%; } }
+
+.cfp-form button {
+  cursor: pointer;
+  margin-top: 20px;
+  padding: 10px 25px;
+  border-radius: 2px;
+  background: #e0e1fd;
+  border: solid 1px #999ae6;
+  transition: background-color 0.3s, font-weight 0.3s; }
+  .cfp-form button:active {
+    font-weight: 700; }
+  .cfp-form button:hover {
+    background-color: #999ae6; }
+
+.cfp-form .errorlist {
+  position: absolute;
+  margin-left: 355px;
+  margin-top: 35px;
+  color: #ea8197;
+  font-size: 11pt; }
+  @media (max-width: 480px) {
+    .cfp-form .errorlist {
+      position: relative;
+      margin: 20px 0 -10px;
+      padding-left: 20px; } }
 
 footer {
   background: url(/2016/static/img/grid.svg);
