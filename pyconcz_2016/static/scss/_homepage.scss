@@ -8,6 +8,19 @@
   }
 
   .logo-lg {
+    background-image: url("/2016/static/img/pyconlogo.svg");
+    display: block;
+    width: 670px;
+    height: 340px;
+    background-repeat: no-repeat;
+    background-position: center 50%;
+    background-size: contain;
+    transition: background-image 0.3s ease-out;
+
+    &:hover {
+      background-image: url("/2016/static/img/pyconlogo_grid.svg");
+    }
+
     @media (max-width: 1200px) {
       width: 550px;
       margin-left: 40px;
@@ -71,6 +84,7 @@
 .main-column-1,
 .main-column-2 {
   display: inline-block;
+  vertical-align: middle;
 
   @media (max-width: 992px) {
     width: 100%;
