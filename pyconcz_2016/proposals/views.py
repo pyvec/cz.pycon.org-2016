@@ -16,10 +16,11 @@ def proposal_create(request, *, key):
 
     context = RequestContext(request, {'proposal_config': config})
 
+    is_public = not request.user.is_superuser
     right_now = now()
-    if config.date_start > right_now:
+    if is_public and config.date_start > right_now:
         return TemplateResponse(request, 'proposals/proposal_before.html', context)
-    elif config.date_end < right_now:
+    elif is_public and config.date_end < right_now:
         return TemplateResponse(request, 'proposals/proposal_after.html', context)
 
     ProposalForm = modelform_factory(config.model, exclude=['note', 'date'])
