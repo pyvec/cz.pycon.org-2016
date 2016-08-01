@@ -3,13 +3,15 @@
 {% block meta_title %}Thank you!{% endblock %}
 
 {% block content %}
-  <h1>Proposal sent</h1>
+  <div class="container">
+    <h1>Proposal sent</h1>
 
-  <p class="lead">
-    Thank you! We're received your proposal. If you have any
-    questions, don't hesitate to write us at
-    <a href="mailto:info@pycon.cz">info@pycon.cz</a>.
-  </p>
+    <p class="lead">
+      Thank you! We're received your proposal. If you have any
+      questions, don't hesitate to write us at
+      <a href="mailto:info@pycon.cz">info@pycon.cz</a>.
+    </p>
 
-  <a href="{% url "proposal_form" key=proposal_config_key %}">Send another</a>
+    <a href="{% url "proposal_form" key=proposal_config_key %}">Send another</a>
+  </div>
 {% endblock %}
