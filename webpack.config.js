@@ -27,7 +27,7 @@ var scssLoader;
 // Release specific config
 if (!debug) {
   plugins.push(
-    new ExtractTextPlugin("css/styles.css"),
+    new ExtractTextPlugin("css/styles-[hash].css"),
     new BundleTracker({
       filename: './pyconcz_2016/static_build/webpack-stats.json'
     })
