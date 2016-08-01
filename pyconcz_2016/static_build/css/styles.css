@@ -509,6 +509,9 @@ a {
 p, ul {
   line-height: 2.3rem; }
 
+.lead {
+  font-size: 120%; }
+
 blockquote {
   -webkit-margin-before: 2rem;
   -webkit-margin-after: 1rem;
@@ -523,14 +526,13 @@ blockquote {
       margin: 20px auto 40px auto; } }
 
 .homepage .logo-lg {
-  background-image: url("/2016/static/img/pyconlogo.svg");
   display: block;
   width: 670px;
   height: 340px;
+  background-image: url("/2016/static/img/pyconlogo.svg");
   background-repeat: no-repeat;
   background-position: center 50%;
-  background-size: contain;
-  transition: background-image 0.3s ease-out; }
+  background-size: contain; }
   .homepage .logo-lg:hover {
     background-image: url("/2016/static/img/pyconlogo_grid.svg"); }
   @media (max-width: 1200px) {
