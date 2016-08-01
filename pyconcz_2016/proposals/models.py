@@ -21,7 +21,6 @@ class EntryBase(models.Model):
 
 class Talk(EntryBase):
     DIFFICULTY = (
-        ('all', 'All'),
         ('beginner', 'Beginner'),
         ('advanced', 'Advanced'),
     )
@@ -30,8 +29,8 @@ class Talk(EntryBase):
     full_name = models.CharField(max_length=200)
     email = models.EmailField()
     bio = models.TextField()
-    twitter = models.CharField(max_length=20, blank=True)
-    github = models.CharField(max_length=20, blank=True)
+    twitter = models.CharField(max_length=255, blank=True)
+    github = models.CharField(max_length=255, blank=True)
 
     # Public talk info
     title = models.CharField(max_length=200)
@@ -45,7 +44,6 @@ class Talk(EntryBase):
 
 class Workshop(EntryBase):
     DIFFICULTY = (
-        ('all', 'All'),
         ('beginner', 'Beginner'),
         ('advanced', 'Advanced'),
     )
@@ -54,8 +52,8 @@ class Workshop(EntryBase):
     full_name = models.CharField(max_length=200)
     email = models.EmailField()
     bio = models.TextField()
-    twitter = models.CharField(max_length=20, blank=True)
-    github = models.CharField(max_length=20, blank=True)
+    twitter = models.CharField(max_length=255, blank=True)
+    github = models.CharField(max_length=255, blank=True)
 
     # Public talk info
     title = models.CharField(max_length=200)

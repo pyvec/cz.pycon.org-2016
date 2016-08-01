@@ -29,7 +29,7 @@ def proposal_create(request, *, key):
 
         if form.is_valid():
             form.save()
-            return redirect(to='cfp_success', key=key)
+            return redirect(to='proposal_success', key=key)
 
     else:
         form = ProposalForm()
