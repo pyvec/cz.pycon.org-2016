@@ -1,3 +1,24 @@
+.cta-cfp {
+  display: block;
+  width: 14em;
+  margin: 3em 0 1em;
+  padding: .5em;
+
+  color: black;
+  background: $light-color;
+  border: 1px solid $main-color;
+  border-radius: 2px;
+  transition: background-color 0.3s, font-weight 0.3s;
+
+  font-size: 140%;
+  text-align: center;
+
+  &:hover {
+    background-color: $main-color;
+    text-decoration: none;
+  }
+}
+
 .cfp-form {
   label {
     display: block;

@@ -1,12 +1,14 @@
 {% extends "_base.html" %}
 
-{% block meta_title %}PyCon CZ - Call for Papers – Submit your talk today{% endblock %}
+{% block meta_title %}PyCon CZ - Call for Papers{% endblock %}
 
 {% block content %}
 <div class="container">
   <h1>
-    Register and submit a proposal, or read on for more information.
+    PyCon CZ 2016 – Call for Papers
   </h1>
+
+  <a href="{% url "proposal_form" key="talks" %}" class="cta-cfp">Submit your proposal</a>
 
   <p>
     PyCon CZ (Czech Republic) 2016 is pleased to announce that its Call for
@@ -175,9 +177,11 @@
   <h2>How to Submit</h2>
 
   <p>
-    Use the Proposal Submission form to send us your proposals. You are welcome
+    Use the <a href="{% url "proposal_form" key="talks" %}">Proposal Submission</a> form to send us your proposals. You are welcome
     to submit multiple proposals.
   </p>
+
+  <a href="{% url "proposal_form" key="talks" %}" class="cta-cfp">Submit your proposal</a>
 
   <!--
 The proposal must include the following:
