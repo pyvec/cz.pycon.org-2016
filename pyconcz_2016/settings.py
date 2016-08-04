@@ -153,3 +153,5 @@ WEBPACK_LOADER = {
         'STATS_FILE': os.path.join(BASE_DIR, 'static_build', 'webpack-stats.json'),
     }
 }
+
+SLACK_WEBHOOK = os.environ.get('SLACK_WEBHOOK')
