@@ -26,14 +26,18 @@ class Talk(EntryBase):
     )
 
     # Public speaker info
-    full_name = models.CharField(max_length=200)
+    full_name = models.CharField(max_length=200,
+                                 verbose_name="Speaker's name")
     email = models.EmailField()
     bio = models.TextField()
-    twitter = models.CharField(max_length=255, blank=True)
-    github = models.CharField(max_length=255, blank=True)
+    twitter = models.CharField(max_length=255, blank=True,
+                               verbose_name="Twitter handle (optional)")
+    github = models.CharField(max_length=255, blank=True,
+                              verbose_name="Github username (optional)")
 
     # Public talk info
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200,
+                             verbose_name='Talk title')
     abstract = models.TextField()
     difficulty = models.CharField(
         max_length=10, choices=DIFFICULTY, default='all')
