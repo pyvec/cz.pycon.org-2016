@@ -81,7 +81,8 @@ class Workshop(EntryBase):
         ('1h', '1 hour'),
         ('2h', '2 hours'),
         ('2h', '3 hours'),
-        ('xh', 'Moar!')
+        ('day', 'Full day (most sprints go here!)'),
+        ('xh', 'Something else! (Please leave a note in the abstract!)')
     )
 
     # Public speaker info
@@ -108,31 +109,39 @@ class Workshop(EntryBase):
     # Public talk info
     type = models.CharField(
         max_length=10, choices=TYPE, default='sprint',
-        help_text="Workshops requires a room, slot in agenda and mandatory "
-                  "registration of participants. Sprints requires only table "
-                  "to sit around, reliable wifi and dedication to do great "
-                  "things!"
+        help_text="At a workshop, you should present hands-on excercises for"
+                  " participants to learn from. You'll get a room and a slot"
+                  " in the agenda, and participants will need to register.\n"
+                  " At a sprint, participants help an open-source project --"
+                  " usually by cloning the repo and trying to fix"
+                  " beginner-level issues, while you'll provide one-to-one"
+                  " mentorship. If several experienced developers"
+                  " are around, sprints are also a good place for serious"
+                  " design discussions. Sprinters only need a table to sit"
+                  " around, reliable wifi, and dedication to do great things!"
     )
     title = models.CharField(
         max_length=200, verbose_name='Workshop/sprint title',
         help_text="Public title. What topic/project is it all about?"
     )
     abstract = models.TextField(
-        help_text="Full description of your workshop or sprint. Please also "
-                  "describe requirements like installed libraries, Python "
-                  "version, etc."
+        help_text="Full description of your workshop or sprint. Please also"
+                  " describe requirements: libraries and Python version to be"
+                  " installed, required experience with topics/libraries, etc."
     )
     difficulty = models.CharField(
         max_length=10, choices=DIFFICULTY, default='beginner',
-        help_text="Does you audience require high level of Python knowledge "
-                  "or is it suitable for everyone?"
+        help_text="Does you audience require high level of specialized"
+                  " knowledge (of Python, a library, etc.),"
+                  " or is it suitable for everyone?"
     )
     length = models.CharField(
         max_length=2, choices=LENGTH, blank=True,
-        help_text="How much time does your workshop take? Sprints usually take "
-                  "whole day, but workshops are organized in smaller blocks. "
-                  "You can also have a full-day workshop with lunch break, if "
-                  "you want to!"
+        help_text="How much time does your workshop take? Sprints usually take"
+                  " the whole day, but workshops are organized in smaller"
+                  " blocks. You can also have a full-day workshop with lunch"
+                  " break, but keep in mind that the length could discourage"
+                  " attendees!"
     )
 
     def __str__(self):
