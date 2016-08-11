@@ -81,8 +81,8 @@ class Workshop(EntryBase):
         ('1h', '1 hour'),
         ('2h', '2 hours'),
         ('2h', '3 hours'),
-        ('day', 'Full day (most sprints go here!)'),
-        ('xh', 'Something else! (Please leave a note in the abstract!)')
+        ('1d', 'Full day (most sprints go here!)'),
+        ('xx', 'Something else! (Please leave a note in the abstract!)')
     )
 
     # Public speaker info
