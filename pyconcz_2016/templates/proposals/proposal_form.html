@@ -6,7 +6,7 @@
 <div class="container">
   <div class="form form--cfp">
     <h1>{{ proposal_config.cfp_title|default:"Call for Papers" }}</h1>
-    <form action="" method="post">
+    <form action="" method="post" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
       {% csrf_token %}
       {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
       {% for field in form.visible_fields %}

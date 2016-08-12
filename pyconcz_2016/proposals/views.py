@@ -26,7 +26,7 @@ def proposal_create(request, *, key):
     ProposalForm = modelform_factory(config.model, exclude=['note', 'date'])
 
     if request.method.lower() == 'post':
-        form = ProposalForm(request.POST)
+        form = ProposalForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
