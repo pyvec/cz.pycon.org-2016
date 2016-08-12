@@ -25,6 +25,11 @@ class Talk(EntryBase):
         ('advanced', 'Advanced'),
     )
 
+    LANGUAGES = (
+        ('en', 'English (preferred)'),
+        ('cs', 'Czech/Slovak'),
+    )
+
     # Public speaker info
     full_name = models.CharField(
         max_length=200, verbose_name="Your name",
@@ -58,6 +63,9 @@ class Talk(EntryBase):
         help_text="Full description of your talk. How would you describe your"
                   "talk to the audience?"
     )
+    language = models.CharField(
+        max_length=2, choices=LANGUAGES, default='en'
+    )
     difficulty = models.CharField(
         max_length=10, choices=DIFFICULTY, default='beginner',
         help_text="Does you audience require high level of Python knowledge"
@@ -75,8 +83,8 @@ class Workshop(EntryBase):
     )
 
     TYPE = (
+        ('workshop', 'Workshop'),
         ('sprint', 'Sprint'),
-        ('workshop', 'Workshop')
     )
 
     LENGTH = (
@@ -85,6 +93,11 @@ class Workshop(EntryBase):
         ('2h', '3 hours'),
         ('1d', 'Full day (most sprints go here!)'),
         ('xx', 'Something else! (Please leave a note in the abstract!)')
+    )
+
+    LANGUAGES = (
+        ('en', 'English (preferred)'),
+        ('cs', 'Czech/Slovak'),
     )
 
     # Public speaker info
@@ -132,6 +145,9 @@ class Workshop(EntryBase):
         help_text="Full description of your workshop or sprint. Please also"
                   " describe requirements: libraries and Python version to be"
                   " installed, required experience with topics/libraries, etc."
+    )
+    language = models.CharField(
+        max_length=2, choices=LANGUAGES, default='en'
     )
     difficulty = models.CharField(
         max_length=10, choices=DIFFICULTY, default='beginner',
