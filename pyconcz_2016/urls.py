@@ -6,6 +6,7 @@ from django.views.generic import TemplateView, RedirectView
 
 
 prefixed_urlpatterns = [
+    url(r'^proposals/workshops$', RedirectView.as_view(url='/2016/proposals/talks')),
     url(r'^proposals/', include('pyconcz_2016.proposals.urls')),
 
     # static pages

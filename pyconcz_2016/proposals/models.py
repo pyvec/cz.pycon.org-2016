@@ -38,9 +38,11 @@ class Talk(EntryBase):
                   " be creative!"
     )
     twitter = models.CharField(
-        max_length=255, blank=True, verbose_name="Twitter handle (optional)")
+        max_length=255, blank=True,
+        verbose_name="Twitter handle", help_text="Optional")
     github = models.CharField(
-        max_length=255, blank=True, verbose_name="GitHub username (optional)")
+        max_length=255, blank=True,
+        verbose_name="GitHub username", help_text="Optional")
     photo = models.ImageField(
         upload_to='proposals/pyconcz2016/talks/', verbose_name="Your picture",
         help_text="Photo of yourself which we can publish on our website"
@@ -98,9 +100,11 @@ class Workshop(EntryBase):
                   " be creative!"
     )
     twitter = models.CharField(
-        max_length=255, blank=True, verbose_name="Twitter handle (optional)")
+        max_length=255, blank=True,
+        verbose_name="Twitter handle", help_text="Optional")
     github = models.CharField(
-        max_length=255, blank=True, verbose_name="GitHub username (optional)")
+        max_length=255, blank=True,
+        verbose_name="GitHub username", help_text="Optional")
     photo = models.ImageField(
         upload_to='proposals/pyconcz2016/talks/', verbose_name="Your picture",
         help_text="Photo of yourself which we can publish on our website"
