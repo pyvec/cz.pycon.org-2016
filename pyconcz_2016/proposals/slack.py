@@ -12,8 +12,9 @@ def notify_slack(sender, instance, created, *args, **kwargs):
 
     title = instance.title
     author = instance.full_name
-    fallback = ("New talk proposal submitted by {author} ({title})"
-                .format(author=author, title=title))
+    t = sender.__name__.lower()
+    fallback = ("New {type} proposal submitted by {author} ({title})"
+                .format(author=author, title=title, type=t))
 
     title_link = (
         "https://cz.pycon.org/" +
