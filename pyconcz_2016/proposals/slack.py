@@ -18,7 +18,7 @@ def notify_slack(sender, instance, created, *args, **kwargs):
 
     title_link = (
         "https://cz.pycon.org/" +
-        reverse('admin:proposals_talk_change', args=[instance.id]))
+        reverse('admin:proposals_{t}_change'.format(t=t), args=[instance.id]))
 
     payload = {
         "username": "PyCon Czechia Bot",
@@ -27,7 +27,7 @@ def notify_slack(sender, instance, created, *args, **kwargs):
             {
                 "fallback": fallback,
                 "color": "#36a64f",
-                "pretext": "New talk proposal submitted",
+                "pretext": "New {type} proposal submitted".format(type=t),
                 "author_name": author,
                 "title": title,
                 "title_link": title_link,
