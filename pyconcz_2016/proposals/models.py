@@ -27,7 +27,7 @@ class Talk(EntryBase):
 
     LANGUAGES = (
         ('en', 'English (preferred)'),
-        ('cs', 'Czech/Slovak'),
+        ('cs', 'Czechoslovak'),
     )
 
     # Public speaker info
