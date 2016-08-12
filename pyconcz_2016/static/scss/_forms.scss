@@ -41,7 +41,7 @@
 
   %common {
     display: block;
-    height: $row-height;
+    min-height: $row-height;
     margin-top: 10px;
     margin-bottom: 5px;
     float: left;
