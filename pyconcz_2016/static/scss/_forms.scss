@@ -1,5 +1,5 @@
 .cta-cfp {
-  display: block;
+  display: inline-block;
   width: 14em;
   margin: 3em 0 1em;
   padding: .5em;
@@ -19,36 +19,111 @@
   }
 }
 
-.cfp-form {
-  label {
+.form {
+  $label-width: 24rem;
+  $widget-width: 36rem;
+  $row-height: 2em;
+
+  h1 {
+    margin-left: $label-width;
+    margin-bottom: .5em;
+  }
+
+  &__row {
+    padding-bottom: 1em;
+
+    &::after {
+      display: table;
+      content: " ";
+      clear: both;
+    }
+  }
+
+  %common {
     display: block;
+    height: $row-height;
     margin-top: 10px;
     margin-bottom: 5px;
-    font-family: $secondary-font;
+    float: left;
+
     color: $font-color;
+    font-family: $secondary-font;
   }
+
+  %full-row {
+    display: block;
+    margin-left: $label-width;
+    clear: left;
+  }
+
+  &__label {
+    @extend %common;
+    width: $label-width;
+    padding-right: 10px;
+    text-align: right;
+    line-height: $row-height;
+  }
+
+  &__widget {
+    @extend %common;
+    width: $widget-width;
+
+    @media (max-width: 480px) {
+      display: block;
+      width: 100%;
+    }
+  }
+
   input,
-  textarea,
-  select {
-    border-color: $main-color;
-    border-width: 1px;
-    border-style: solid;
-    width: 36rem;
+  select,
+  textarea {
+    width: 100%;
+    height: 100%;
+    border: 1px solid $main-color;
+    outline: none;
   }
-  input,
-  select {
-    height: 3rem;
-  }
+
   select {
     background: white;
   }
 
-  input,
-  textarea,
-  select {
-    @media (max-width: 480px) {
-      width: 100%;
+  input[type="file"] {
+    border: 0;
+    padding-top: 5px;
+  }
+
+  &__errors {
+    @extend %full-row;
+    margin-left: $label-width;
+    color: $accent-color;
+    font-size: 12px;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
+
+    @media (max-width: 480px) {
+      position: relative;
+      margin: 20px 0 -10px;
+      padding-left: 20px;
+    }
+  }
+
+  &__help {
+    @extend %full-row;
+    width: $widget-width;
+    font-size: 14px;
+    line-height: 1.2;
+
+    br {
+      line-height: 2;
+    }
+  }
+
+  &__actions {
+    margin-left: $label-width;
   }
 
   button {
@@ -65,19 +140,6 @@
     }
     &:hover {
       background-color: $main-color;
-    }
-  }
-  .errorlist {
-    position: absolute;
-    margin-left: 355px;
-    margin-top: 35px;
-    color: $accent-color;
-    font-size: 11pt;
-
-    @media (max-width: 480px) {
-      position: relative;
-      margin: 20px 0 -10px;
-      padding-left: 20px;
     }
   }
 }

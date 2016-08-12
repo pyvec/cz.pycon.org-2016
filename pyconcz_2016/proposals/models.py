@@ -26,21 +26,43 @@ class Talk(EntryBase):
     )
 
     # Public speaker info
-    full_name = models.CharField(max_length=200,
-                                 verbose_name="Speaker's name")
-    email = models.EmailField()
-    bio = models.TextField()
-    twitter = models.CharField(max_length=255, blank=True,
-                               verbose_name="Twitter handle (optional)")
-    github = models.CharField(max_length=255, blank=True,
-                              verbose_name="Github username (optional)")
+    full_name = models.CharField(
+        max_length=200, verbose_name="Your name",
+    )
+    email = models.EmailField(
+        help_text="We'll keep it secret, for internal use only."
+    )
+    bio = models.TextField(
+        help_text="Tell us a bit about yourself! Who you are, where are you"
+                  " from, what are your experiences with Python. Be wild,"
+                  " be creative!"
+    )
+    twitter = models.CharField(
+        max_length=255, blank=True,
+        verbose_name="Twitter handle", help_text="Optional")
+    github = models.CharField(
+        max_length=255, blank=True,
+        verbose_name="GitHub username", help_text="Optional")
+    photo = models.ImageField(
+        upload_to='proposals/pyconcz2016/talks/', verbose_name="Your picture",
+        help_text="Photo of yourself which we can publish on our website"
+    )
 
     # Public talk info
-    title = models.CharField(max_length=200,
-                             verbose_name='Talk title')
-    abstract = models.TextField()
+    title = models.CharField(
+        max_length=200, verbose_name='Talk title',
+        help_text="This is going to be public on all posters! Make up some"
+                  " catchy title which attracts audience."
+    )
+    abstract = models.TextField(
+        help_text="Full description of your talk. How would you describe your"
+                  "talk to the audience?"
+    )
     difficulty = models.CharField(
-        max_length=10, choices=DIFFICULTY, default='all')
+        max_length=10, choices=DIFFICULTY, default='beginner',
+        help_text="Does you audience require high level of Python knowledge"
+                  "or is it suitable for everyone?"
+    )
 
     def __str__(self):
         return '{s.full_name} - {s.title}'.format(s=self)
@@ -52,26 +74,79 @@ class Workshop(EntryBase):
         ('advanced', 'Advanced'),
     )
 
+    TYPE = (
+        ('sprint', 'Sprint'),
+        ('workshop', 'Workshop')
+    )
+
+    LENGTH = (
+        ('1h', '1 hour'),
+        ('2h', '2 hours'),
+        ('2h', '3 hours'),
+        ('1d', 'Full day (most sprints go here!)'),
+        ('xx', 'Something else! (Please leave a note in the abstract!)')
+    )
+
     # Public speaker info
-    full_name = models.CharField(max_length=200)
-    email = models.EmailField()
-    bio = models.TextField()
-    twitter = models.CharField(max_length=255, blank=True)
-    github = models.CharField(max_length=255, blank=True)
+    full_name = models.CharField(
+        max_length=200, verbose_name="Your name",
+    )
+    email = models.EmailField(
+        help_text="We'll keep it secret, for internal use only."
+    )
+    bio = models.TextField(
+        help_text="Tell us a bit about yourself! Who you are, where are you"
+                  " from, what are your experiences with Python. Be wild,"
+                  " be creative!"
+    )
+    twitter = models.CharField(
+        max_length=255, blank=True,
+        verbose_name="Twitter handle", help_text="Optional")
+    github = models.CharField(
+        max_length=255, blank=True,
+        verbose_name="GitHub username", help_text="Optional")
+    photo = models.ImageField(
+        upload_to='proposals/pyconcz2016/talks/', verbose_name="Your picture",
+        help_text="Photo of yourself which we can publish on our website"
+    )
 
     # Public talk info
-    title = models.CharField(max_length=200)
-    description = models.TextField()
+    type = models.CharField(
+        max_length=10, choices=TYPE, default='sprint',
+        help_text="At a workshop, you should present hands-on excercises for"
+                  " participants to learn from. You'll get a room and a slot"
+                  " in the agenda, and participants will need to register.\n"
+                  " At a sprint, participants help an open-source project --"
+                  " usually by cloning the repo and trying to fix"
+                  " beginner-level issues, while you'll provide one-to-one"
+                  " mentorship. If several experienced developers"
+                  " are around, sprints are also a good place for serious"
+                  " design discussions. Sprinters only need a table to sit"
+                  " around, reliable wifi, and dedication to do great things!"
+    )
+    title = models.CharField(
+        max_length=200, verbose_name='Workshop/sprint title',
+        help_text="Public title. What topic/project is it all about?"
+    )
+    abstract = models.TextField(
+        help_text="Full description of your workshop or sprint. Please also"
+                  " describe requirements: libraries and Python version to be"
+                  " installed, required experience with topics/libraries, etc."
+    )
     difficulty = models.CharField(
-        max_length=10, choices=DIFFICULTY, default='all')
+        max_length=10, choices=DIFFICULTY, default='beginner',
+        help_text="Does you audience require high level of specialized"
+                  " knowledge (of Python, a library, etc.),"
+                  " or is it suitable for everyone?"
+    )
+    length = models.CharField(
+        max_length=2, choices=LENGTH, blank=True,
+        help_text="How much time does your workshop take? Sprints usually take"
+                  " the whole day, but workshops are organized in smaller"
+                  " blocks. You can also have a full-day workshop with lunch"
+                  " break, but keep in mind that the length could discourage"
+                  " attendees!"
+    )
 
     def __str__(self):
-        return '{s.full_name} - {s.title}'.format(s=self)
-
-
-# FIXME: What fields to include?
-# class FinancialAide(models.Model):
-#     # Public speaker info
-#     full_name = models.CharField(max_length=200)
-#     email = models.EmailField()
-#     bio = models.TextField()
+        return '{s.full_name} - {s.type}/{s.title}'.format(s=self)
