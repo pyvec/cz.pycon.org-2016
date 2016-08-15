@@ -8,6 +8,12 @@ footer {
     text-align: center;
   }
 
+  @media (min-height: 800px) {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
   .nav-footer {
     list-style: none;
     padding-left: 15px;
