@@ -1,7 +1,10 @@
 @import "~normalize.css";
+@import "variables";
+@import "vertical_rhythm";
+
 @import "base";
-@import "header";
 @import "layout";
+@import "header";
 @import "homepage";
 @import "forms";
 @import "footer";

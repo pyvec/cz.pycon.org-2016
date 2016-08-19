@@ -1,0 +1,46 @@
+////
+/// Utilities to keep consistent baseline.
+/// @author Tomáš Ehrlich <tomas.ehrlich@gmail.com>
+/// @group Vertical Rhythm
+////
+
+/// Base font size
+/// @type number
+$font-base: 1rem !default;
+
+/// Default line height, depends on typeface.
+/// @type number
+$line-height: 1.5 !default;
+
+/// The height of one line.
+/// Usually calculated as a product of font size and line height.
+/// @type number
+$baseline: $font-base * $line-height !default;
+
+
+/// Initialize the base font settings and setup baseline.
+@mixin vrInit() {
+  font-size: 100%;
+  line-height: $line-height;
+}
+
+/// Calculate space as a multiply of baseline
+/// @param {number} $amount Multiply of baseline
+/// @param {number} $customBaseline [$baseline] Default `$baseline` override
+/// @return {number}
+@function vr($amount, $customBaseline: $baseline) {
+  @return $amount * $customBaseline;
+}
+
+
+/// Calculate line height for different font size to keep consistent baseline
+/// @param {number} $size Target font size
+/// @return {number}
+@function vrScale($size) {
+  $new-baseline: $baseline/$size;
+  @if($new-baseline < 1) {
+    @return $new-baseline * 2;
+  }
+
+  @return $new-baseline;
+}

@@ -18,28 +18,37 @@
 }
 
 .header-title {
+  $size: 38px;
+  $heading-baseline: vrScale($size);
+
   display: inline-block;
   vertical-align: top;
-  margin: 50px 0 0 70px;
+
+  font-size: $size;
+  font-family: $secondary-font;
+  line-height: $heading-baseline;
+  margin-top: vr(.9, $heading-baseline);
+  margin-bottom: vr(.1, $heading-baseline);
+  margin-left: 70px;
 
   @media (max-width: 992px) {
     margin-left: 50px;
   }
   @media (max-width: 768px) {
     display: block;
-    margin: 40px 0 30px 0;
+    //margin: 40px 0 30px 0;
     text-align: center;
   }
   @media (max-width: 480px) {
-    font-size: 2.4rem;
-    margin-bottom: 10px;
+    //font-size: 24px;
+    //margin-bottom: 10px;
   }
 }
 
 header {
   .container {
     border-bottom: solid 1px $light-color;
-    padding-bottom: 10px;
+    padding-bottom: $baseline - 1px;
   }
 }
 
@@ -83,8 +92,8 @@ header {
 
       a {
         display: block;
-        padding: 10px 30px;
-        margin: 10px 0;
+        padding: calc(0.5em - 1px) 2em;
+        margin: 1em 0;
         border: solid 1px $light-color;
         transition: border 0.3s, color 0.3s;
 

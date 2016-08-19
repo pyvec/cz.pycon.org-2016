@@ -1,5 +1,4 @@
 body {
-  font-size: $font-normal;
   color: $font-color;
   font-family: $main-font;
 }
@@ -12,7 +11,7 @@ body {
 
 .container {
   margin: 0 auto;
-  padding: 15px;
+  padding: 0 15px;
   background: rgba(255, 255, 255, 0.7);
 
   @media (max-width: 767px) {
@@ -29,49 +28,49 @@ body {
   }
 }
 
+@mixin heading($size, $top: 2, $bottom: 1) {
+  $heading-line-height: vrScale($size);
+
+  font-size: $size;
+  font-family: $secondary-font;
+  line-height: $heading-line-height;
+  margin-top: vr($top, $heading-line-height);
+  margin-bottom: vr($bottom, $heading-line-height)
+}
+
 h1 {
-  font-size: 3.6rem;
-  font-family: $secondary-font;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  @include heading(38px, 1);
 
-  @media (max-width: 768px) { font-size: 3rem; }
+  @media (max-width: 768px) {
+    @include heading(30px, 0);
+  }
 }
+
 h2 {
-  font-size: 2.8rem;
-  font-family: $secondary-font;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  @include heading(29px);
+  @media (max-width: 768px) {
+    @include heading(22px);
+  }
+}
 
-  @media (max-width: 768px) { font-size: 2.2rem; }
-}
 h3 {
-  font-size: 2.4rem;
-  font-family: $secondary-font;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  @include heading(24px);
 }
+
 h4 {
-  font-size: 2.1rem;
-  font-family: $secondary-font;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  @include heading(21px);
 }
+
 h5 {
-  font-size: 1.8rem;
-  font-family: $secondary-font;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  @include heading(18px);
 }
+
 h6 {
-  font-size: 1.6rem;
-  font-family: $secondary-font;
-  margin-top: 20px;
-  margin-bottom: 5px;
+  @include heading(16px);
 }
 
 .fa-fw {
-  width: 3rem;
+  width: 30px;
 }
 
 strong {
@@ -91,19 +90,30 @@ a {
   }
 }
 
-p, ul {
-  line-height: 2.3rem;
+p {
+  margin: 1em*$line-height 0;
+  max-width: 40em;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+// hanging bullets
+li li {
+  margin-right: 1em;
 }
 
 .lead {
-  font-size: 120%;
+  font-size: 12px;
 }
 
 blockquote {
-  -webkit-margin-before: 2rem;
-  -webkit-margin-after: 1rem;
-  -webkit-margin-start: 2rem;
-  -webkit-margin-end: 1rem;
+  -webkit-margin-before: 20px;
+  -webkit-margin-after: 10px;
+  -webkit-margin-start: 20px;
+  -webkit-margin-end: 10px;
   font-family: $secondary-font;
 }
 

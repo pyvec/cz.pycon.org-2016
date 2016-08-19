@@ -1,6 +1,6 @@
 .homepage {
   .header-title {
-    margin: 20px 0 40px 100px;
+    margin-left: 20px;
 
     @media (max-width: 992px) {
       margin: 20px auto 40px auto;
@@ -10,12 +10,11 @@
   .logo-lg {
     display: block;
     width: 640px;
-    height: 340px;
+    height: 330px; // $baseline*15
     background-image: url("/2016/static/img/pyconlogo.svg");
     background-repeat: no-repeat;
     background-position: center 50%;
     background-size: contain;
-    //transition: all 0.3s ease-out;
 
     &:hover {
       background-image: url("/2016/static/img/pyconlogo_grid.svg");
@@ -33,7 +32,7 @@
 }
 
 .nav-main {
-  margin-left: 150px;
+  margin-left: 20px;
 
   @media (max-width: 992px) {
     margin-left: auto;

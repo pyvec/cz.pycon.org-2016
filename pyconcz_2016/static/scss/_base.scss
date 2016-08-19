@@ -1,24 +1,16 @@
-* {
-  box-sizing: border-box;
+html,
+body {
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  font-size: 62.5%;
+  @include vrInit();
+  box-sizing: border-box;
 }
 
-$font-small: 1.2rem;
-$font-normal: 1.6rem;
-$font-big: 2rem;
-
-$main-font: "Roboto", sans-serif;
-$secondary-font: "Roboto Mono", monospace;
-
-$container-lg: 1170px;
-$container-md: 970px;
-$container-sm: 750px;
-$container-xs: auto;
-
-$main-color: #999ae6;
-$accent-color: #ea8197;
-$font-color: #333333;
-$light-color: #e0e1fd;
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
