@@ -1,7 +1,7 @@
 .cta-cfp {
   $size: 20px;
-  $btn-baseline: vrScale($size);
-  $half-line: vr(.5, $btn-baseline);
+  $baseline: vr-scale($size);
+  $half-line: vr(.5, $baseline);
 
   display: inline-block;
   width: 14em;
@@ -15,7 +15,7 @@
   transition: background-color 0.3s, font-weight 0.3s;
 
   font-size: $size;
-  line-height: $btn-baseline;
+  line-height: $baseline;
   text-align: center;
 
   &:hover {
@@ -34,7 +34,7 @@
   }
 
   &__row {
-    margin-bottom: 1em * $line-height;
+    margin-bottom: vr(1);
 
     &::after {
       display: table;
@@ -45,7 +45,7 @@
 
   %common {
     display: block;
-    margin: .5em * $line-height 0 calc(#{.5em * $line-height} - 1px);
+    margin: vr(.5) 0 calc(#{vr(.5)} - 1px);
     float: left;
 
     color: $font-color;
@@ -86,7 +86,7 @@
 
   textarea {
     vertical-align: top;
-    height: $baseline * 10;
+    height: vr(10);
   }
 
   select {
@@ -120,13 +120,13 @@
   &__help {
     @extend %full-row;
     $size: 14px;
-    $baseline: vrScale($size);
+    $baseline: vr-scale($size);
     width: $widget-width;
     font-size: $size;
     line-height: $baseline;
 
     br {
-      line-height: 2;
+      line-height: vr(2, $baseline);
     }
   }
 
@@ -136,8 +136,8 @@
 
   button {
     cursor: pointer;
-    padding: 0.3*$baseline 25px;
-    margin-bottom: calc(#{0.4 * $baseline} - 2px);
+    padding: vr(0.3) 25px;
+    margin-bottom: calc(#{vr(0.4)} - 2px);
     border-radius: 2px;
     background: $light-color;
     border: solid 1px $main-color;

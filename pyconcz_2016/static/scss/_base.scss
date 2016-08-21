@@ -5,7 +5,7 @@ body {
 }
 
 html {
-  @include vrInit();
+  @include vr-init;
   box-sizing: border-box;
 }
 
@@ -13,4 +13,9 @@ html {
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+body {
+  // only for development
+  //@include vr-grid;
 }

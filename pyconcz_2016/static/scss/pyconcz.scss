@@ -1,6 +1,7 @@
-@import "~normalize.css";
 @import "variables";
-@import "vertical_rhythm";
+
+@import "~normalize.css";
+@import "~voidcss-vertical-rhythm";
 
 @import "base";
 @import "layout";

@@ -19,7 +19,7 @@
 
 .header-title {
   $size: 38px;
-  $heading-baseline: vrScale($size);
+  $heading-baseline: vr-scale($size);
 
   display: inline-block;
   vertical-align: top;
@@ -48,7 +48,7 @@
 header {
   .container {
     border-bottom: solid 1px $light-color;
-    padding-bottom: $baseline - 1px;
+    padding-bottom: calc(#{$vr-baseline} - 1px);
   }
 }
 

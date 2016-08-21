@@ -10,7 +10,7 @@
   .logo-lg {
     display: block;
     width: 640px;
-    height: 330px; // $baseline*15
+    height: vr(14);
     background-image: url("/2016/static/img/pyconlogo.svg");
     background-repeat: no-repeat;
     background-position: center 50%;
@@ -28,6 +28,11 @@
       width: 100%;
       margin: 0;
     }
+  }
+
+  .twitter-tweet {
+    float: left;
+    margin-right: 2em;
   }
 }
 
@@ -106,4 +111,12 @@
     width: 100%;
     height: 100%;
   }
+}
+
+.tweets::after {
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
 }

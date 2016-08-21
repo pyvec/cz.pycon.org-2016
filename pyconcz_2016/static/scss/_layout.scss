@@ -29,13 +29,13 @@ body {
 }
 
 @mixin heading($size, $top: 2, $bottom: 1) {
-  $heading-line-height: vrScale($size);
+  $baseline: vr-scale($size);
 
   font-size: $size;
   font-family: $secondary-font;
-  line-height: $heading-line-height;
-  margin-top: vr($top, $heading-line-height);
-  margin-bottom: vr($bottom, $heading-line-height)
+  line-height: $baseline;
+  margin-top: vr($top, $baseline);
+  margin-bottom: vr($bottom, $baseline)
 }
 
 h1 {
@@ -91,7 +91,7 @@ a {
 }
 
 p {
-  margin: 1em*$line-height 0;
+  margin: vr(1) 0;
   max-width: 40em;
 }
 
