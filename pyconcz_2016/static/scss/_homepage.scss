@@ -36,6 +36,23 @@
   }
 }
 
+.homepage-basic,
+.homepage-claim {
+  @include clearfix;
+}
+
+.homepage-claim {
+  margin-top: vr(2);
+  margin-bottom: vr(1);
+  font-weight: bold;
+  font-family: $secondary-font;
+}
+
+.homepage-column {
+  width: 50%;
+  float: left;
+}
+
 .nav-main {
   margin-left: 20px;
 
@@ -113,10 +130,6 @@
   }
 }
 
-.tweets::after {
-  content: " "; /* Older browser do not support empty content */
-  visibility: hidden;
-  display: block;
-  height: 0;
-  clear: both;
+.tweets {
+  @include clearfix;
 }
