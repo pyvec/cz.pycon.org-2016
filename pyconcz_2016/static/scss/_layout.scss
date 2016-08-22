@@ -106,3 +106,23 @@ blockquote {
   -webkit-margin-end: 1rem;
   font-family: $secondary-font;
 }
+
+// Team page
+.person {
+  display: inline-block;
+  width: 32%;
+}
+
+.team-social {
+  list-style: none;
+  padding: 0;
+  display: inline-block;
+}
+
+.team-portrait {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  vertical-align: bottom;
+}
+// End Team page
