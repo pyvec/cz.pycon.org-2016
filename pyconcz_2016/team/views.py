@@ -5,7 +5,7 @@ from pyconcz_2016.team.models import Organizer
 
 
 def team_list(request):
-    organizers = Organizer.objects.all().filter(published=True)
+    organizers = Organizer.objects.all().filter(published=True).order_by('?')
 
     return TemplateResponse(
         request,
