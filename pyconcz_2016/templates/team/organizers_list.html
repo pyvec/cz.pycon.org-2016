@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+{% block meta_title %}PyCon CZ Team{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>PyCon CZ Team</h1>
+    <div class="row">
+      {% for organizer in organizers %}
+        <div class="person">
+          <img src="{{ organizer.photo.url }}" alt="{{ organizer.full_name }}" class="team-portrait"/>
+
+          <ul class="team-social">
+            <li>
+              <h5 class="name">{{ organizer.full_name }}</h5>
+            </li>
+
+            {% if organizer.github %}
+            <li>
+              <i class="fa fa-fw fa-github-alt" aria-hidden="true"></i>
+                <a href="https://github.com/{{ organizer.github }}">{{ organizer.github }}</a>
+            </li>
+            {% endif %}
+
+            {% if organizer.twitter %}
+            <li>
+              <i class="fa fa-fw fa-twitter" aria-hidden="true"></i>
+              <a href="https://twitter.com/{{ organizer.twitter }}">@{{ organizer.twitter }}</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      {% empty %}
+        <p>This event is managed by ghosts!</p>
+      {% endfor %}
+    </div> <!-- endrow -->
+  </div>
+{% endblock %}
