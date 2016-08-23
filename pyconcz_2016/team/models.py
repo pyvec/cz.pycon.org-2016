@@ -11,3 +11,6 @@ class Organizer(models.Model):
     photo = models.ImageField(upload_to='team/pyconcz2016/')
 
     published = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.full_name
