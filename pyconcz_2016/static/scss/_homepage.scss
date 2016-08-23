@@ -1,6 +1,6 @@
 .homepage {
   .header-title {
-    margin-left: 20px;
+    margin: 20px 0 40px 100px;
 
     @media (max-width: 992px) {
       margin: 20px auto 40px auto;
@@ -9,7 +9,7 @@
 
   .logo-lg {
     display: block;
-    width: 640px;
+    width: 590px;
     height: vr(14);
     background-image: url("/2016/static/img/pyconlogo.svg");
     background-repeat: no-repeat;
@@ -32,7 +32,12 @@
 
   .twitter-tweet {
     float: left;
-    margin-right: 2em;
+    margin: 2em;
+
+    @media (max-width: 1200px) {
+      float: none;
+      margin: auto;
+    }
   }
 }
 
@@ -44,23 +49,36 @@
 .homepage-claim {
   margin-top: vr(2);
   margin-bottom: vr(1);
-  font-weight: bold;
+  font-weight: normal;
   font-family: $secondary-font;
+  text-align: center;
+  line-height: 1.4rem;
 }
 
 .homepage-column {
   width: 50%;
   float: left;
+  text-align: center;
+
+  .fa {
+    display: block;
+    margin-bottom: 15px;
+    color: $main-color;
+  }
+
+  @media (max-width: 992px) {
+    width: 100%;
+    float: none;
+
+    .homepage-day-venue {
+      margin: auto;
+    }
+  }
 }
 
 .nav-main {
-  margin-left: 20px;
-
-  @media (max-width: 992px) {
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
-  }
+  display: table;
+  margin: auto;
 
   ul {
     padding-left: 0;
@@ -107,7 +125,7 @@
   display: inline-block;
   vertical-align: middle;
 
-  @media (max-width: 992px) {
+  @media (max-width: 1200px) {
     width: 100%;
     text-align: center;
   }
@@ -119,7 +137,7 @@
   padding-bottom: 56.25%; /* 16:9 */
   padding-top: 25px;
   height: 0;
-  margin: 4em 4em;
+  margin: 4em 0.5em;
 
   iframe {
     position: absolute;
