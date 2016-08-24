@@ -1,8 +1,12 @@
 .cta-cfp {
+  $size: 20px;
+  $baseline: vr-scale($size);
+  $half-line: vr(.5, $baseline);
+
   display: inline-block;
   width: 14em;
-  margin: 3em 0 1em;
-  padding: .5em;
+  margin: $half-line 0 calc(#{$half-line} - 2px); // substract border
+  padding: $half-line;
 
   color: black;
   background: $light-color;
@@ -10,7 +14,8 @@
   border-radius: 2px;
   transition: background-color 0.3s, font-weight 0.3s;
 
-  font-size: 140%;
+  font-size: $size;
+  line-height: $baseline;
   text-align: center;
 
   &:hover {
@@ -20,17 +25,16 @@
 }
 
 .form {
-  $label-width: 24rem;
-  $widget-width: 36rem;
+  $label-width: 240px;
+  $widget-width: 360px;
   $row-height: 2em;
 
   h1 {
     margin-left: $label-width;
-    margin-bottom: .5em;
   }
 
   &__row {
-    padding-bottom: 1em;
+    margin-bottom: vr(1);
 
     &::after {
       display: table;
@@ -41,9 +45,7 @@
 
   %common {
     display: block;
-    min-height: $row-height;
-    margin-top: 10px;
-    margin-bottom: 5px;
+    margin: vr(.5) 0 calc(#{vr(.5)} - 1px);
     float: left;
 
     color: $font-color;
@@ -61,7 +63,6 @@
     width: $label-width;
     padding-right: 10px;
     text-align: right;
-    line-height: $row-height;
   }
 
   &__widget {
@@ -83,20 +84,25 @@
     outline: none;
   }
 
+  textarea {
+    vertical-align: top;
+    height: vr(10);
+  }
+
   select {
     background: white;
   }
 
   input[type="file"] {
     border: 0;
-    padding-top: 5px;
+    font-size: $font-small;
   }
 
   &__errors {
     @extend %full-row;
     margin-left: $label-width;
     color: $accent-color;
-    font-size: 12px;
+    font-size: $font-small;
 
     ul {
       list-style: none;
@@ -106,19 +112,21 @@
 
     @media (max-width: 480px) {
       position: relative;
-      margin: 20px 0 -10px;
+      //margin: 20px 0 -10px;
       padding-left: 20px;
     }
   }
 
   &__help {
     @extend %full-row;
+    $size: 14px;
+    $baseline: vr-scale($size);
     width: $widget-width;
-    font-size: 14px;
-    line-height: 1.2;
+    font-size: $size;
+    line-height: $baseline;
 
     br {
-      line-height: 2;
+      line-height: vr(2, $baseline);
     }
   }
 
@@ -128,8 +136,8 @@
 
   button {
     cursor: pointer;
-    margin-top: 20px;
-    padding: 10px 25px;
+    padding: vr(0.3) 25px;
+    margin-bottom: calc(#{vr(0.4)} - 2px);
     border-radius: 2px;
     background: $light-color;
     border: solid 1px $main-color;
