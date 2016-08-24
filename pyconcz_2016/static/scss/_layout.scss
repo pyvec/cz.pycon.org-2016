@@ -111,12 +111,24 @@ blockquote {
 .person {
   display: inline-block;
   width: 32%;
+
+  @media (max-width: 991px) {
+    width: 49%;
+  }
+  @media (max-width: 670px) {
+    width: 100%;
+  }
 }
 
 .team-social {
   list-style: none;
   padding: 0;
   display: inline-block;
+
+  @media (max-width: 670px) {
+    display: block;
+    text-align: center;
+  }
 }
 
 .team-portrait {
@@ -124,5 +136,10 @@ blockquote {
   width: 80px;
   border-radius: 50%;
   vertical-align: bottom;
+
+  @media (max-width: 670px) {
+    margin: 20px auto;
+    display: block;
+  }
 }
 // End Team page
