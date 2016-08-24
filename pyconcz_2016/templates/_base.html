@@ -43,7 +43,7 @@
     <nav>
       <ul class="nav-footer">
         <li class="nav-section">
-          <a href="/2016/about" class="nav-title">About</a>
+          <a href="{% url "about" %}" class="nav-title">About</a>
 
           <ul>
             <li><a href="{% url "team_list" %}">Team</a></li>
@@ -53,12 +53,12 @@
 {#            <li><a href="/2016/about/tickets.html">Tickets</a></li>#}
 {#            <li><a href="/2016/about/pycontest.html">#PyConTest</a></li>#}
 
-{#            <li class="nav-highlight">#}
-{#              <a href="/2016/about/cfp">Call for Papers</a>#}
-{#            </li>#}
-{#            <li><a href="/2016/sponsors/offer">Sponsorship</a></li>#}
             <li class="nav-highlight">
-              <a href="/2016/about/code">Code of Conduct</a>
+              <a href="{% url "proposal_about" key="talks" %}">Call for Papers</a>
+            </li>
+            <li><a href="{% url "sponsors_offer" %}">Sponsorship</a></li>
+            <li class="nav-highlight">
+              <a href="{% url "about_code" %}">Code of Conduct</a>
             </li>
           </ul>
         </li>
