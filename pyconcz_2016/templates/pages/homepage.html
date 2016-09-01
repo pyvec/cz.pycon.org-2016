@@ -3,6 +3,13 @@
 
 {% block meta_title %}PyCon CZ 2016{% endblock %}
 
+{% block meta_head %}
+  {{ block.super }}
+  <!-- place this in your head tag -->
+  <link rel="stylesheet" type="text/css" href='https://css.tito.io/v1.1' />
+  <script src='https://js.tito.io/v1' async></script>
+{% endblock %}
+
 {% block body %}
 <div class="homepage">
   <div class="container">
@@ -52,6 +59,10 @@
         </p>
       </div>
     </div>
+
+    <!-- Place this where you want the widget to appear -->
+    <tito-widget event="pyvec/pycon-cz-2016"></tito-widget>
+
 
     <div class="homepage-social">
       <div class="teaser-video">
