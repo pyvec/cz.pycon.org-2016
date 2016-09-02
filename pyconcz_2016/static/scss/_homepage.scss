@@ -131,7 +131,6 @@
   }
 }
 
-
 .teaser-video {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 */
@@ -150,4 +149,73 @@
 
 .tweets {
   @include clearfix;
+}
+
+.keynoters {
+  vertical-align: top;
+  display: block;
+
+  .keynoter {
+    display: inline-block;
+    max-width: 33%;
+    text-align: justify;
+    vertical-align: top;
+    padding: 0 15px;
+    text-align: center;
+
+    @media (max-width: $container-lg) {
+      max-width: 100%;
+      text-align: left;
+      margin: 20px auto;
+    }
+    @media (max-width: $container-sm) {
+      text-align: center;
+    }
+
+    img {
+      height: 300px;
+      width: 300px;
+      border-radius: 50%;
+      filter: gray; /* IE6-9 */
+      filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+      -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+
+      @media (max-width: $container-lg) {
+        float: left;
+        display: inline-block;
+        margin-right: 20px;
+      }
+      @media (max-width: $container-sm) {
+        float: none;
+        margin: 0;
+      }
+    }
+
+    .bio {
+      text-align: justify;
+
+      &:nth-child(3n + 1) {
+        margin-top: 48px;
+      }
+      &:nth-child(3n + 3) {
+        margin-top: 96px;
+      }
+
+      @media (max-width: $container-lg) {
+        display: inline;
+      }
+      @media (max-width: $container-sm) {
+        &.p {
+          display: block;
+          margin-top: auto;
+        }
+      }
+    }
+  }
+
+  h4 {
+    @media (max-width: $container-sm) {
+      margin-top: 15px;
+    }
+  }
 }

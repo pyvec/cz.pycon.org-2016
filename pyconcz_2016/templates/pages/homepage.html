@@ -3,6 +3,13 @@
 
 {% block meta_title %}PyCon CZ 2016{% endblock %}
 
+{% block meta_head %}
+  {{ block.super }}
+  <!-- place this in your head tag -->
+  <link rel="stylesheet" type="text/css" href='https://css.tito.io/v1.1' />
+  <script src='https://js.tito.io/v1' async></script>
+{% endblock %}
+
 {% block body %}
 <div class="homepage">
   <div class="container">
@@ -21,8 +28,81 @@
       </nav>
     </div>
 
-    <div class="teaser-video">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/venjk_cL-Gk?rel=0" frameborder="0" allowfullscreen></iframe>
+    <div class="homepage-claim">
+        <strong>PyCon CZ</strong> aims to be the largest annual gathering for the <strong>Python community</strong>
+        in the <strong>Czech Republic</strong>.<br>
+        It's focused on honoring and supporting <strong>awesome people</strong>
+        teaching, learning and innovating with Python in Czech Republic
+        and <strong>surrounding EU</strong>.
+    </div>
+
+    <div class="homepage-basic">
+      <div class="homepage-column">
+        <h3>
+          <i class="fa fa-3x fa-commenting-o" aria-hidden="true"></i>
+          Talks <small>28-29 October</small>
+        </h3>
+        <p class="homepage-day-venue">
+          <strong>Two days</strong>, <strong>three</strong> parallel tracks,
+          <strong>four</strong> keynotes and <strong>30+</strong> awesome talks.
+        </p>
+      </div>
+
+      <div class="homepage-column">
+        <h3>
+          <i class="fa fa-3x fa-cogs" aria-hidden="true"></i>
+          Sprints &amp; workshops <small>30 October</small>
+        </h3>
+        <p class="homepage-day-venue">
+          <strong>Six</strong> workshops in two blocks and sprinting <strong>all day
+          long</strong>. Hack on open-source projects together with other Python
+          community members.
+        </p>
+      </div>
+    </div>
+
+    <div class="keynoters">
+      <h1 class="text-center">Keynote speakers</h1>
+      <div class="keynoter">
+        <img src="/2016/static/img/keynoter01.jpg" alt="Benny Daon" />
+        <h4>Benny Daon</h4>
+        <a href="http://twitter.com/daonb">@daonb</a>
+        <p class="bio">Benny Daon has been coding for 33 years now, starting at his Bar-Mitzvah with an 8-bit Atari. After a successful gig as co-founder and CEO of Shunra Software (here's the 1998 web page of our first product <a href="http://tuzig.com/shunra1/cloud%20intro.htm">The Cloud</a>), he’s spent most of the last 8 years coding for sites using Python, Django and Flask. and weaving a network of developers. He’s one of the founders of <a href="https://groups.google.com/forum/#!forum/pyweb-il">PyWeb-IL</a> from which the <a href="https://github.com/hasadna/Open-Knesset">Open Knesset</a> project grew, later giving birth to its mother org - <a href="http://hasadna.org.il/en">The Public Knowledge Workshop</a>. In the last year Benny has been freelancing for the Museum of the Jewish People in Tel Aviv, bringing their datasets to the web i.e. here's what they have on <a href="http://dbs.bh.org.il/search?q=brno">Brno</a>.</p>
+      </div>
+      <div class="keynoter">
+        <img src="/2016/static/img/keynoter02.jpg" alt="Ana Balica" />
+        <h4>Ana Balica</h4>
+        <a href="http://twitter.com/anabalica">@anabalica</a>
+        <div><strong>“Python developer just like you”</strong></div>
+        <p class="bio">Software developer, working at <a href="https://p.ota.to">Potato</a>, Ana spends most of her days writing Django powered web apps at Potato London. She really enjoys poking into legacy code and perpetually strives for clean code designs. She’s learned many valuable things both as a mentee and a mentor in programs like Google Summer of Code, Learn IT Girl!, Django Girls, Rails Girls. And she likes Python, books and cats and is known to occasionally give talks.</p>
+      </div>
+      <div class="keynoter">
+        <img src="/2016/static/img/keynoter03.jpg" alt="Lea Polachek" />
+        <h4>Lea Polachek</h4>
+        <p class="bio">Lea Polachek is the CTO of <a href="http://www.she-codes.org/">she-codes.org</a> organization, she has ten years of experience in Image Processing and algorithm development and a Masters Degree in Physics from Weizmann Institute of Science. She codes is an organization in Israel aimed at promoting women in technology, the organization grew in three years to have over 10,000 members in 25 locations all around Israel including universities and hi-tech companies.</p>
+      </div>
+    </div>
+
+    <!-- Place this where you want the widget to appear -->
+    <h1 class="text-center">Tickets available!</h1>
+    <tito-widget event="pyvec/pycon-cz-2016"></tito-widget>
+
+
+    <div class="homepage-social">
+      <div class="teaser-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/venjk_cL-Gk?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <h2 class="text-center">What attendees said about PyCon CZ 2015?</h2>
+
+      <div class="tweets">
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thanks <a href="https://twitter.com/pyconcz">@pyconcz</a> for the amazing conference. I&#39;m really glad to be part of this! <a href="https://twitter.com/hashtag/pyconcz?src=hash">#pyconcz</a></p>&mdash; Elyézer Rezende (@elyezer) <a href="https://twitter.com/elyezer/status/665589724841648131">November 14, 2015</a></blockquote>
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">The first ever Czech pycon has ended and it was awesome! I will definitely come next year, too! 😻<br><br>Goodbye <a href="https://twitter.com/pyconcz">@pyconcz</a>, bye Brno! <a href="https://twitter.com/hashtag/pyconcz?src=hash">#pyconcz</a></p>&mdash; Zabriskie Point (@mishunika) <a href="https://twitter.com/mishunika/status/665948638963724288">November 15, 2015</a></blockquote>
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Many thanks again to the <a href="https://twitter.com/pyconcz">@pyconcz</a> team, volunteers and attendees for a wonderful weekend. Such a great community 💖</p>&mdash; Jessica Rose (@jesslynnrose) <a href="https://twitter.com/jesslynnrose/status/666210393195454464">November 16, 2015</a></blockquote>
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Hey <a href="https://twitter.com/pyconcz">@pyconcz</a> the very first <a href="https://twitter.com/hashtag/PyConCZ?src=hash">#PyConCZ</a> was AWESOME! 👏 I had a wonderful time! Looking forward to <a href="https://twitter.com/hashtag/PyConCZ2016?src=hash">#PyConCZ2016</a> 🐍</p>&mdash; Jarka Schovancova (@jschovan) <a href="https://twitter.com/jschovan/status/665892968151257088">November 15, 2015</a></blockquote>
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Yes, <a href="https://twitter.com/pyconcz">@pyconcz</a> was very nice event. Nice people, nice community - very same as my origin <a href="https://twitter.com/hashtag/opensource?src=hash">#opensource</a> <a href="https://twitter.com/hashtag/gis?src=hash">#gis</a>. Looking forward to next time.</p>&mdash; Jachym Cepicky (@jachymc) <a href="https://twitter.com/jachymc/status/665670997517946880">November 14, 2015</a></blockquote>
+        <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Great atmosphere, awesome speakers = can&#39;t wait for Sunday workshops! Thank you, <a href="https://twitter.com/pyconcz">@pyconcz</a> guys.</p>&mdash; JsemDroidik (@JsemDroidik) <a href="https://twitter.com/JsemDroidik/status/665587734996762624">November 14, 2015</a></blockquote>
+      </div>
     </div>
   </div>
 </div>
