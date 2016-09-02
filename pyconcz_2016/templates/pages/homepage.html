@@ -14,15 +14,16 @@
 <div class="homepage">
   <div class="container">
     <div class="main-column-1">
-      <a href="{% url 'homepage' %}"><div class="logo-lg"></div></a>
+      <a href="https://cz.pycon.org/2016/"><div class="logo-lg"></div></a>
     </div>
     <div class="main-column-2">
       <h1 class="header-title">PyCon CZ 2016 Brno<br>28-30 October</h1>
       <nav class="nav-main">
         <ul>
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'proposal_about' key='talks' %}">Call for Papers</a></li>
-          <li><a href="{% url 'about_code' %}">Code of Conduct</a></li>
+          <li><a href="/2016/proposals/talks">Call for Papers</a></li>
+          <li><a href="/2016/about">About</a></li>
+          <li><a href="/2016/about/team">Team</a></li>
+          <li><a href="/2016/about/code">Code of Conduct</a></li>
         </ul>
       </nav>
     </div>
@@ -105,8 +106,4 @@
     </div>
   </div>
 </div>
-{% endblock %}
-
-{% block js_extra %}
-  <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 {% endblock %}
