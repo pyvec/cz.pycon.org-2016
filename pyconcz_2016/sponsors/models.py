@@ -17,6 +17,8 @@ class Sponsor(models.Model):
     description = models.TextField()
     link_url = models.URLField()
 
+    published = models.BooleanField(default=False)
+
     class Meta:
         ordering = ["level", "name"]
 
