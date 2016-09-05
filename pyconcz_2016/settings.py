@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'pyconcz_2016.conferences',
     'pyconcz_2016.team',
     'pyconcz_2016.proposals',
+    'pyconcz_2016.sponsors',
 ]
 
 MIDDLEWARE_CLASSES = [
