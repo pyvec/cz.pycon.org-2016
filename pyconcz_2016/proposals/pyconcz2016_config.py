@@ -14,7 +14,7 @@ class TalksConfig:
     cfp_title = 'Submit your talk'
     template_about = 'proposals/talks_about.html'
     date_start = datetime(year=2016, month=8, day=1, hour=12, minute=0, tzinfo=tz)
-    date_end = datetime(year=2016, month=9, day=7, hour=12, minute=0, tzinfo=tz)
+    date_end = datetime(year=2016, month=9, day=12, hour=12, minute=0, tzinfo=tz)
 
 
 class WorkshopsConfig:
