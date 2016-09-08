@@ -7,6 +7,8 @@ class Sponsor(models.Model):
         ('gold', 'Gold'),
         ('silver', 'Silver'),
         ('bronze', 'Bronze'),
+        ('diversity', 'Diversity'),
+        ('media', 'Media'),
     )
 
     level = models.CharField(max_length=20, choices=LEVEL, default='bronze')
