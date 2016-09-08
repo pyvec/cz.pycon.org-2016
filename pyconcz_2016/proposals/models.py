@@ -166,3 +166,35 @@ class Workshop(EntryBase):
 
     def __str__(self):
         return '{s.full_name} - {s.type}/{s.title}'.format(s=self)
+
+
+class FinancialAid(EntryBase):
+    # Public speaker info
+    full_name = models.CharField(
+        max_length=200, verbose_name="Your name",
+    )
+    email = models.EmailField(
+        help_text="We'll keep it secret, for internal use only."
+    )
+    bio = models.TextField(
+        help_text="Tell us a bit about yourself! Who you are, where are you"
+                  " from, what are your experiences with Python. Also include"
+                  " how are you involved in Python community and how do you"
+                  " contribute or do you plan to contribute to community."
+    )
+    amount = models.CharField(
+        max_length=255,
+        help_text="How much money would you like to get"
+                  " (please specify currency)."
+    )
+
+    purpose = models.TextField(
+        help_text="How would you like to use granted money?"
+    )
+
+    def __str__(self):
+        return self.full_name
+
+    # required for generic admin
+    def title(self):
+        return self.full_name
