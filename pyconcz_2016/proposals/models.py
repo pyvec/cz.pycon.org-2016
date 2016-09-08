@@ -177,10 +177,10 @@ class FinancialAid(EntryBase):
         help_text="We'll keep it secret, for internal use only."
     )
     bio = models.TextField(
-        help_text="Tell us a bit about yourself! Who you are, where are you"
-                  " from, what are your experiences with Python. Also include"
-                  " how are you involved in Python community and how do you"
-                  " contribute or do you plan to contribute to community."
+        help_text="Tell us a bit about yourself! Who you are, where you are"
+                  " from, and what your experiences with Python are. Also"
+                  " include how you are involved in Python community and how"
+                  " you contribute or plan to contribute to the community."
     )
     amount = models.CharField(
         max_length=255,
