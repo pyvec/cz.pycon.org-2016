@@ -25,9 +25,11 @@
       <h1 class="header-title">PyCon CZ 2016 Brno<br>28-30 October</h1>
       <nav class="nav-header">
         <ul>
-          <li><a href="{% url "proposal_about" key="talks" %}">Call for Papers</a></li>
           <li><a href="{% url "about" %}">About</a></li>
           <li><a href="{% url "team_list" %}">Team</a></li>
+          <li><a href="{% url "proposal_about" key="talks" %}">Call for Papers</a></li>
+          <li><a href="{% url "proposal_about" key="financial-aid" %}">Financial Aid</a></li>
+          <li><a href="{% url "sponsors_offer" %}">Sponsorship</a></li>
           <li><a href="{% url "about_code" %}">Code of Conduct</a></li>
         </ul>
       </nav>
@@ -56,6 +58,9 @@
 
             <li class="nav-highlight">
               <a href="{% url "proposal_about" key="talks" %}">Call for Papers</a>
+            </li>
+            <li class="nav-highlight">
+              <a href="{% url "proposal_about" key="financial-aid" %}">Financial Aid</a>
             </li>
             <li><a href="{% url "sponsors_offer" %}">Sponsorship</a></li>
             <li class="nav-highlight">
