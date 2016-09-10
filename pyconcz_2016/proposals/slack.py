@@ -37,9 +37,8 @@ def notify_slack(sender, instance, created, *args, **kwargs):
         ]
     }
 
-    details = json.dumps(payload).encode('UTF-8')
-
     try:
+        details = json.dumps(payload).encode('UTF-8')
         url = urllib.request.Request(
             settings.SLACK_WEBHOOK, details,
             headers={'content-type': 'application/json'})
