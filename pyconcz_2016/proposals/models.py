@@ -196,5 +196,6 @@ class FinancialAid(EntryBase):
         return self.full_name
 
     # required for generic admin
+    @property
     def title(self):
         return self.full_name
