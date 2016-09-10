@@ -18,12 +18,15 @@ TMP_DIR = os.path.join(BASE_DIR, '..', 'tmp')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
+ADMINS = [
+    ('Tomáš Ehrlich', 'tomas.ehrlich@gmail.com')
+]
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 SITE_ID = 1
 ALLOWED_HOSTS = [
-    'dev.pycon.cz',  # test new deployment
     'cz.pycon.org'
 ]
 CSRF_COOKIE_SECURE = True
