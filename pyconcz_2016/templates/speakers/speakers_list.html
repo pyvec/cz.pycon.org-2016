@@ -1,0 +1,40 @@
+{% extends "_base.html" %}
+
+{% block meta_title %}PyCon CZ Speakers{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <h1>Speakers</h1>
+    {% for speaker in speakers %}
+      <section class="speaker">
+        <section class="sidebox">
+          <img class="portrait" src="{{ speaker.photo.url }}" alt="{{ speaker.full_name }}" />
+          <section class="icons">
+          {% if speaker.github %}
+            <a href="https://github.com/{{ speaker.github }}"><i class="fa fa-fw fa-github-alt" aria-hidden="true"></i></a>
+          {% endif %}
+          {% if speaker.twitter %}
+            <a href="https://twitter.com/{{ speaker.twitter }}"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
+          {% endif %}
+          </section>
+        </section>
+
+        <section class="details">
+          <h2>
+            <span class="name">{{ speaker.full_name }}</span><br>
+            <span class="talk-title">
+              {{ speaker.talk.title }}
+              {% if speaker.copresenters %}
+                (with {% for copresenter in speaker.copresenters %}{% if forloop.first %}{% else %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}{{ copresenter }}{% endfor %})
+              {% endif %}
+            </span>
+          </h2>
+          <p class="talk-description">{{ speaker.talk.description }}</p>
+          <p class="bio">{{ speaker.biography }}</p>
+        </section>
+      </section>
+    {% empty %}
+      <p>Oh no, we forgot to invite speakers!</p>
+    {% endfor %}
+  </div>
+{% endblock %}

@@ -164,6 +164,62 @@ blockquote {
 }
 // End Team page
 
+// Speakers page
+.speaker {
+  max-width: 720px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  margin: 1em auto;
+  border-bottom: 1px solid $main-color;
+
+  &:nth-child(odd) {
+    flex-direction: row;
+    .sidebox {
+      margin-right: 1em;
+    }
+  }
+
+  &:nth-child(even) {
+    flex-direction: row-reverse;
+    .sidebox {
+      margin-left: 1em;
+    }
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.speaker .sidebox {
+  flex-basis: fit-content;
+  .portrait {
+    height: 120px;
+    border-radius: 50%;
+  }
+  .icons {
+    text-align: center;
+  }
+}
+
+.speaker .details {
+  h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .talk-title {
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+
+  .bio {
+    font-style: italic;
+  }
+}
+// End speakers page
+
 .text-center {
   text-align: center;
 }
