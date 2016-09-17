@@ -47,6 +47,7 @@ h1 {
     margin-top: 1.26316em;
     margin-bottom: 0.5em;
   }
+  text-align: center;
 }
 
 h2 {
@@ -54,22 +55,27 @@ h2 {
   @media (max-width: 768px) {
     @include heading(22px);
   }
+  text-align: center;
 }
 
 h3 {
   @include heading(24px);
+  text-align: center;
 }
 
 h4 {
   @include heading(21px);
+  text-align: center;
 }
 
 h5 {
   @include heading(18px);
+  text-align: center;
 }
 
 h6 {
   @include heading(16px);
+  text-align: center;
 }
 
 .fa-fw {
@@ -94,18 +100,19 @@ a {
 }
 
 p {
-  margin: vr(1) 0;
+  margin: vr(1) auto;
   max-width: 40em;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
 }
 
 // hanging bullets
 li li {
   margin-right: 1em;
+}
+
+p ~ ul {
+  margin: 0 auto;
+  padding: 0;
+  max-width: 40em;
 }
 
 .lead {
