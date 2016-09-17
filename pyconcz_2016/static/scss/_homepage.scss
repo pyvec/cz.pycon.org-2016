@@ -1,12 +1,4 @@
 .homepage {
-  .header-title {
-    margin: 20px 0 40px 100px;
-
-    @media (max-width: 992px) {
-      margin: 20px auto 40px auto;
-    }
-  }
-
   .logo-lg {
     display: block;
     width: 590px;
@@ -21,12 +13,12 @@
     }
 
     @media (max-width: 1200px) {
-      width: 550px;
-      margin-left: 40px;
+      width: 400px;
+      height: 200px;
+      margin: 15px auto;
     }
     @media (max-width: 768px) {
       width: 100%;
-      margin: 0;
     }
   }
 
@@ -128,6 +120,12 @@
   @media (max-width: 1200px) {
     width: 100%;
     text-align: center;
+  }
+
+  br {
+    @media (max-width: 1200px) {
+      display: none;
+    }
   }
 }
 

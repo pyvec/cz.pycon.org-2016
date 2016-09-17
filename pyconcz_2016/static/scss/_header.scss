@@ -1,9 +1,9 @@
 .pyconlogo {
   img {
     max-width: 280px;
-    margin: 40px 0;
+    margin: 30px;
     display: inline-block;
-    float: left;
+    vertical-align: middle;
 
     @media (max-width: 992px) {
       margin-left: 0;
@@ -11,70 +11,43 @@
 
     @media (max-width: 768px) {
       display: block;
-      float: none;
-      margin: 40px auto 0 auto;
+      margin: 30px auto;
     }
   }
 }
 
 .header-title {
-  $size: 38px;
+  $size: 29px;
   $heading-baseline: vr-scale($size);
-
-  display: inline-block;
-  vertical-align: top;
-
-  font-size: $size;
-  font-family: $secondary-font;
   line-height: $heading-baseline;
-  margin-top: vr(.9, $heading-baseline);
-  margin-bottom: vr(.1, $heading-baseline);
-  margin-left: 70px;
+  vertical-align: middle;
+  display: inline-block;
+  font-family: $secondary-font;
+  margin: 15px 30px;
+  text-align: left;
 
-  @media (max-width: 992px) {
-    margin-left: 50px;
-  }
   @media (max-width: 768px) {
     display: block;
-    //margin: 40px 0 30px 0;
     text-align: center;
-  }
-  @media (max-width: 480px) {
-    //font-size: 24px;
-    //margin-bottom: 10px;
   }
 }
 
 header {
   .container {
     border-bottom: solid 1px $light-color;
-    padding-bottom: calc(#{$vr-baseline} - 1px);
   }
 }
 
 .nav-header {
   display: block;
-  padding-left: 55px;
-
-  @media (max-width: 992px) {
-    width: 100%;
-    padding-left: 0;
-  }
+  text-align: center;
 
   ul {
-    display: inline-block;
-    padding: 0;
-
-    @media (max-width: 992px) {
-      width: 100%;
-      margin-left: 0;
-      text-align: center;
-    }
-
     li {
       list-style: none;
       display: inline-block;
       text-align: center;
+      margin-right: 10px;
 
       @media (max-width: 768px) {
         width: 215px;
@@ -82,17 +55,10 @@ header {
         margin: auto;
       }
 
-      & + li {
-        margin-left: 30px;
-        @media (max-width: 768px) {
-          margin-left: auto;
-        }
-      }
-
       a {
         display: block;
-        padding: calc(0.5em - 1px) 2em;
-        margin: 1em 0;
+        padding: calc(0.3em - 1px) 1em;
+        margin: 0.5em 0;
         border: solid 1px $light-color;
         transition: border 0.3s, color 0.3s;
 
@@ -110,6 +76,15 @@ header {
             text-decoration: underline;
             border: none;
           }
+        }
+      }
+      .tickets {
+        color: white;
+        background-color: $main-color;
+
+        &:hover {
+          color: white;
+          background-color: darken($main-color, 10%);
         }
       }
     }
