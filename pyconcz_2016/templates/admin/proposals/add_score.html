@@ -17,7 +17,7 @@
     {% for field in form %}
       <dl>
         <dt>{{ field.label|capfirst }}</dt>
-        <dd>{{ field.value|default:"--" }}</dd>
+        <dd>{{ field.value|linebreaksbr|default:"--" }}</dd>
       </dl>
     {% endfor %}
 
