@@ -1,22 +1,54 @@
-from django.contrib.contenttypes.fields import GenericForeignKey
+from django.conf import settings
+from django.contrib.contenttypes.fields import (
+    GenericForeignKey, GenericRelation)
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.timezone import now
 
 
-class Proposal(models.Model):
+class Ranking(models.Model):
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        unique_together = ('content_type', 'object_id')
+
+    def get_user_score(self, user):
+        return self.scores.all().filter(user=user).first()
+
+
+class Score(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
+    ranking = models.ForeignKey(Ranking, related_name='scores')
+
+    value = models.PositiveSmallIntegerField(
+        help_text="1 is the worst, 4 is the best"
+    )
+    note = models.TextField(
+        help_text="Only you can see this"
+    )
+
+    class Meta:
+        permissions = (
+            ("can_add_score", "Can add score"),
+        )
+
+    def __str__(self):
+        return '{value} ({note})'.format(value=self.value, note=self.note)
 
 
 class EntryBase(models.Model):
     # Private notes (for reviewers only)
     note = models.TextField()
     date = models.DateTimeField(default=now)
+    rankings = GenericRelation(Ranking)
 
     class Meta:
         abstract = True
+
+    def get_ranking(self):
+        return self.rankings.all().first()
 
 
 class Talk(EntryBase):
