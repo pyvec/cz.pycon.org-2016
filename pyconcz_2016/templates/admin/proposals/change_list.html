@@ -1,0 +1,15 @@
+{% extends "admin/change_list.html" %}
+
+{% load i18n admin_urls admin_static admin_list %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+  <li>
+    {% url opts|admin_urlname:'generate' as generate_url %}
+    <a href="{% add_preserved_filters generate_url is_popup to_field %}">
+      {% trans "Start scoring" %}
+    </a>
+  </li>
+  {{ opts.app_label }}
+  {{ opts.model_name }}
+{% endblock %}
