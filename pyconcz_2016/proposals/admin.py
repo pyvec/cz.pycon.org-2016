@@ -72,7 +72,7 @@ class EntryAdmin(admin.ModelAdmin):
         existing_ids = (
             Ranking.objects
                 .filter(content_type=ct)
-                .values_list('id', flat=True)
+                .values_list('object_id', flat=True)
         )
 
         proposals = (
