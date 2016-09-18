@@ -1,4 +1,4 @@
-## The following requirements were added by pip freeze:
+-r requirements.txt
 django-webpack-loader==0.3.0
 Django==1.9.3
 html5lib==0.9999999
