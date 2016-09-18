@@ -3,7 +3,6 @@ from .settings import *
 DEBUG = True
 SECRET_KEY = 42
 
-INTERNAL_IPS = ['127.0.0.1']
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 
@@ -14,6 +13,21 @@ DATABASES = {
     }
 }
 
+
+def show_toolbar(request):
+    return not request.is_ajax()
+
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': show_toolbar
+}
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+if 'debug_toolbar' not in INSTALLED_APPS:
+    INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE_CLASSES.insert(
+        0, 'debug_toolbar.middleware.DebugToolbarMiddleware'
+    )
 
 WEBPACK_STATS = os.path.join(BASE_DIR, 'static_build', 'webpack-stats-dev.json')
 if os.path.exists(WEBPACK_STATS):
