@@ -25,7 +25,8 @@ class Score(models.Model):
     value = models.PositiveSmallIntegerField(
         help_text="1 is the worst, 4 is the best"
     )
-    note = models.TextField(
+    note = models.CharField(
+        default='', blank=True, max_length=255,
         help_text="Only you can see this"
     )
 
@@ -35,7 +36,10 @@ class Score(models.Model):
         )
 
     def __str__(self):
-        return '{value} ({note})'.format(value=self.value, note=self.note)
+        return ' '.join([
+            str(self.value),
+            '({})'.format(self.note) if self.note else '']
+        )
 
 
 class EntryBase(models.Model):

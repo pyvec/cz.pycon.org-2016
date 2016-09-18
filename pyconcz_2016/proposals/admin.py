@@ -90,9 +90,10 @@ class EntryAdmin(admin.ModelAdmin):
 
     def add_score(self, request, object_id):
         obj = self.get_queryset(request).get(id=object_id)
+        score_instance = obj.get_ranking().scores.all().first()
 
         if request.method.lower() == 'post':
-            score_form = ScoreForm(request.POST)
+            score_form = ScoreForm(request.POST, instance=score_instance)
             score_form.instance.user = request.user
             score_form.instance.ranking = obj.get_ranking()
 
@@ -101,7 +102,7 @@ class EntryAdmin(admin.ModelAdmin):
                 return self.redirect_to_next_unranked(request)
 
         else:
-            score_form = ScoreForm()
+            score_form = ScoreForm(instance=score_instance)
 
         ctx = dict(
             self.admin_site.each_context(request),
