@@ -52,7 +52,7 @@ class EntryBase(models.Model):
         abstract = True
 
     def get_ranking(self):
-        return self.rankings.all().first()
+        return self.rankings.all()[0]
 
 
 class Talk(EntryBase):

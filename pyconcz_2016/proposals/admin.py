@@ -26,7 +26,10 @@ class EntryAdmin(admin.ModelAdmin):
     change_form_template = 'admin/proposals/change_form.html'
 
     def score(self, obj):
-        return obj.get_ranking().scores.all().first()
+        try:
+            return obj.get_ranking().scores.all()[0]
+        except IndexError:
+            return None
     score.short_description = 'Your score'
 
     def score_link(self, obj):
