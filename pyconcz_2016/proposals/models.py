@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import (
     GenericForeignKey, GenericRelation)
 from django.contrib.contenttypes.models import ContentType
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.utils.timezone import now
 
@@ -23,7 +24,12 @@ class Score(models.Model):
     ranking = models.ForeignKey(Ranking, related_name='scores')
 
     value = models.PositiveSmallIntegerField(
-        help_text="1 is the worst, 4 is the best"
+        help_text="4 = Must have!, 3 = Interesting talk, "
+                  "2 = Meh, 1 = Definitely not!",
+        validators=[
+            MinValueValidator(1),
+            MaxValueValidator(4)
+        ]
     )
     note = models.CharField(
         default='', blank=True, max_length=255,
