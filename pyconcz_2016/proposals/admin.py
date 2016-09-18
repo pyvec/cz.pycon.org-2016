@@ -3,9 +3,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
+from django.core.urlresolvers import reverse
 from django.db.models import Prefetch
 from django.shortcuts import redirect
 from django.template.response import TemplateResponse
+from django.utils.html import format_html
 
 from pyconcz_2016.proposals.models import Ranking, Score
 
@@ -17,7 +19,7 @@ class ScoreForm(forms.ModelForm):
 
 
 class EntryAdmin(admin.ModelAdmin):
-    list_display = ['date', 'full_name', 'title', 'score']
+    list_display = ['date', 'full_name', 'title', 'score', 'score_link']
     list_display_links = ['title']
 
     change_list_template = 'admin/proposals/change_list.html'
@@ -26,6 +28,12 @@ class EntryAdmin(admin.ModelAdmin):
     def score(self, obj):
         return obj.get_ranking().scores.all().first()
     score.short_description = 'Your score'
+
+    def score_link(self, obj):
+        info = self.model._meta.app_label, self.model._meta.model_name
+        url = reverse('admin:%s_%s_add_score' % info, kwargs={'object_id': obj.id})
+        return format_html('<a href="{url}">Edit</a>', url=url)
+    score_link.short_description = ''
 
     def get_queryset(self, request):
         scores = Prefetch(
@@ -77,11 +85,8 @@ class EntryAdmin(admin.ModelAdmin):
         if obj_count:
             msg = "{} new proposals available for scoring"
             messages.success(request, msg.format(obj_count))
-        else:
-            messages.info(request, "No new proposals available for scoring")
 
-        info = self.model._meta.app_label, self.model._meta.model_name
-        return redirect('admin:%s_%s_changelist' % info)
+        return self.redirect_to_next_unranked(request)
 
     def add_score(self, request, object_id):
         obj = self.get_queryset(request).get(id=object_id)
@@ -93,24 +98,7 @@ class EntryAdmin(admin.ModelAdmin):
 
             if score_form.is_valid():
                 score_form.save()
-
-                next_obj = (
-                    # Go to random next unranked item
-                    self.get_queryset(request)
-                        .filter(rankings__scores__value=None)
-                        .order_by('?')
-                        .first()
-                )
-
-                info = self.model._meta.app_label, self.model._meta.model_name
-
-                if next_obj:
-                    return redirect(
-                        'admin:%s_%s_add_score' % info, object_id=next_obj.id
-                    )
-                else:
-                    messages.success(request, 'All your work here is done!')
-                    return redirect('admin:%s_%s_changelist' % info)
+                return self.redirect_to_next_unranked(request)
 
         else:
             score_form = ScoreForm()
@@ -125,3 +113,22 @@ class EntryAdmin(admin.ModelAdmin):
         )
 
         return TemplateResponse(request, 'admin/proposals/add_score.html', ctx)
+
+    def redirect_to_next_unranked(self, request):
+        next_obj = (
+            # Go to random next unranked item
+            self.get_queryset(request)
+                .filter(rankings__scores__value=None)
+                .order_by('?')
+                .first()
+        )
+
+        info = self.model._meta.app_label, self.model._meta.model_name
+
+        if next_obj:
+            return redirect(
+                'admin:%s_%s_add_score' % info, object_id=next_obj.id
+            )
+        else:
+            messages.success(request, 'All your work here is done!')
+            return redirect('admin:%s_%s_changelist' % info)
