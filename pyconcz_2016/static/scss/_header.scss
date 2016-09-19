@@ -12,6 +12,7 @@
     @media (max-width: 768px) {
       display: block;
       margin: 30px auto;
+      width: 100%;
     }
   }
 }
@@ -54,6 +55,9 @@ header {
         display: block;
         margin: auto;
       }
+      @media (max-width: 480px) {
+        width: 100%;
+      }
 
       a {
         display: block;
@@ -67,15 +71,13 @@ header {
           text-decoration: none;
           border: solid 1px $font-color;
         }
+        &:active {
+          background-color: darken($main-color, 10%);
+          color: white;
+        }
 
-        @media (max-width: 480px) {
-          border: none;
-          padding: 0;
-
-          &:hover {
-            text-decoration: underline;
-            border: none;
-          }
+        @media (max-width: 768px) {
+          margin: -1px;
         }
       }
       .tickets {
@@ -86,7 +88,15 @@ header {
           color: white;
           background-color: darken($main-color, 10%);
         }
+        &:active {
+          background-color: white;
+          color: darken($main-color, 10%);
+        }
       }
+    }
+
+    @media (max-width: 480px) {
+      padding: 0;
     }
   }
 }

@@ -1,16 +1,15 @@
 .cta-cfp {
-  $size: 20px;
+  $size: 16px;
   $baseline: vr-scale($size);
   $half-line: vr(.5, $baseline);
 
   display: inline-block;
-  width: 14em;
+  max-width: 14em;
   margin: $half-line 0 calc(#{$half-line} - 2px); // substract border
   padding: $half-line;
 
-  color: black;
-  background: $light-color;
-  border: 1px solid $main-color;
+  color: white;
+  background-color: $main-color;
   border-radius: 2px;
   transition: background-color 0.3s, font-weight 0.3s;
 
@@ -19,8 +18,12 @@
   text-align: center;
 
   &:hover {
-    background-color: $main-color;
-    text-decoration: none;
+    color: white;
+    background-color: darken($main-color, 10%);
+  }
+  &:active {
+    background-color: white;
+    color: darken($main-color, 10%);
   }
 }
 
