@@ -125,7 +125,7 @@ class EntryAdmin(admin.ModelAdmin):
             obj=obj,
             opts=self.model._meta,
             has_change_permission=self.has_change_permission(request, obj),
-            form=self.get_form(request, obj)(instance=obj),
+            form=self.get_form(request, None)(instance=obj),
             score_form=score_form
         )
 
