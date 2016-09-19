@@ -93,7 +93,11 @@ class EntryAdmin(admin.ModelAdmin):
 
     def add_score(self, request, object_id):
         obj = self.get_queryset(request).get(id=object_id)
-        score_instance = obj.get_ranking().scores.all().first()
+        score_instance = (
+            obj.get_ranking().scores
+                .filter(user=request.user)
+                .first()
+        )
 
         if request.method.lower() == 'post':
             score_form = ScoreForm(request.POST, instance=score_instance)
@@ -122,7 +126,10 @@ class EntryAdmin(admin.ModelAdmin):
         next_obj = (
             # Go to random next unranked item
             self.get_queryset(request)
-                .filter(rankings__scores__value=None)
+                .filter(
+                    rankings__scores__value=None,
+                    rankings__scores__user=request.user
+                )
                 .order_by('?')
                 .first()
         )
