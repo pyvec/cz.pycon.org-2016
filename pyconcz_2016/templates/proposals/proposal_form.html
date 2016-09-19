@@ -3,7 +3,7 @@
 {% block meta_title %}Call for Papers{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container text-block">
   <div class="form form--cfp">
     <h1>{{ proposal_config.cfp_title|default:"Call for Papers" }}</h1>
     <form action="" method="post" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>

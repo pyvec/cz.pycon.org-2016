@@ -99,9 +99,9 @@ a {
   }
 }
 
-p {
+.text-block {
   margin: vr(1) auto;
-  max-width: 40em;
+  max-width: 50em;
 }
 
 // hanging bullets
@@ -109,10 +109,9 @@ li li {
   margin-right: 1em;
 }
 
-p ~ ul {
+ul {
   margin: 0 auto;
   padding: 0;
-  max-width: 40em;
 }
 
 .lead {
