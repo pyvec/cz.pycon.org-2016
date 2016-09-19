@@ -123,22 +123,21 @@ class EntryAdmin(admin.ModelAdmin):
         return TemplateResponse(request, 'admin/proposals/add_score.html', ctx)
 
     def redirect_to_next_unranked(self, request):
-        next_obj = (
-            # Go to random next unranked item
-            self.get_queryset(request)
-                .filter(
-                    rankings__scores__value=None,
-                    rankings__scores__user=request.user
-                )
+        ct = ContentType.objects.get_for_model(self.model)
+        next_obj_id = (
+            Ranking.objects
+                .filter(content_type=ct)
+                .exclude(scores__user=request.user)
                 .order_by('?')
+                .values_list('object_id', flat=True)
                 .first()
         )
 
         info = self.model._meta.app_label, self.model._meta.model_name
 
-        if next_obj:
+        if next_obj_id:
             return redirect(
-                'admin:%s_%s_add_score' % info, object_id=next_obj.id
+                'admin:%s_%s_add_score' % info, object_id=next_obj_id
             )
         else:
             messages.success(request, 'All your work here is done!')
