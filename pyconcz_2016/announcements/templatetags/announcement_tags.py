@@ -7,4 +7,9 @@ register = template.Library()
 
 @register.inclusion_tag('announcements/latest.html')
 def latest_announcement():
-    return {'item': Announcement.objects.all().latest()}
+    try:
+        item = Announcement.objects.all().latest()
+    except Announcement.DoesNotExist:
+        item = None
+
+    return {'item': item}
