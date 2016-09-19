@@ -45,6 +45,15 @@ class EntryAdmin(admin.ModelAdmin):
         )
         return super().get_queryset(request).prefetch_related(scores)
 
+    def get_readonly_fields(self, request, obj=None):
+        if obj is not None or not request.user.is_superuser:
+            return [
+                field.name for field in self.model._meta.get_fields()
+                if field.name not in ['id', 'rankings']
+            ]
+
+        return []
+
     def get_urls(self):
         info = self.model._meta.app_label, self.model._meta.model_name
 
