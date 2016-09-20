@@ -54,7 +54,6 @@ class EntryAdmin(admin.ModelAdmin):
             if field.name not in ['id', 'rankings']
         ]
 
-
     def get_urls(self):
         info = self.model._meta.app_label, self.model._meta.model_name
 
