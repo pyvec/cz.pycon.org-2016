@@ -4,6 +4,7 @@ from django.contrib.contenttypes.fields import (
 from django.contrib.contenttypes.models import ContentType
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
+from django.db.models import Aggregate
 from django.utils.timezone import now
 
 
@@ -241,3 +242,14 @@ class FinancialAid(EntryBase):
     @property
     def title(self):
         return self.full_name
+
+
+class StdDev(Aggregate):
+    function = 'stddev_samp'
+
+    def __init__(self, expression, **extra):
+        super().__init__(
+            expression,
+            output_field=models.FloatField(),
+            **extra
+        )

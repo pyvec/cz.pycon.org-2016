@@ -4,12 +4,12 @@ from django.contrib import admin
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
-from django.db.models import Prefetch
+from django.db.models import Prefetch, Avg
 from django.shortcuts import redirect
 from django.template.response import TemplateResponse
 from django.utils.html import format_html
 
-from pyconcz_2016.proposals.models import Ranking, Score
+from pyconcz_2016.proposals.models import Ranking, Score, StdDev
 
 
 class ScoreForm(forms.ModelForm):
@@ -19,7 +19,11 @@ class ScoreForm(forms.ModelForm):
 
 
 class EntryAdmin(admin.ModelAdmin):
-    list_display = ['date', 'full_name', 'title', 'score', 'score_link']
+    list_display = [
+        'date', 'full_name', 'title',
+        'average', 'stddev',
+        'score', 'score_link'
+    ]
     list_display_links = ['title']
 
     change_list_template = 'admin/proposals/change_list.html'
@@ -38,12 +42,27 @@ class EntryAdmin(admin.ModelAdmin):
         return format_html('<a href="{url}">Edit</a>', url=url)
     score_link.short_description = ''
 
+    def average(self, obj):
+        return obj.average or None
+    average.admin_order_field = 'average'
+
+    def stddev(self, obj):
+        return obj.stddev or None
+    stddev.admin_order_field = 'stddev'
+
     def get_queryset(self, request):
         scores = Prefetch(
             'rankings__scores',
             queryset=Score.objects.filter(user=request.user)
         )
-        return super().get_queryset(request).prefetch_related(scores)
+        return (
+            super().get_queryset(request)
+                .prefetch_related(scores)
+                .annotate(
+                    average=Avg('rankings__scores__value'),
+                    stddev=StdDev('rankings__scores__value')
+            )
+        )
 
     def get_readonly_fields(self, request, obj=None):
         if obj is None or request.user.is_superuser:
@@ -101,7 +120,7 @@ class EntryAdmin(admin.ModelAdmin):
         return self.redirect_to_next_unranked(request)
 
     def add_score(self, request, object_id):
-        obj = self.get_queryset(request).get(id=object_id)
+        obj = self.model.objects.get(id=object_id)
         score_instance = (
             obj.get_ranking().scores
                 .filter(user=request.user)
