@@ -43,11 +43,11 @@ class EntryAdmin(admin.ModelAdmin):
     score_link.short_description = ''
 
     def average(self, obj):
-        return obj.average or None
+        return "{:.2f}".format(obj.average) or None
     average.admin_order_field = 'average'
 
     def stddev(self, obj):
-        return obj.stddev or None
+        return "{:.2f}".format(obj.stddev) or None
     stddev.admin_order_field = 'stddev'
 
     def get_queryset(self, request):
