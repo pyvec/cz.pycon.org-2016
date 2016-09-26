@@ -22,9 +22,11 @@ class EntryAdmin(admin.ModelAdmin):
     list_display = [
         'date', 'full_name', 'title',
         'average', 'stddev',
-        'score', 'score_link'
+        'accepted', 'score', 'score_link'
     ]
     list_display_links = ['title']
+    list_editable = ['accepted']
+    list_filter = ['accepted']
 
     change_list_template = 'admin/proposals/change_list.html'
     change_form_template = 'admin/proposals/change_form.html'

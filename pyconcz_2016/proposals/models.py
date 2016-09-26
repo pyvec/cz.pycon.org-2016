@@ -54,6 +54,7 @@ class EntryBase(models.Model):
     note = models.TextField()
     date = models.DateTimeField(default=now)
     rankings = GenericRelation(Ranking)
+    accepted = models.BooleanField(default=False, blank=True)
 
     class Meta:
         abstract = True
