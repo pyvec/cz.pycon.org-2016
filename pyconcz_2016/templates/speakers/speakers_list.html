@@ -24,13 +24,13 @@
             <span class="name">{{ speaker.full_name }}</span><br>
           </h2>
 
-          <p class="bio">{{ speaker.bio }}</p>
+          <p class="bio">{{ speaker.bio|linebreaksbr }}</p>
 
           {% for talk in speaker.talks.all %}
             <span class="talk-title">
               {{ talk.title }}
             </span>
-            <p class="talk-description">{{ talk.abstract }}</p>
+            <p class="talk-description">{{ talk.abstract|linebreaksbr }}</p>
           {% endfor %}
         </section>
       </section>
