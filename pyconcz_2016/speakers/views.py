@@ -5,7 +5,9 @@ from pyconcz_2016.speakers.models import Speaker
 
 
 def speakers_list(request):
-    speakers = Speaker.objects.all().filter(published=True).select_related('talk').order_by('?')
+    speakers = (Speaker.objects.all()
+                .select_related('talk')
+                .order_by('full_name'))
 
     return TemplateResponse(
         request,

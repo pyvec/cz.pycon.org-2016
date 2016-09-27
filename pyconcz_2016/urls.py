@@ -11,7 +11,7 @@ prefixed_urlpatterns = [
     url(r'^proposals/', include('pyconcz_2016.proposals.urls')),
 
     url(r'^about/team', include('pyconcz_2016.team.urls')),
-    url(r'^speakers', include('pyconcz_2016.speakers.urls')),
+    url(r'^speakers/', include('pyconcz_2016.speakers.urls')),
 
     # static pages
     url(r'^$',
