@@ -209,7 +209,7 @@ class Workshop(EntryBase):
     )
 
     def __str__(self):
-        return '{s.full_name} - {s.type}/{s.title}'.format(s=self)
+        return '[{s.type}] {s.title}'.format(s=self)
 
 
 class FinancialAid(EntryBase):

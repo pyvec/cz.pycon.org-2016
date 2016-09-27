@@ -20,11 +20,11 @@ class ScoreForm(forms.ModelForm):
 
 class EntryAdmin(admin.ModelAdmin):
     list_display = [
-        'date', 'full_name', 'title',
+        'date', 'full_name', '__str__',
         'average', 'stddev',
         'accepted', 'score', 'score_link'
     ]
-    list_display_links = ['title']
+    list_display_links = ['full_name']
     list_editable = ['accepted']
     list_filter = ['accepted']
 
