@@ -18,7 +18,7 @@ class Speaker(models.Model):
 
     photo = models.ImageField(upload_to='speakers/pyconcz2016/')
 
-    talk = models.ForeignKey('Talk')
+    talks = models.ManyToManyField('Talk')
 
     def __str__(self):
         return self.full_name

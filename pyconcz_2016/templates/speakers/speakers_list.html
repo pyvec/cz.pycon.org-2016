@@ -22,15 +22,16 @@
         <section class="details">
           <h2>
             <span class="name">{{ speaker.full_name }}</span><br>
-            <span class="talk-title">
-              {{ speaker.talk.title }}
-              {% if speaker.copresenters %}
-                (with {% for copresenter in speaker.copresenters %}{% if forloop.first %}{% else %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}{{ copresenter }}{% endfor %})
-              {% endif %}
-            </span>
           </h2>
-          <p class="talk-description">{{ speaker.talk.abstract }}</p>
+
           <p class="bio">{{ speaker.bio }}</p>
+
+          {% for talk in speaker.talks.all %}
+            <span class="talk-title">
+              {{ talk.title }}
+            </span>
+            <p class="talk-description">{{ talk.abstract }}</p>
+          {% endfor %}
         </section>
       </section>
     {% empty %}

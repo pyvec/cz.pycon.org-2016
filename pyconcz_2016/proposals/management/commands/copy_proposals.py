@@ -23,7 +23,8 @@ class Command(BaseCommand):
                     bio=proposal.bio,
                     twitter=proposal.twitter,
                     github=proposal.github,
-                    photo=proposal.photo,
-                    talk=talk
+                    photo=proposal.photo
                 )
             )
+
+            speaker.talks.add(talk)

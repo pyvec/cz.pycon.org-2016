@@ -6,7 +6,7 @@ from pyconcz_2016.speakers.models import Speaker
 
 def speakers_list(request):
     speakers = (Speaker.objects.all()
-                .select_related('talk')
+                .prefetch_related('talks')
                 .order_by('full_name'))
 
     return TemplateResponse(
