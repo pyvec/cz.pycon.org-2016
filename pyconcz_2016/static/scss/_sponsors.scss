@@ -1,0 +1,43 @@
+.sponsors,
+.sponsors__item {
+  list-style: none;
+}
+
+.sponsors__level {
+  display: block;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sponsors__level-group {
+  text-align: center;
+  margin-bottom: vr(2);
+}
+
+.sponsors__item {
+  display: inline-block;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .sponsors--platinum & {
+    width: 60%;
+  }
+
+  .sponsors--gold & {
+    width: 40%;
+  }
+
+  .sponsors--silver & {
+    width: 30%;
+  }
+
+  .sponsors--bronze &,
+  .sponsors--media &,
+  .sponsors--diversity & {
+    width: 25%;
+  }
+}
+

@@ -1,5 +1,5 @@
 {% extends "_base.html" %}
-{% load static announcement_tags %}
+{% load static announcement_tags sponsors_tags %}
 
 {% block meta_title %}PyCon CZ 2016{% endblock %}
 
@@ -110,6 +110,10 @@
       <div class="teaser-video">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/venjk_cL-Gk?rel=0" frameborder="0" allowfullscreen></iframe>
       </div>
+
+      <h2 class="text-center">Our partners</h2>
+
+      {% sponsors %}
 
       <h2 class="text-center">What attendees said about PyCon CZ 2015?</h2>
 
