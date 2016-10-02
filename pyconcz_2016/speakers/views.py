@@ -1,7 +1,7 @@
 from django.template import RequestContext
 from django.template.response import TemplateResponse
 
-from pyconcz_2016.speakers.models import Speaker
+from pyconcz_2016.speakers.models import Speaker, Slot
 
 
 def speakers_list(request, type):
@@ -14,4 +14,18 @@ def speakers_list(request, type):
         request,
         template='speakers/speakers_list_{}.html'.format(type),
         context={'speakers': speakers}
+    )
+
+
+def talks_timeline(request):
+    talks = (Slot.objects.all()
+                .select_related('talk')
+                .order_by('date'))
+
+    return TemplateResponse(
+        request,
+        template='speakers/talks_timeline.html',
+        context={
+            'talks': talks
+        }
     )

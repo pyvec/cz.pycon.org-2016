@@ -1,0 +1,30 @@
+{% regroup talks by date as talks_list %}
+
+{% for slot in talks_list %}
+  {% ifchanged slot.grouper|date%}
+    {% if not forloop.first %}</ul>{% endif %}
+
+    <h2>{{ slot.grouper|date }}</h2>
+    <ul class="timeline">
+  {% endifchanged %}
+  {% if slot.list|length == 1 %}
+    <li class="timeline__shared">
+      <span class="timeline__time">
+        {{ slot.grouper|time }}
+      </span>
+      {{ slot.list.0.description }}
+    </li>
+  {% else %}
+    <li>
+      <span class="timeline__time">
+        {{ slot.grouper|time }}
+      </span>
+      <ul class="timeline__tracks">
+        {% for talk in slot.list %}
+          <li>{{ talk.talk.title|default:talk.description }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endif %}
+{% endfor %}
+</ul>
