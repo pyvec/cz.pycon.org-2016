@@ -86,3 +86,17 @@ class Workshop(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Slot(models.Model):
+    ROOM = (
+        ('foyer', 'Foyer'),
+        ('d105',  'D105'),
+        ('d0206', 'D0206'),
+        ('d0207', 'D0207'),
+    )
+    date = models.DateTimeField()
+
+    talk = models.ForeignKey(Talk, null=True, blank=True)
+    description = models.CharField(max_length=100, blank=True, default='')
+    room = models.CharField(max_length=5, choices=ROOM)
