@@ -21,7 +21,19 @@
       </span>
       <ul class="timeline__tracks">
         {% for talk in slot.list %}
-          <li>{{ talk.talk.title|default:talk.description }}</li>
+          <li>
+            {% if talk.talk.title %}
+            <span class="timeline__talk__title">{{ talk.talk.title }}</span>
+            <span class="timeline__talk__speaker">
+              {% for speaker in talk.talk.speakers.all %}
+                {{ speaker }}{% if not forloop.last %}, {% endif %}
+              {% endfor %}
+
+            </span>
+            {% else %}
+              {{ talk.description }}
+            {% endif %}
+          </li>
         {% endfor %}
       </ul>
     </li>

@@ -20,6 +20,7 @@ def speakers_list(request, type):
 def talks_timeline(request):
     talks = (Slot.objects.all()
                 .select_related('talk')
+                .prefetch_related('talk__speakers')
                 .order_by('date'))
 
     return TemplateResponse(
