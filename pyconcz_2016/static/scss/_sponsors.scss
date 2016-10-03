@@ -18,12 +18,12 @@
   display: inline-block;
 
   img {
-    width: 100%;
+    width: 80%;
     height: auto;
   }
 
   .sponsors--platinum & {
-    width: 60%;
+    width: 50%;
   }
 
   .sponsors--gold & {
@@ -39,5 +39,14 @@
   .sponsors--diversity & {
     width: 25%;
   }
-}
 
+  @media (max-width: 480px) {
+    img {width: 100%;}
+    .sponsors--platinum & {width: 60%;}
+    .sponsors--gold & {width: 50%;}
+    .sponsors--silver & {width: 40%;}
+    .sponsors--bronze &,
+    .sponsors--media &,
+    .sponsors--diversity & {width: 35%;}
+  }
+}
