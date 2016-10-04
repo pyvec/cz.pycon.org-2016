@@ -47,10 +47,24 @@
   line-height: 1.4rem;
 }
 
+.homepage-venue {
+  text-align: center;
+
+  .fa {
+    display: block;
+    margin-bottom: 15px;
+    color: $main-color;
+  }
+}
+
 .homepage-column {
-  width: 50%;
+  width: 30%;
   float: left;
   text-align: center;
+
+  address {
+    font-style: normal;
+  }
 
   .fa {
     display: block;
@@ -65,6 +79,11 @@
     .homepage-day-venue {
       margin: auto;
     }
+  }
+
+  .homepage-day-date {
+    display: block;
+    margin-top: 0.4em;
   }
 }
 
