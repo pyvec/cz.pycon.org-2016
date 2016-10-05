@@ -26,16 +26,25 @@
 
           <p class="bio">{{ speaker.bio|linebreaksbr }}</p>
 
-          {% for talk in speaker.talks.all %}
-            <span class="talk-title">
+          {% if show_talks %}
+            {% for talk in speaker.talks.all %}
+              <span class="talk-title">
               {{ talk.title }}
             </span>
-            <p class="talk-description">{{ talk.abstract|linebreaksbr }}</p>
-          {% endfor %}
+              <p class="talk-description">{{ talk.abstract|linebreaksbr }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {% if show_workshops %}
+            {% for workshop in speaker.workshops.all %}
+              <span class="talk-title">
+              {{ workshop.title }}
+            </span>
+              <p class="talk-description">{{ workshop.abstract|linebreaksbr }}</p>
+            {% endfor %}
+          {% endif %}
         </section>
       </section>
-    {% empty %}
-      <p>Oh no, we forgot to invite speakers!</p>
     {% endfor %}
   </div>
 {% endblock %}

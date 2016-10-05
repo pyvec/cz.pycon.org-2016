@@ -19,6 +19,7 @@ class Speaker(models.Model):
     photo = models.ImageField(upload_to='speakers/pyconcz2016/')
 
     talks = models.ManyToManyField('Talk')
+    workshops = models.ManyToManyField('Workshop')
 
     def __str__(self):
         return self.full_name
@@ -56,3 +57,68 @@ class Talk(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Workshop(models.Model):
+    DIFFICULTY = (
+        ('beginner', 'Beginner'),
+        ('advanced', 'Advanced'),
+    )
+
+    TYPE = (
+        ('workshop', 'Workshop'),
+        ('sprint', 'Sprint'),
+    )
+
+    LENGTH = (
+        ('1h', '1 hour'),
+        ('2h', '2 hours'),
+        ('2h', '3 hours'),
+        ('1d', 'Full day (most sprints go here!)'),
+        ('xx', 'Something else! (Please leave a note in the abstract!)')
+    )
+
+    LANGUAGES = (
+        ('en', 'English (preferred)'),
+        ('cs', 'Czech/Slovak'),
+    )
+
+    type = models.CharField(
+        max_length=10, choices=TYPE, default='sprint',
+        help_text="At a workshop, you should present hands-on excercises for"
+                  " participants to learn from. You'll get a room and a slot"
+                  " in the agenda, and participants will need to register.\n"
+                  " At a sprint, participants help an open-source project --"
+                  " usually by cloning the repo and trying to fix"
+                  " beginner-level issues, while you'll provide one-to-one"
+                  " mentorship. If several experienced developers"
+                  " are around, sprints are also a good place for serious"
+                  " design discussions. Sprinters only need a table to sit"
+                  " around, reliable wifi, and dedication to do great things!"
+    )
+    title = models.CharField(
+        max_length=200, verbose_name='Workshop/sprint title',
+        help_text="Public title. What topic/project is it all about?"
+    )
+    abstract = models.TextField(
+        help_text="Full description of your workshop or sprint. Please also"
+                  " describe requirements: libraries and Python version to be"
+                  " installed, required experience with topics/libraries, etc."
+    )
+    language = models.CharField(
+        max_length=2, choices=LANGUAGES, default='en'
+    )
+    difficulty = models.CharField(
+        max_length=10, choices=DIFFICULTY, default='beginner',
+        help_text="Does you audience require high level of specialized"
+                  " knowledge (of Python, a library, etc.),"
+                  " or is it suitable for everyone?"
+    )
+    length = models.CharField(
+        max_length=2, choices=LENGTH, blank=True,
+        help_text="How much time does your workshop take? Sprints usually take"
+                  " the whole day, but workshops are organized in smaller"
+                  " blocks. You can also have a full-day workshop with lunch"
+                  " break, but keep in mind that the length could discourage"
+                  " attendees!"
+    )
