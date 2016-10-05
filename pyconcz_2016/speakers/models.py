@@ -122,3 +122,6 @@ class Workshop(models.Model):
                   " break, but keep in mind that the length could discourage"
                   " attendees!"
     )
+
+    def __str__(self):
+        return self.title
