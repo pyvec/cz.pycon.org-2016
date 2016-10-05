@@ -12,6 +12,7 @@ prefixed_urlpatterns = [
 
     url(r'^about/team', include('pyconcz_2016.team.urls')),
     url(r'^speakers/', include('pyconcz_2016.speakers.urls')),
+    url(r'^sponsors/', include('pyconcz_2016.sponsors.urls')),
 
     # static pages
     url(r'^$',
@@ -23,9 +24,6 @@ prefixed_urlpatterns = [
     url(r'^about/code$',
         TemplateView.as_view(template_name='pages/code.html'),
         name='about_code'),
-    url(r'^sponsors/offer$',
-        TemplateView.as_view(template_name='pages/sponsors_offer.html'),
-        name='sponsors_offer'),
 ]
 
 urlpatterns = (
