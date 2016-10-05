@@ -1,3 +1,40 @@
+.sponsor {
+  &::after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.sponsor__text,
+.sponsor__level,
+.sponsor__title,
+.sponsor__link,
+.sponsor__description {
+  margin-left: 23%;
+  text-align: left;
+}
+
+.sponsor__title {
+  margin-bottom: 10px;
+}
+
+.sponsor__logo {
+  float: left;
+  width: 20%;
+  height: auto;
+  margin-top: 1em;
+}
+
+.sponsor__link {
+  display: block;
+  font-size: 0.8em;
+}
+
+
 .sponsors,
 .sponsors__item {
   list-style: none;
