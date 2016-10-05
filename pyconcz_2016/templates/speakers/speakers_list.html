@@ -4,7 +4,14 @@
 
 {% block content %}
   <div class="container">
-    <h1>Speakers</h1>
+    {% if show_talks %}
+      <h1>Speakers</h1>
+    {% endif %}
+
+    {% if show_workshops %}
+      <h1>Workshops</h1>
+    {% endif %}
+  
     {% for speaker in speakers %}
       <section class="speaker">
         <section class="sidebox">
