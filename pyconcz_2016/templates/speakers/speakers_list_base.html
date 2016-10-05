@@ -1,17 +1,9 @@
 {% extends "_base.html" %}
 
-{% block meta_title %}PyCon CZ Speakers{% endblock %}
-
 {% block content %}
   <div class="container">
-    {% if show_talks %}
-      <h1>Speakers</h1>
-    {% endif %}
+    <h1>{% block speakers_title %}{% endblock %}</h1>
 
-    {% if show_workshops %}
-      <h1>Workshops</h1>
-    {% endif %}
-  
     {% for speaker in speakers %}
       <section class="speaker">
         <section class="sidebox">
@@ -33,23 +25,7 @@
 
           <p class="bio">{{ speaker.bio|linebreaksbr }}</p>
 
-          {% if show_talks %}
-            {% for talk in speaker.talks.all %}
-              <span class="talk-title">
-              {{ talk.title }}
-            </span>
-              <p class="talk-description">{{ talk.abstract|linebreaksbr }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {% if show_workshops %}
-            {% for workshop in speaker.workshops.all %}
-              <span class="talk-title">
-              {{ workshop.title }}
-            </span>
-              <p class="talk-description">{{ workshop.abstract|linebreaksbr }}</p>
-            {% endfor %}
-          {% endif %}
+          {% block speakers_items %}{% endblock %}
         </section>
       </section>
     {% endfor %}

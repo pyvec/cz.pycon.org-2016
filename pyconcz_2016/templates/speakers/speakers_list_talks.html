@@ -1,0 +1,14 @@
+{% extends "speakers/speakers_list_base.html" %}
+
+{% block meta_title %}PyCon CZ Speakers{% endblock %}
+
+{% block speakers_title %}Speakers{% endblock %}
+
+{% block speakers_items %}
+  {% for talk in speaker.talks.all %}
+    <span class="talk-title">
+              {{ talk.title }}
+            </span>
+    <p class="talk-description">{{ talk.abstract|linebreaksbr }}</p>
+  {% endfor %}
+{% endblock %}

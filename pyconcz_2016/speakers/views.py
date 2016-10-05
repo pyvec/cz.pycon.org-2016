@@ -12,10 +12,6 @@ def speakers_list(request, type):
 
     return TemplateResponse(
         request,
-        template='speakers/speakers_list.html',
-        context={
-            'speakers': speakers,
-            'show_talks': type == 'talks',
-            'show_workshops': type == 'workshops'
-        }
+        template='speakers/speakers_list_{}.html'.format(type),
+        context={'speakers': speakers}
     )
