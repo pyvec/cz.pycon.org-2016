@@ -18,8 +18,8 @@ class Speaker(models.Model):
 
     photo = models.ImageField(upload_to='speakers/pyconcz2016/')
 
-    talks = models.ManyToManyField('Talk')
-    workshops = models.ManyToManyField('Workshop')
+    talks = models.ManyToManyField('Talk', blank=True)
+    workshops = models.ManyToManyField('Workshop', blank=True)
 
     def __str__(self):
         return self.full_name
