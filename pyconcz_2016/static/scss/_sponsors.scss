@@ -2,24 +2,45 @@
   @include clearfix;
 }
 
+.sponsor__level {
+  border-bottom: 1px solid $main-color;
+
+  @media (min-width: $mobile-break) {
+    border-bottom: none;
+  }
+}
+
 .sponsor__text,
 .sponsor__level,
 .sponsor__title,
 .sponsor__link,
 .sponsor__description {
-  margin-left: 23%;
   text-align: left;
+
+  @media (min-width: $mobile-break) {
+    margin-left: 23%;
+  }
 }
 
 .sponsor__title {
+  margin-top: 1em;
   margin-bottom: 10px;
+
+  @media (min-width: $mobile-break) {
+    margin-top: 2em;
+  }
 }
 
 .sponsor__logo {
-  float: left;
-  width: 20%;
+  width: 40%;
   height: auto;
-  margin-top: 1em;
+  margin-top: 2em;
+
+  @media (min-width: $mobile-break) {
+    float: left;
+    width: 20%;
+    margin-top: 0;
+  }
 }
 
 .sponsor__link {
