@@ -7,8 +7,8 @@
 {% block speakers_items %}
   {% for talk in speaker.talks.all %}
     <span class="talk-title">
-              {{ talk.title }}
-            </span>
+      {{ talk.title }}
+    </span>
     <p class="talk-description">{{ talk.abstract|linebreaksbr }}</p>
   {% endfor %}
 {% endblock %}

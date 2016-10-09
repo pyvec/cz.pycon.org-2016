@@ -34,11 +34,8 @@ class Command(BaseCommand):
                                          '%Y-%m-%d %I:%M:%S %p')
                 date = timezone.make_aware(date, timezone.get_current_timezone())
 
-                if not track2 or not track3:
+                if not track2 or not track3 or track1.endswith('Break'):
                     yield Slot(date=date, description=track1, room='foyer')
-                elif track1.endswith('Break'):
-                    yield from (Slot(date=date, description=track1, room=room)
-                                for room in rooms)
                 else:
                     talks = [get_talk(title)
                              for title in [track1, track2, track3]]

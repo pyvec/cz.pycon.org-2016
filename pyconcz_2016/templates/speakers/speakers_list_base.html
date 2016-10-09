@@ -20,7 +20,7 @@
 
         <section class="details">
           <h2>
-            <span class="name">{{ speaker.full_name }}</span><br>
+            <a name="{{ speaker.full_name|slugify }}" class="name">{{ speaker.full_name }}</a><br>
           </h2>
 
           <p class="bio">{{ speaker.bio|linebreaksbr }}</p>

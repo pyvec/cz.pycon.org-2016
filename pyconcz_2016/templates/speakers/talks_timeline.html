@@ -1,42 +1,54 @@
-{% regroup talks by date as talks_list %}
+{% extends "_base.html" %}
 
-{% for slot in talks_list %}
-  {% ifchanged slot.grouper|date%}
-    {% if not forloop.first %}</ul>{% endif %}
+{% block content %}
+  {% regroup talks by date as talks_list %}
 
-    <h2>{{ slot.grouper|date }}</h2>
-    <ul class="timeline">
-  {% endifchanged %}
-  {% if slot.list|length == 1 %}
-    <li class="timeline__shared">
-      <span class="timeline__time">
-        {{ slot.grouper|time }}
-      </span>
-      {{ slot.list.0.description }}
-    </li>
-  {% else %}
-    <li>
-      <span class="timeline__time">
-        {{ slot.grouper|time }}
-      </span>
-      <ul class="timeline__tracks">
-        {% for talk in slot.list %}
-          <li>
-            {% if talk.talk.title %}
-            <span class="timeline__talk__title">{{ talk.talk.title }}</span>
-            <span class="timeline__talk__speaker">
-              {% for speaker in talk.talk.speakers.all %}
-                {{ speaker }}{% if not forloop.last %}, {% endif %}
-              {% endfor %}
+  <div class="container timeline">
+    {% for slot in talks_list %}
+      {% ifchanged slot.grouper|date%}
+        <h2 class="timeline__day">{{ slot.grouper|date }}</h2>
 
-            </span>
-            {% else %}
-              {{ talk.description }}
-            {% endif %}
-          </li>
-        {% endfor %}
-      </ul>
-    </li>
-  {% endif %}
-{% endfor %}
-</ul>
+        <div class="timeline__header">
+          <h3 class="timeline__time timeline--header">Time</h3>
+          <ul class="timeline__tracks timeline--header">
+            <li class="timeline__talk">Room D105</li>
+            <li class="timeline__talk">Room D0206</li>
+            <li class="timeline__talk">Room D0207</li>
+          </ul>
+        </div>
+
+      {% endifchanged %}
+
+      <div class="timeline__slot">
+        {% if slot.list|length == 1 %}
+          <h3 class="timeline__time">{{ slot.grouper|time }}</h3>
+
+          <div class="timeline__shared">
+            {{ slot.list.0.description }}
+          </div>
+        {% else %}
+          <h3 class="timeline__time">{{ slot.grouper|time }}</h3>
+
+          <ul class="timeline__tracks">
+            {% for talk in slot.list %}
+              <li class="timeline__talk">
+                {% if talk.talk.title %}
+                  <span class="timeline__talk__room">Room {{ talk.room|upper }}</span>
+                  <span class="timeline__talk__title">{{ talk.talk.title }}</span>
+                  <span class="timeline__talk__speaker">
+                    by
+                {% for speaker in talk.talk.speakers.all %}
+                  <a href="{% url "speakers_list" type="talks" %}#{{ speaker.full_name|slugify }}">{{ speaker }}</a>{% if not forloop.last %} and {% endif %}
+                {% endfor %}
+              </span>
+                {% else %}
+                  {{ talk.description }}
+                {% endif %}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

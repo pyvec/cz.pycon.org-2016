@@ -141,6 +141,8 @@ LANGUAGES = [
 USE_TZ = True
 TIME_ZONE = 'Europe/Prague'
 
+TIME_FORMAT = 'H:i'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
