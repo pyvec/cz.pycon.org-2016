@@ -12,7 +12,7 @@ def speakers_list(request, type):
 
     return TemplateResponse(
         request,
-        template='speakers/speakers_list_{}.html'.format(type),
+        template='speakers/{}_list.html'.format(type),
         context={'speakers': speakers}
     )
 
