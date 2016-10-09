@@ -3,18 +3,11 @@ from django.db import models
 
 class Speaker(models.Model):
     full_name = models.CharField(max_length=200)
-
-    bio = models.TextField(
-        help_text="Tell us a bit about yourself! Who you are, where are you"
-                  " from, what are your experiences with Python. Be wild,"
-                  " be creative!"
-    )
+    bio = models.TextField()
 
     twitter = models.CharField(max_length=255, blank=True)
     github = models.CharField(max_length=255, blank=True)
-    email = models.EmailField(
-        help_text="We'll keep it secret, for internal use only."
-    )
+    email = models.EmailField()
 
     photo = models.ImageField(upload_to='speakers/pyconcz2016/')
 
@@ -23,10 +16,6 @@ class Speaker(models.Model):
 
     def __str__(self):
         return self.full_name
-
-    @property
-    def copresenters(self):
-        return [speaker for speaker in self.talk.speaker_set.all() if speaker != self]
 
 
 class Talk(models.Model):
@@ -41,18 +30,13 @@ class Talk(models.Model):
     )
 
     title = models.CharField(max_length=200)
-    abstract = models.TextField(
-        help_text="Full description of your talk. How would you describe your"
-                  "talk to the audience?"
-    )
+    abstract = models.TextField()
 
     language = models.CharField(
         max_length=2, choices=LANGUAGES, default='en'
     )
     difficulty = models.CharField(
         max_length=10, choices=DIFFICULTY, default='beginner',
-        help_text="Does you audience require high level of Python knowledge"
-                  "or is it suitable for everyone?"
     )
 
     def __str__(self):
@@ -84,43 +68,20 @@ class Workshop(models.Model):
     )
 
     type = models.CharField(
-        max_length=10, choices=TYPE, default='sprint',
-        help_text="At a workshop, you should present hands-on excercises for"
-                  " participants to learn from. You'll get a room and a slot"
-                  " in the agenda, and participants will need to register.\n"
-                  " At a sprint, participants help an open-source project --"
-                  " usually by cloning the repo and trying to fix"
-                  " beginner-level issues, while you'll provide one-to-one"
-                  " mentorship. If several experienced developers"
-                  " are around, sprints are also a good place for serious"
-                  " design discussions. Sprinters only need a table to sit"
-                  " around, reliable wifi, and dedication to do great things!"
+        max_length=10, choices=TYPE, default='sprint'
     )
     title = models.CharField(
-        max_length=200, verbose_name='Workshop/sprint title',
-        help_text="Public title. What topic/project is it all about?"
+        max_length=200, verbose_name='Title'
     )
-    abstract = models.TextField(
-        help_text="Full description of your workshop or sprint. Please also"
-                  " describe requirements: libraries and Python version to be"
-                  " installed, required experience with topics/libraries, etc."
-    )
+    abstract = models.TextField()
     language = models.CharField(
         max_length=2, choices=LANGUAGES, default='en'
     )
     difficulty = models.CharField(
         max_length=10, choices=DIFFICULTY, default='beginner',
-        help_text="Does you audience require high level of specialized"
-                  " knowledge (of Python, a library, etc.),"
-                  " or is it suitable for everyone?"
     )
     length = models.CharField(
         max_length=2, choices=LENGTH, blank=True,
-        help_text="How much time does your workshop take? Sprints usually take"
-                  " the whole day, but workshops are organized in smaller"
-                  " blocks. You can also have a full-day workshop with lunch"
-                  " break, but keep in mind that the length could discourage"
-                  " attendees!"
     )
 
     def __str__(self):
