@@ -1,13 +1,12 @@
 {% extends "_base.html" %}
 
-{% block meta_title %}PyCon CZ - Financial Assistance{% endblock %}
+{% block meta_title %}Financial Assistance at PyCon CZ 2016{% endblock %}
 
 {% block content %}
 <div class="container text-block">
-  <h1>
-    PyCon CZ 2016 – Financial Assistance
-  </h1>
+  <h1>Financial Assistance</h1>
 
+  {% comment %}
   <a href="{% url "proposal_form" key="financial-aid" %}" class="cta-cfp">Apply for a grant</a>
 
   <h2>Timeline</h2>
@@ -17,6 +16,7 @@
     <li>Financial aid applications close: Monday, September 26th</li>
     <li>Financial aid grants awarded: Monday, October 3rd</li>
   </ul>
+  {% endcomment %}
 
   <h2>Philosophy/Outreach</h2>
 
