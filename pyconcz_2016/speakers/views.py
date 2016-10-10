@@ -1,3 +1,7 @@
+from django.db.models import Case
+from django.db.models import IntegerField
+from django.db.models import Value
+from django.db.models import When
 from django.template import RequestContext
 from django.template.response import TemplateResponse
 
@@ -21,7 +25,14 @@ def talks_timeline(request):
     talks = (Slot.objects.all()
                 .select_related('talk')
                 .prefetch_related('talk__speakers')
-                .order_by('date'))
+                .annotate(order=Case(
+                    When(room='d105', then=Value(1)),
+                    When(room='d0207', then=Value(2)),
+                    When(room='d0206', then=Value(3)),
+                    default=Value(0),
+                    output_field=IntegerField()
+                ))
+                .order_by('date', 'order'))
 
     return TemplateResponse(
         request,
