@@ -27,8 +27,8 @@ def talks_timeline(request):
                 .prefetch_related('talk__speakers')
                 .annotate(order=Case(
                     When(room='d105', then=Value(1)),
-                    When(room='d0207', then=Value(2)),
-                    When(room='d0206', then=Value(3)),
+                    When(room='d0206', then=Value(2)),
+                    When(room='d0207', then=Value(3)),
                     default=Value(0),
                     output_field=IntegerField()
                 ))
