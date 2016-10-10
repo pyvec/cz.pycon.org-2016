@@ -26,7 +26,7 @@ DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 if 'debug_toolbar' not in INSTALLED_APPS:
     INSTALLED_APPS.append('debug_toolbar')
-    MIDDLEWARE_CLASSES.insert(
+    MIDDLEWARE.insert(
         0, 'debug_toolbar.middleware.DebugToolbarMiddleware'
     )
 

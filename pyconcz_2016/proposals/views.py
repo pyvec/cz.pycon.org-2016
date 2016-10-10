@@ -14,7 +14,7 @@ def proposal_create(request, *, key):
     except KeyError:
         raise Http404
 
-    context = RequestContext(request, {'proposal_config': config})
+    context = {'proposal_config': config}
 
     is_public = not request.user.is_superuser
     right_now = now()
@@ -40,7 +40,7 @@ def proposal_create(request, *, key):
 
 
 def proposal_success(request, *, key):
-    context = RequestContext(request, {'proposal_config_key': key})
+    context = {'proposal_config_key': key}
     return TemplateResponse(request, 'proposals/proposal_success.html', context)
 
 
@@ -50,5 +50,5 @@ def proposal_about(request, *, key):
     except KeyError:
         raise Http404
 
-    context = RequestContext(request, {'proposal_config': config})
+    context = {'proposal_config': config}
     return TemplateResponse(request, config.template_about, context)

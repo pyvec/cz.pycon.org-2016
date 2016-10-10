@@ -1,0 +1,4 @@
+-r requirements.in
+django-debug-toolbar==1.6
+ipython==5.1.0
+pip-tools==1.7.0
