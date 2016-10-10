@@ -7,10 +7,10 @@ from django.views.generic import TemplateView, RedirectView
 
 prefixed_urlpatterns = [
     url(r'^announcements/', include('pyconcz_2016.announcements.urls')),
-    url(r'^proposals/workshops$', RedirectView.as_view(url='/2016/proposals/talks')),
+    url(r'^proposals/workshops/$', RedirectView.as_view(url='/2016/proposals/talks')),
     url(r'^proposals/', include('pyconcz_2016.proposals.urls')),
 
-    url(r'^about/team', include('pyconcz_2016.team.urls')),
+    url(r'^about/team/', include('pyconcz_2016.team.urls')),
     url(r'^speakers/', include('pyconcz_2016.speakers.urls')),
     url(r'^sponsors/', include('pyconcz_2016.sponsors.urls')),
 
@@ -18,10 +18,10 @@ prefixed_urlpatterns = [
     url(r'^$',
         TemplateView.as_view(template_name='pages/homepage.html'),
         name='homepage'),
-    url(r'^about$',
+    url(r'^about/$',
         TemplateView.as_view(template_name='pages/about.html'),
         name='about'),
-    url(r'^about/code$',
+    url(r'^about/code/$',
         TemplateView.as_view(template_name='pages/code.html'),
         name='about_code'),
 ]

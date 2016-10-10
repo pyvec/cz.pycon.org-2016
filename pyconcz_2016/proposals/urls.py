@@ -5,7 +5,7 @@ from pyconcz_2016.proposals.views import (
 
 
 urlpatterns = [
-    url('^(?P<key>[^/]*)$', proposal_about, name='proposal_about'),
-    url('^(?P<key>[^/]*)/form$', proposal_create, name='proposal_form'),
-    url('^(?P<key>[^/]*)/sent$', proposal_success, name='proposal_success'),
+    url('^(?P<key>[^/]*)/$', proposal_about, name='proposal_about'),
+    url('^(?P<key>[^/]*)/form/$', proposal_create, name='proposal_form'),
+    url('^(?P<key>[^/]*)/sent/$', proposal_success, name='proposal_success'),
 ]
