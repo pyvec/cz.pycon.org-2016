@@ -1,0 +1,100 @@
+%tm-reset-align {
+  text-align: left;
+}
+
+@mixin tm-cell-padding {
+  padding: 5px 10px;
+}
+
+.timeline {
+  &__day {
+    @extend %tm-reset-align;
+  }
+
+  &__time {
+    @extend %tm-reset-align;
+    display: block;
+    margin-top: vr(0.8);
+    margin-bottom: vr(0.2);
+    border-bottom: 1px solid $main-color;
+
+    font-size: 1em;
+  }
+
+  &__tracks {
+    list-style: none;
+  }
+
+  &__header {
+    display: none;
+  }
+
+  @media (min-width: $mobile-break) {
+    &__time {
+      @include tm-cell-padding;
+
+      display: block;
+      float: left;
+      width: 10%;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      border: none;
+      line-height: 1.5;
+    }
+
+    &__shared {
+      @include tm-cell-padding;
+
+      display: block;
+      width: 90%;
+      float: left;
+      margin-top: 0;
+    }
+
+    &__slot {
+      @include clearfix;
+
+      &:nth-child(2n) {
+        background-color: #eee;
+      }
+    }
+
+    &__header {
+      @include clearfix;
+      display: block;
+      border-bottom: 1px solid $main-color;
+    }
+  }
+}
+
+.timeline__talk {
+  margin-bottom: vr(1);
+
+  .timeline__header & {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    display: block;
+    font-weight: bold;
+  }
+
+  &__room {
+    display: block;
+    font-size: 0.9em;
+    color: $muted-color;
+
+  }
+
+  @media (min-width: $mobile-break) {
+    @include tm-cell-padding;
+    width: 30%;
+    float: left;
+
+    &__room {
+      display: none;
+    }
+  }
+}
+

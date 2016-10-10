@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 @import "~normalize.css";
 @import "~voidcss-vertical-rhythm";
@@ -9,5 +10,8 @@
 @import "homepage";
 @import "forms";
 @import "footer";
-
 @import "sponsors";
+@import "team";
+
+@import "speakers/schedule";
+@import "speakers/speakers";

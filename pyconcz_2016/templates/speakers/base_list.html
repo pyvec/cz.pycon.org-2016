@@ -19,8 +19,12 @@
         </section>
 
         <section class="details">
-          <h2>
-            <span class="name">{{ speaker.full_name }}</span><br>
+          <h2 class="speaker__name">
+            <a href="#{{ speaker.full_name|slugify }}"
+               name="{{ speaker.full_name|slugify }}"
+               class="speaker__name__link">
+                {{ speaker.full_name }}
+            </a>
           </h2>
 
           <p class="bio">{{ speaker.bio|linebreaksbr }}</p>
