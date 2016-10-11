@@ -14,7 +14,7 @@ class Speaker(models.Model):
     photo = models.ImageField(upload_to='speakers/pyconcz2016/')
 
     talks = models.ManyToManyField(
-        'Talk', blank=True, related_name='speakers')
+        'Talk', blank=True, related_name='talks')
     workshops = models.ManyToManyField(
         'Workshop', blank=True, related_name='workshops')
 
@@ -111,3 +111,10 @@ class Slot(models.Model):
 
     description = models.CharField(max_length=100, blank=True, default='')
     room = models.CharField(max_length=5, choices=ROOM)
+
+
+class EndTime(models.Func):
+    template = 'LAG(date) OVER (PARTITION BY room ORDER BY date DESC)'
+
+    def __init__(self):
+        super().__init__(output_field=models.DateTimeField())

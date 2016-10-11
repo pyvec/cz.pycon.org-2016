@@ -7,8 +7,11 @@ class SlotAdmin(admin.ModelAdmin):
     list_filter = ['room']
     date_hierarchy = 'date'
 
+    def get_queryset(self, request):
+        return super().get_queryset(request).prefetch_related('content_object')
+
     def get_description(self, obj):
-        return obj.talk or obj.description
+        return obj.content_object or obj.description
 
 
 admin.site.register(Speaker)

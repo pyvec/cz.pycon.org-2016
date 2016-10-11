@@ -54,10 +54,10 @@
 
     &__slot {
       @include clearfix;
+    }
 
-      &:nth-child(2n) {
-        background-color: #eee;
-      }
+    &__slot--shared {
+      background-color: #eee;
     }
 
     &__header {
@@ -98,3 +98,33 @@
   }
 }
 
+
+.timeline__workshop {
+  margin-bottom: vr(1);
+
+  .timeline__header & {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    display: block;
+    font-weight: bold;
+  }
+
+  &__room {
+    display: block;
+    font-size: 0.9em;
+    color: $muted-color;
+
+  }
+
+  @media (min-width: $mobile-break) {
+    @include tm-cell-padding;
+    width: 45%;
+    float: left;
+
+    &__room {
+      display: none;
+    }
+  }
+}

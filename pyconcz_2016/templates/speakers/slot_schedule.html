@@ -1,50 +1,84 @@
 {% extends "_base.html" %}
+{% load slot_tags %}
 
 {% block content %}
   {% regroup slots by date as slots_by_time %}
 
   <div class="container timeline">
     {% for slot in slots_by_time %}
-      {% ifchanged slot.grouper|date%}
-        <h2 class="timeline__day">{{ slot.grouper|date }}</h2>
+      {% ifchanged slot.grouper|date %}
+        <h2 class="timeline__day">{{ slot.grouper|date:"l, d F" }}</h2>
 
-        <div class="timeline__header">
-          <h3 class="timeline__time timeline--header">Time</h3>
-          <ul class="timeline__tracks timeline--header">
-            <li class="timeline__talk">Room D105</li>
-            <li class="timeline__talk">Room D0206</li>
-            <li class="timeline__talk">Room D0207</li>
-          </ul>
-        </div>
+          {% if slot.grouper|day_type == 'workshops' %}
+            <p>
+              Sprints are open whole day along with workshops. All sprints
+              will be announced during Saturday.
+            </p>
+          {% endif %}
 
+          <div class="timeline__header">
+            {% if slot.grouper|day_type == 'talks' %}
+              <h3 class="timeline__time timeline--header">Time</h3>
+
+              <ul class="timeline__tracks timeline--header">
+                <li class="timeline__talk">Room D105</li>
+                <li class="timeline__talk">Room D0206</li>
+                <li class="timeline__talk">Room D0207</li>
+              </ul>
+            {% else %}
+              <ul class="timeline__tracks timeline--header">
+                <li class="timeline__workshop">Room A112</li>
+                <li class="timeline__workshop">Room A113</li>
+              </ul>
+            {% endif %}
+          </div>
       {% endifchanged %}
 
-      <div class="timeline__slot">
-        {% if slot.list|length == 1 %}
+      <div class="timeline__slot {% if slot.list.0.description %}timeline__slot--shared{% endif %}">
+        {% if slot.grouper|day_type == 'talks' %}
           <h3 class="timeline__time">{{ slot.grouper|time }}</h3>
+        {% endif %}
 
+        {% if slot.list.0.description %}
           <div class="timeline__shared">
             {{ slot.list.0.description }}
           </div>
         {% else %}
-          <h3 class="timeline__time">{{ slot.grouper|time }}</h3>
-
           <ul class="timeline__tracks">
+            {% if slot.list|length == 1 %}
+              <li class="timeline__workshop"></li>
+            {% endif %}
             {% for talk in slot.list %}
-              <li class="timeline__talk">
-                {% if talk.content_object.title %}
-                  <span class="timeline__talk__room">Room {{ talk.room|upper }}</span>
-                  <span class="timeline__talk__title">{{ talk.content_object.title }}</span>
-                  <span class="timeline__talk__speaker">
-                    by
-                {% for speaker in talk.content_object.speakers.all %}
-                  <a href="{% url "speakers_list" type="talks" %}#{{ speaker.full_name|slugify }}">{{ speaker }}</a>{% if not forloop.last %} and {% endif %}
-                {% endfor %}
-              </span>
-                {% else %}
-                  {{ talk.description }}
-                {% endif %}
-              </li>
+                {% with talk.content_object as event %}
+                  {% if talk.content_type.model == 'talk' %}
+                  <li class="timeline__talk">
+                    <span class="timeline__talk__room">Room {{ talk.room|upper }}</span>
+                    <span class="timeline__talk__title">{{ event.title }}</span>
+                    <span class="timeline__talk__speaker">
+                      by
+                        {% for speaker in event.talks.all %}
+                          <a href="{% url "speakers_list" type="talks" %}#{{ speaker.full_name|slugify }}">{{ speaker }}</a>
+                          {% if not forloop.last %} and {% endif %}
+                        {% endfor %}
+                    </span>
+                  </li>
+                  {% elif talk.content_type.model == 'workshop' %}
+                    <li class="timeline__workshop">
+                    {{ talk.date|time }} - {{ talk.date_end|time }}
+                    <span class="timeline__workshop__room">Room {{ talk.room|upper }}</span>
+                    <span class="timeline__workshop__title">{{ event.title }}</span>
+                    <span class="timeline__workshop__speaker">
+                      by
+                        {% for speaker in event.workshops.all %}
+                          <a href="{% url "speakers_list" type="talks" %}#{{ speaker.full_name|slugify }}">{{ speaker }}</a>
+                          {% if not forloop.last %} and {% endif %}
+                        {% endfor %}
+                    </span>
+                    </li>
+                  {% else %}
+                    {{ talk.description }}
+                  {% endif %}
+                {% endwith %}
             {% endfor %}
           </ul>
         {% endif %}
