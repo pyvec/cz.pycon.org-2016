@@ -138,7 +138,9 @@ LANGUAGES = [
 USE_TZ = True
 TIME_ZONE = 'Europe/Prague'
 
-TIME_FORMAT = 'H:i'
+FORMAT_MODULE_PATH = [
+    'pyconcz_2016.formats'
+]
 
 
 # Static files (CSS, JavaScript, Images)
