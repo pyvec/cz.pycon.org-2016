@@ -70,7 +70,7 @@
                     <span class="timeline__workshop__speaker">
                       by
                         {% for speaker in event.workshops.all %}
-                          <a href="{% url "speakers_list" type="talks" %}#{{ speaker.full_name|slugify }}">{{ speaker }}</a>
+                          <a href="{% url "speakers_list" type="workshops" %}#{{ speaker.full_name|slugify }}">{{ speaker }}</a>
                           {% if not forloop.last %} and {% endif %}
                         {% endfor %}
                     </span>
