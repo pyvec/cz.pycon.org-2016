@@ -1,10 +1,10 @@
 {% extends "_base.html" %}
 
 {% block content %}
-  {% regroup talks by date as talks_list %}
+  {% regroup slots by date as slots_by_time %}
 
   <div class="container timeline">
-    {% for slot in talks_list %}
+    {% for slot in slots_by_time %}
       {% ifchanged slot.grouper|date%}
         <h2 class="timeline__day">{{ slot.grouper|date }}</h2>
 
@@ -32,12 +32,12 @@
           <ul class="timeline__tracks">
             {% for talk in slot.list %}
               <li class="timeline__talk">
-                {% if talk.talk.title %}
+                {% if talk.content_object.title %}
                   <span class="timeline__talk__room">Room {{ talk.room|upper }}</span>
-                  <span class="timeline__talk__title">{{ talk.talk.title }}</span>
+                  <span class="timeline__talk__title">{{ talk.content_object.title }}</span>
                   <span class="timeline__talk__speaker">
                     by
-                {% for speaker in talk.talk.speakers.all %}
+                {% for speaker in talk.content_object.speakers.all %}
                   <a href="{% url "speakers_list" type="talks" %}#{{ speaker.full_name|slugify }}">{{ speaker }}</a>{% if not forloop.last %} and {% endif %}
                 {% endfor %}
               </span>

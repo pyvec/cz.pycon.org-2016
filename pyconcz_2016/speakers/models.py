@@ -1,3 +1,5 @@
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 
@@ -96,9 +98,16 @@ class Slot(models.Model):
         ('d105',  'D105'),
         ('d0206', 'D0206'),
         ('d0207', 'D0207'),
+
+        ('a112', 'A112'),
+        ('a113', 'A113'),
     )
     date = models.DateTimeField()
 
-    talk = models.ForeignKey(Talk, null=True, blank=True)
+    content_type = models.ForeignKey(
+        ContentType, null=True, blank=True, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField(null=True, blank=True)
+    content_object = GenericForeignKey('content_type', 'object_id')
+
     description = models.CharField(max_length=100, blank=True, default='')
     room = models.CharField(max_length=5, choices=ROOM)

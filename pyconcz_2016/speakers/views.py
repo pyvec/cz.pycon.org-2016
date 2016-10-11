@@ -21,14 +21,15 @@ def speakers_list(request, type):
     )
 
 
-def talks_timeline(request):
-    talks = (Slot.objects.all()
-                .select_related('talk')
-                .prefetch_related('talk__speakers')
+def schedule(request):
+    slots = (Slot.objects.all()
+                .prefetch_related('content_object', 'content_object__speakers')
                 .annotate(order=Case(
                     When(room='d105', then=Value(1)),
                     When(room='d0206', then=Value(2)),
                     When(room='d0207', then=Value(3)),
+                    When(room='a112', then=Value(4)),
+                    When(room='a113', then=Value(5)),
                     default=Value(0),
                     output_field=IntegerField()
                 ))
@@ -36,8 +37,8 @@ def talks_timeline(request):
 
     return TemplateResponse(
         request,
-        template='speakers/talks_timeline.html',
+        template='speakers/slot_schedule.html',
         context={
-            'talks': talks
+            'slots': slots
         }
     )
