@@ -1,6 +1,6 @@
-django-webpack-loader==0.3.3
-Django==1.10.2
-newrelic==2.70.0.51
-Pillow==3.4.1
-psycopg2==2.6.2
-pytz==2016.7
+django-webpack-loader
+Django
+newrelic
+Pillow
+psycopg2
+pytz
