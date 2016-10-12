@@ -118,3 +118,6 @@ class EndTime(models.Func):
 
     def __init__(self):
         super().__init__(output_field=models.DateTimeField())
+
+    def get_group_by_cols(self):
+        return []
