@@ -174,11 +174,10 @@
 
   .keynoter {
     display: inline-block;
-    max-width: 33%;
-    text-align: justify;
+    max-width: 49%;
+    text-align: center;
     vertical-align: top;
     padding: 0 15px;
-    text-align: center;
 
     @media (max-width: $container-lg) {
       max-width: 100%;
@@ -243,7 +242,7 @@
   border-radius: 6px;
 
   .announcement__date {
-    font-family: "Roboto Mono";
+    font-family: "Roboto Mono", sans-serif;
     color: $muted-color;
   }
 }
