@@ -22,7 +22,7 @@ def slot2dict(slot):
         specific = {
             'type': slot.content_type,
             'title': slot.content_object.title,
-            # 'description': slot.content_object.abstract,
+            'description': slot.content_object.abstract,
 
             'speaker': ', '.join([speaker.full_name for speaker in speakers]),
             'bio': speakers[0].bio,
