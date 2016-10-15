@@ -7,6 +7,8 @@ class Speaker(models.Model):
     full_name = models.CharField(max_length=200)
     bio = models.TextField()
 
+    keynote = models.BooleanField(default=False, blank=True)
+
     twitter = models.CharField(max_length=255, blank=True)
     github = models.CharField(max_length=255, blank=True)
     email = models.EmailField()

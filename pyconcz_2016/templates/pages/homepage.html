@@ -100,25 +100,17 @@
 
     <div class="keynoters">
       <h1 class="text-center">Keynote speakers</h1>
-      <div class="keynoter">
-        <img src="/2016/static/img/keynoter01.jpg" alt="Benny Daon" />
-        <h4>Benny Daon</h4>
-        <a href="http://twitter.com/daonb">@daonb</a>
-        <p class="bio">Benny Daon has been coding for 33 years now, starting at his Bar-Mitzvah with an 8-bit Atari. After a successful gig as co-founder and CEO of Shunra Software (here's the 1998 web page of our first product <a href="http://tuzig.com/shunra1/cloud%20intro.htm">The Cloud</a>), he’s spent most of the last 8 years coding for sites using Python, Django and Flask. and weaving a network of developers. He’s one of the founders of <a href="https://groups.google.com/forum/#!forum/pyweb-il">PyWeb-IL</a> from which the <a href="https://github.com/hasadna/Open-Knesset">Open Knesset</a> project grew, later giving birth to its mother org - <a href="http://hasadna.org.il/en">The Public Knowledge Workshop</a>. In the last year Benny has been freelancing for the Museum of the Jewish People in Tel Aviv, bringing their datasets to the web i.e. here's what they have on <a href="http://dbs.bh.org.il/search?q=brno">Brno</a>.</p>
-      </div>
-      <div class="keynoter">
-        <img src="/2016/static/img/keynoter02.jpg" alt="Ana Balica" />
-        <h4>Ana Balica</h4>
-        <a href="http://twitter.com/anabalica">@anabalica</a>
-        <div><strong>“Python developer just like you”</strong></div>
-        <p class="bio">Software developer, working at <a href="https://p.ota.to">Potato</a>, Ana spends most of her days writing Django powered web apps at Potato London. She really enjoys poking into legacy code and perpetually strives for clean code designs. She’s learned many valuable things both as a mentee and a mentor in programs like Google Summer of Code, Learn IT Girl!, Django Girls, Rails Girls. And she likes Python, books and cats and is known to occasionally give talks.</p>
-      </div>
-      <div class="keynoter">
-        <img src="/2016/static/img/keynoter03.jpg" alt="Lea Polachek" />
-        <h4>Lea Polachek</h4>
-        <a href="http://twitter.com/leadol">@leadol</a>
-        <p class="bio">Lea Polachek is the CTO of <a href="http://www.she-codes.org/">she-codes.org</a> organization, she has ten years of experience in Image Processing and algorithm development and a Masters Degree in Physics from Weizmann Institute of Science. She codes is an organization in Israel aimed at promoting women in technology, the organization grew in three years to have over 10,000 members in 25 locations all around Israel including universities and hi-tech companies.</p>
-      </div>
+
+      {% for keynoter in keynoters %}
+        <div class="keynoter">
+          <img src="{{ keynoter.photo.url }}" alt="{{ keynoter.full_name }}" />
+          <h4>{{ keynoter.full_name }}</h4>
+          <a href="http://twitter.com/{{ keynoter.twitter }}">@{{ keynoter.twitter }}</a>
+          <p class="bio">
+            {{ keynoter.bio }}
+          </p>
+        </div>
+      {% endfor %}
     </div>
 
     <!-- Place this where you want the widget to appear -->
