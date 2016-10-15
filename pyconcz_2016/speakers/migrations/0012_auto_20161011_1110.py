@@ -10,7 +10,8 @@ def migrate_talks(apps, schema_editor):
     ContentType = apps.get_model("contenttypes", "ContentType")
     Slot = apps.get_model("speakers", "Slot")
 
-    TalkType = ContentType.objects.get(app_label="speakers", model="talk")
+    # `get_or_create` because of http://stackoverflow.com/q/31539690/325365
+    TalkType, created = ContentType.objects.get_or_create(app_label="speakers", model="talk")
 
     Slot.objects.exclude(talk=None).update(
         object_id=F('talk_id'),
