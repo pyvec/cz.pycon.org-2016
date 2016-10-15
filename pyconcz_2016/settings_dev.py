@@ -30,6 +30,10 @@ if 'debug_toolbar' not in INSTALLED_APPS:
         0, 'debug_toolbar.middleware.DebugToolbarMiddleware'
     )
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
 WEBPACK_STATS = os.path.join(BASE_DIR, 'static_build', 'webpack-stats-dev.json')
 if os.path.exists(WEBPACK_STATS):
     WEBPACK_LOADER['DEFAULT']['STATS_FILE'] = WEBPACK_STATS
