@@ -149,7 +149,7 @@ FORMAT_MODULE_PATH = [
 STATIC_URL = '/2016/static/'
 STATIC_ROOT = os.path.join(TMP_DIR, 'static')
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_build')
+    os.path.join(BASE_DIR, 'static')
 ]
 
 MEDIA_URL = '/2016/media/'

@@ -10,7 +10,7 @@
 
   <title>{% block meta_title %}PyCon CZ 2016{% endblock %}</title>
   {% block meta_head %}
-      <meta property="og:image" content="https://cz.pycon.org/2016/static/img/pyconlogo.png">
+      <meta property="og:image" content="{% static "img/pyconlogo.png" %}">
   {% endblock %}
   {% render_bundle 'main' 'css' %}
   <link rel="icon" type="image/ico" href="{% static "img/favicon.ico" %}">
