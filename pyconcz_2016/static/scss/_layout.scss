@@ -99,6 +99,14 @@ a {
   }
 }
 
+small {
+  color: $muted-color;
+}
+
+h2 > small {
+  display: block;
+}
+
 .text-block {
   margin: vr(1) auto;
   max-width: 50em;
@@ -128,4 +136,34 @@ blockquote {
 
 .text-center {
   text-align: center;
+}
+
+.figure {
+  text-align: center;
+  padding: 1.5em 0;
+
+  img {
+    width: 100%;
+  }
+
+  small {
+    display: block;
+  }
+}
+
+.gallery {
+  @include clearfix;
+
+  .figure {
+    width: 50%;
+    float: left;
+  }
+
+  .figure:nth-child(1) {
+    padding-right: 10px;
+  }
+
+  .figure:nth-child(2) {
+    padding-left: 10px;
+  }
 }
