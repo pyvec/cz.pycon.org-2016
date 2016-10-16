@@ -26,9 +26,10 @@
           <li><a href="{% url "speakers_schedule" %}">Schedule</a></li>
           <li><a href="{% url "speakers_list" type='talks' %}">Speakers</a></li>
           <li><a href="{% url "speakers_list" type='workshops' %}">Workshops</a></li>
+          <li><a href="{% url "about_brno" %}">Brno</a></li>
           <li><a href="{% url "sponsors_list" %}">Sponsors</a></li>
           <li><a href="{% url "about_code" %}">Code of Conduct</a></li>
-          <li><a href="{% url "proposal_about" key="financial-aid" %}">Financial Aid</a></li>
+{#          <li><a href="{% url "proposal_about" key="financial-aid" %}">Financial Aid</a></li>#}
           <li><a href="{% url "team_list" %}">Team</a></li>
           <li><a href="{% url "homepage" %}#tickets" class="tickets">Tickets</a></li>
         </ul>
@@ -44,7 +45,7 @@
 {% endblock %}
 
 <footer>
-  <div class="container">
+  <div class="container text-block">
     <nav>
       <ul class="nav-footer">
         <li class="nav-section">
@@ -52,17 +53,14 @@
 
           <ul>
             <li><a href="{% url "team_list" %}">Team</a></li>
-            <li><a href="{% url "speakers_schedule" %}">Schedule</a></li>
-            <li><a href="{% url "speakers_list" type='talks' %}">Speakers</a></li>
-            <li><a href="{% url "speakers_list" type='workshops' %}">Workshops</a></li>
             <li><a href="{% url "homepage" %}#tickets">Tickets</a></li>
 
-            <li class="nav-highlight">
-              <a href="{% url "proposal_about" key="talks" %}">Call for Papers</a>
-            </li>
-            <li class="nav-highlight">
-              <a href="{% url "proposal_about" key="financial-aid" %}">Financial Aid</a>
-            </li>
+{#            <li class="nav-highlight">#}
+{#              <a href="{% url "proposal_about" key="talks" %}">Call for Papers</a>#}
+{#            </li>#}
+{#            <li class="nav-highlight">#}
+{#              <a href="{% url "proposal_about" key="financial-aid" %}">Financial Aid</a>#}
+{#            </li>#}
             <li><a href="{% url "sponsors_offer" %}">Sponsorship</a></li>
             <li class="nav-highlight">
               <a href="{% url "about_code" %}">Code of Conduct</a>
@@ -70,27 +68,26 @@
           </ul>
         </li>
 
-        {# Getting here #}
-{#        <li class="nav-section">#}
-{#          <a href="/2016/getting-here/" class="nav-title">Getting Here</a>#}
-{#          #}
-{#          <ul>#}
-{#            <li><a href="/2016/getting-here/#travelling">Travelling</a></li>#}
-{#            <li><a href="/2016/getting-here/#accommodation">Accommodation</a>#}
-{#            </li>#}
-{#          </ul>#}
-{#        </li>#}
+        <li class="nav-section">
+          <a href="{% url "about_brno" %}">Brno, the city we love</a>
+
+          <ul>
+            <li><a href="{% url "about_brno" %}#brno">Hitchhiker's guide</a></li>
+            <li><a href="{% url "about_brno" %}#how-to-get-to-brno">Travelling</a></li>
+            <li><a href="{% url "about_brno" %}#accommodation-tips">Accommodation</a>
+            </li>
+          </ul>
+        </li>
 
         {# Programe #}
-{#        <li class="nav-section">#}
-{#          <a href="/2016/cfp/" class="nav-title">Talks</a>#}
-{#          <a href="/2016/talks/" class="nav-title">Talks</a>#}
-{#          #}
-{#          <ul>#}
-{#            <li><a href="/2016/talks/">Schedule</a></li>#}
-{#            <li><a href="/2016/talks/#directions">Directions</a></li>#}
-{#          </ul>#}
-{#        </li>#}
+        <li class="nav-section">
+          <a href="{% url "speakers_schedule" %}">Schedule</a>
+
+          <ul>
+            <li><a href="{% url "speakers_list" type='talks' %}">Speakers</a></li>
+            <li><a href="{% url "speakers_list" type='workshops' %}">Workshops</a></li>
+          </ul>
+        </li>
 
 {#        <li class="nav-section"><a href="/2016/workshops/" class="nav-title">Sprints#}
 {#          &amp; Workshops</a>#}

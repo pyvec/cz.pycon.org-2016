@@ -9,6 +9,8 @@ footer {
   }
 
   .nav-footer {
+    @include clearfix;
+
     list-style: none;
     padding-left: 15px;
     line-height: 24px;
@@ -20,6 +22,11 @@ footer {
         padding-left: 10px;
       }
     }
+  }
+
+  .nav-section {
+    width: 30%;
+    float: left;
   }
 }
 
