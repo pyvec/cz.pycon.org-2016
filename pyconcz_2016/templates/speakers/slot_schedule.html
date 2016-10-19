@@ -45,15 +45,18 @@
           </div>
         {% else %}
           <ul class="timeline__tracks">
-            {% if slot.list|length == 1 %}
+            {% if slot.list|length == 1 and not slot.list.0.content_object.talks.all.0.keynote %}
               <li class="timeline__workshop"></li>
             {% endif %}
             {% for talk in slot.list %}
                 {% with talk.content_object as event %}
                   {% if talk.content_type.model == 'talk' %}
-                  <li class="timeline__talk">
+                  <li class="timeline__talk {% if event.talks.all.0.keynote %}timeline__talk--keynote{% endif %}">
                     <span class="timeline__talk__room">Room {{ talk.room|upper }}</span>
-                    <span class="timeline__talk__title">{{ event.title }}</span>
+                    <span class="timeline__talk__title">
+                      {% if event.talks.all.0.keynote %}Keynote: {% endif %}
+                      {{ event.title }}
+                    </span>
                     <span class="timeline__talk__speaker">
                       by
                         {% for speaker in event.talks.all %}
@@ -62,7 +65,7 @@
                         {% endfor %}
                     </span>
                   </li>
-                  {% elif talk.content_type.model == 'workshop' %}
+                  {% elif 0 and talk.content_type.model == 'workshop' %}
                     <li class="timeline__workshop">
                     {{ talk.date|time }} - {{ talk.date_end|time }}
                     <span class="timeline__workshop__room">Room {{ talk.room|upper }}</span>
