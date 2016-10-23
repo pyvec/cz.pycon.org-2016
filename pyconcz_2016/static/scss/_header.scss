@@ -42,26 +42,28 @@ header {
   }
 }
 
-.nav {
-  display: table;
+.nav-fixed {
   position: fixed;
+  top: 0;
   left: 0;
-  width: 100%;
-  table-layout: fixed;
-
+  right: 0;
   background-color: white;
+  height: 108px;
+  padding: 0;
 
   z-index: 10000;
 
-  &.--header {
-    top: 0;
+  .container {
+    position: relative;
   }
+}
 
-  @media (min-width: $mobile-break) {
-    left: 10%;
-    right: 10%;
-    width: 80%;
-  }
+.nav {
+  position: absolute;
+  left: 0;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
 
   &__items {
     display: table-row;

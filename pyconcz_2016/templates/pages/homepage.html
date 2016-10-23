@@ -12,10 +12,14 @@
 
 {% block body %}
 <div class="homepage">
+  <div class="nav-fixed">
+    <div class="container">
+      <nav class="nav">
+        {% show_menu %}
+      </nav>
+    </div>
+  </div>
   <div class="container">
-    <nav class="nav --header">
-      {% show_menu %}
-    </nav>
     <div class="main-column-1">
       <a href="https://cz.pycon.org/2016/"><div class="logo-lg"></div></a>
     </div>
