@@ -1,7 +1,17 @@
+
 body {
-  padding-top: 7em;
+  margin-top: $top-offset;
   color: $font-color;
   font-family: $main-font;
+}
+
+.anchor::before {
+  content: " ";
+  display: block;
+  position: relative;
+  width: 0;
+  height: $top-offset;
+  margin-top: -$top-offset;
 }
 
 .homepage {
