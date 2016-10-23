@@ -65,7 +65,7 @@
                         {% endfor %}
                     </span>
                   </li>
-                  {% elif 0 and talk.content_type.model == 'workshop' %}
+                  {% elif talk.content_type.model == 'workshop' %}
                     <li class="timeline__workshop">
                     {{ talk.date|time }} - {{ talk.date_end|time }}
                     <span class="timeline__workshop__room">Room {{ talk.room|upper }}</span>
