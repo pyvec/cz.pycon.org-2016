@@ -1,5 +1,5 @@
 {% load render_bundle from webpack_loader %}
-{% load static %}
+{% load static menu_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,19 +20,8 @@
 {% block body %}
   <header>
     <div class="container">
-      <nav class="nav-header">
-        <ul>
-          <li><a href="{% url "about" %}">About</a></li>
-          <li><a href="{% url "speakers_schedule" %}">Schedule</a></li>
-          <li><a href="{% url "speakers_list" type='talks' %}">Speakers</a></li>
-          <li><a href="{% url "speakers_list" type='workshops' %}">Workshops</a></li>
-          <li><a href="{% url "about_brno" %}">Brno</a></li>
-          <li><a href="{% url "sponsors_list" %}">Sponsors</a></li>
-          <li><a href="{% url "about_code" %}">Code of Conduct</a></li>
-{#          <li><a href="{% url "proposal_about" key="financial-aid" %}">Financial Aid</a></li>#}
-          <li><a href="{% url "team_list" %}">Team</a></li>
-          <li><a href="{% url "homepage" %}#tickets" class="tickets">Tickets</a></li>
-        </ul>
+      <nav class="nav --header">
+        {% show_menu %}
       </nav>
       <a href="{% url "homepage" %}" class="pyconlogo"><img src="{% static "img/pyconlogo.svg" %}" alt="PyCon CZ"></a>
       <h2 class="header-title">PyCon CZ 2016 Brno <br>28-30 October</h2>
@@ -54,13 +43,6 @@
           <ul>
             <li><a href="{% url "team_list" %}">Team</a></li>
             <li><a href="{% url "homepage" %}#tickets">Tickets</a></li>
-
-{#            <li class="nav-highlight">#}
-{#              <a href="{% url "proposal_about" key="talks" %}">Call for Papers</a>#}
-{#            </li>#}
-{#            <li class="nav-highlight">#}
-{#              <a href="{% url "proposal_about" key="financial-aid" %}">Financial Aid</a>#}
-{#            </li>#}
             <li><a href="{% url "sponsors_offer" %}">Sponsorship</a></li>
             <li class="nav-highlight">
               <a href="{% url "about_code" %}">Code of Conduct</a>

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'webpack_loader',
 
     'pyconcz_2016.announcements',
+    'pyconcz_2016.common',
     'pyconcz_2016.team',
     'pyconcz_2016.proposals',
     'pyconcz_2016.sponsors',

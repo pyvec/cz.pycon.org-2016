@@ -1,0 +1,23 @@
+<ul class="nav__items --level-1">
+{% for menu in menu_items %}
+  <li class="nav__item {% if menu.selected %}--selected{% endif %} {% if menu.highlight %}--highlighted{% endif %}">
+    <a href="{{ menu.path }}" class="nav__item__link {% if menu.selected %}--selected{% endif %}">
+      {{ menu.title }}
+    </a>
+
+    {% if menu.menu %}
+      <div class="nav">
+        <ul class="nav__items --level-2">
+          {% for item in menu.menu %}
+            <li class="nav__item {% if item.selected %}--selected{% endif %} {% if forloop.last %}--last{% endif %}">
+              <a href="{{ item.path }}" class="nav__item__link {% if item.selected %}--selected{% endif %}">
+                {{ item.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+  </li>
+{% endfor %}
+</ul>
