@@ -13,7 +13,7 @@ def show_menu(context):
             'title': 'Homepage',
         }, {
             'path': reverse('about'),
-            'title': 'PyCon CZ',
+            'title': 'Event',
             'menu': [
                 {
                     'path': reverse('about'),
