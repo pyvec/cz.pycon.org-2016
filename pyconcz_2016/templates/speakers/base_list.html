@@ -4,34 +4,56 @@
   <div class="container">
     <h1>{% block speakers_title %}{% endblock %}</h1>
 
-    {% for speaker in speakers %}
-      <section class="speaker">
-        <section class="sidebox">
-          <img class="portrait" src="{{ speaker.photo.url }}" alt="{{ speaker.full_name }}" />
-          <section class="icons">
-          {% if speaker.github %}
-            <a href="https://github.com/{{ speaker.github }}"><i class="fa fa-fw fa-github-alt" aria-hidden="true"></i></a>
-          {% endif %}
-          {% if speaker.twitter %}
-            <a href="https://twitter.com/{{ speaker.twitter }}"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i></a>
-          {% endif %}
-          </section>
-        </section>
+    <ul class="speaker-dir__index">
+      <li class="speaker-dir__index__item">Index by first name</li>
 
-        <section class="details">
-          <h2 class="speaker__name">
+      {% for speaker in speakers %}
+        {% with speaker.full_name.0 as index_letter %}
+          {% ifchanged %}
+            <li class="speaker-dir__index__item">
+              <a href="#{{ index_letter }}">{{ index_letter|upper }}</a>
+            </li>
+          {% endifchanged %}
+        {% endwith %}
+      {% endfor %}
+    </ul>
+
+    {% for speaker in speakers %}
+      {% with speaker.full_name.0 as index_letter %}
+        <section class="speaker">
+          <h2 class="speaker__name anchor" {% ifchanged %}id="{{ index_letter }}{% endifchanged %}">
             <a href="#{{ speaker.full_name|slugify }}"
                name="{{ speaker.full_name|slugify }}"
                class="speaker__name__link">
-                {{ speaker.full_name }}
+              {{ speaker.full_name }}
             </a>
           </h2>
 
-          <p class="bio">{{ speaker.bio|linebreaksbr }}</p>
+          <section class="sidebox">
+            <div class="portrait">
+              <img src="{{ speaker.photo.url }}" alt="{{ speaker.full_name }}" />
+            </div>
 
-          {% block speakers_items %}{% endblock %}
+            <section class="icons">
+              {% if speaker.github %}
+                <a href="https://github.com/{{ speaker.github }}">
+                  <i class="fa fa-fw fa-github-alt" aria-hidden="true"></i> {{ speaker.github }}
+                </a>
+              {% endif %}
+              {% if speaker.twitter %}
+                <a href="https://twitter.com/{{ speaker.twitter }}">
+                  <i class="fa fa-fw fa-twitter" aria-hidden="true"></i> {{ speaker.twitter }}
+                </a>
+              {% endif %}
+            </section>
+          </section>
+
+          <section class="details">
+            <p class="bio">{{ speaker.bio|linebreaksbr }}</p>
+            {% block speakers_items %}{% endblock %}
+          </section>
         </section>
-      </section>
+      {% endwith %}
     {% endfor %}
   </div>
 {% endblock %}

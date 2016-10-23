@@ -1,57 +1,81 @@
 .speaker {
+  @include clearfix;
+
   max-width: 720px;
   min-height: 200px;
-  display: flex;
-  align-items: center;
   margin: 1em auto;
-  border-bottom: 1px solid $main-color;
 
-  &:nth-child(odd) {
-    flex-direction: row;
-    .sidebox {
-      margin-right: 1em;
-    }
-  }
-
-  &:nth-child(even) {
-    flex-direction: row-reverse;
-    .sidebox {
-      margin-left: 1em;
-    }
-  }
-
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.speaker .sidebox {
-  flex-basis: fit-content;
-  .portrait {
-    height: 120px;
-    border-radius: 50%;
-  }
-  .icons {
-    text-align: center;
-  }
-}
-
-.speaker .details {
-  h2 {
+  p {
     margin-top: 0;
+  }
+
+  &__name {
+    margin-top: 1em;
     margin-bottom: 1em;
+    text-align: left;
   }
 
-  .talk-title {
-    font-size: 1.2em;
-    font-weight: normal;
+  .details {
+    .talk-title {
+      font-size: 1.2em;
+      font-weight: normal;
+    }
+
+    .bio {
+      font-style: italic;
+    }
+
+    @media (min-width: $mobile-break) {
+      float: right;
+      width: 75%;
+      padding-right: 2em;
+    }
   }
 
-  .bio {
-    font-style: italic;
+  .sidebox {
+    margin-bottom: 1em;
+
+    .portrait {
+      width: 120px;
+      padding: 0;
+      margin-bottom: 1em;
+      overflow: hidden;
+      border: 1px solid $light-color;
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 0;
+      }
+    }
+
+    .icons a {
+      text-wrap: none;
+      display: block;
+    }
+
+    @media (min-width: $mobile-break) {
+      float: right;
+      width: 25%;
+    }
   }
 }
 
 .speaker__name__link {
   color: $font-color;
+}
+
+.speaker-dir__index {
+  list-style: none;
+  text-align: center;
+
+  &__item {
+    display: inline;
+
+    & + &::before {
+      content: " • ";
+      padding: 0 5px;
+    }
+  }
 }
