@@ -51,6 +51,8 @@ header {
 
   background-color: white;
 
+  z-index: 10000;
+
   &.--header {
     top: 0;
   }
