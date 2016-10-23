@@ -47,7 +47,7 @@ header {
   position: fixed;
   left: 0;
   width: 100%;
-  table-layout: auto;
+  table-layout: fixed;
 
   background-color: white;
 
@@ -110,9 +110,12 @@ header {
     }
 
     &.--last {
-      width: 1%;
+      width: 150px;
       white-space: nowrap;
-      text-align: left;
+
+      @media (min-width: $mobile-break) {
+        width: auto;
+      }
     }
   }
 }

@@ -31,10 +31,13 @@ def show_menu(context):
             'menu': [
                 {
                     'path': reverse('about_brno'),
-                    'title': '',
+                    'title': 'Guide',
                 }, {
-                    'path': reverse('about_brno'),
-                    'title': '',
+                    'path': reverse('about_brno') + "#how-to-get-to-brno",
+                    'title': 'Travelling',
+                }, {
+                    'path': reverse('about_brno') + "#accommodation-tips",
+                    'title': 'Accommodation',
                 },
             ]
         }, {
