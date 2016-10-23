@@ -57,6 +57,12 @@ header {
     top: 0;
   }
 
+  @media (min-width: $mobile-break) {
+    left: 10%;
+    right: 10%;
+    width: 80%;
+  }
+
   &__items {
     display: table-row;
     margin: 0;
@@ -90,23 +96,23 @@ header {
 
       .--level-1 & {
         border-top: 5px solid white;
-        border-bottom: 1px solid $main-color;
+        border-bottom: 1px solid $light-color;
 
         &:hover {
-          text-decoration: none;
-          border-top: 5px solid $main-color;
+          border-top: 5px solid white;
+          text-decoration: underline;
         }
 
         &.--selected {
-          border-top: 5px solid $main-color;
+          border-top: 5px solid $light-color;
           border-bottom: 1px solid white;
-          border-left: 1px solid $main-color;
-          border-right: 1px solid $main-color;
+          border-left: 1px solid $light-color;
+          border-right: 1px solid $light-color;
         }
       }
 
       .--level-2 & {
-        border-bottom: 1px solid $main-color;
+        border-bottom: 1px solid white;
 
         &:hover {
           text-decoration: none;
@@ -118,7 +124,7 @@ header {
           border-top: 5px solid white;
           border-left: 1px solid white;
           border-right: 1px solid white;
-          border-bottom: 1px solid $main-color;
+          border-bottom: 1px solid white;
           font-weight: bold;
         }
       }
@@ -135,68 +141,6 @@ header {
       @media (min-width: $mobile-break) {
         width: auto;
       }
-    }
-  }
-}
-
-.nav-header {
-  display: block;
-  text-align: center;
-
-  ul {
-    li {
-      list-style: none;
-      display: inline-block;
-      text-align: center;
-      margin-right: 10px;
-
-      @media (max-width: 768px) {
-        width: 215px;
-        display: block;
-        margin: auto;
-      }
-      @media (max-width: 480px) {
-        width: 100%;
-      }
-
-      a {
-        display: block;
-        padding: calc(0.3em - 1px) 1em;
-        margin: 0.5em 0;
-        border: solid 1px $light-color;
-        transition: border 0.3s, color 0.3s;
-
-        &:hover {
-          color: darken($main-color, 10%);
-          text-decoration: none;
-          border: solid 1px $font-color;
-        }
-        &:active {
-          background-color: darken($main-color, 10%);
-          color: white;
-        }
-
-        @media (max-width: 768px) {
-          margin: -1px;
-        }
-      }
-      .tickets {
-        color: white;
-        background-color: $main-color;
-
-        &:hover {
-          color: white;
-          background-color: darken($main-color, 10%);
-        }
-        &:active {
-          background-color: white;
-          color: darken($main-color, 10%);
-        }
-      }
-    }
-
-    @media (max-width: 480px) {
-      padding: 0;
     }
   }
 }
