@@ -1,8 +1,12 @@
 <ul class="nav__items --level-1">
 {% for menu in menu_items %}
-  <li class="nav__item {% if menu.selected %}--selected{% endif %} {% if menu.highlight %}--highlighted{% endif %}">
+  <li class="nav__item {% if menu.selected %}--selected{% endif %} {% if menu.highlight %}--highlighted{% endif %} {% if menu.icon %}--icon{% endif %}">
     <a href="{{ menu.path }}" class="nav__item__link {% if menu.selected %}--selected{% endif %}">
-      {{ menu.title }}
+      {% if menu.icon %}
+        <i class="fa {{ menu.icon }}"></i>
+      {% else %}
+        {{ menu.title }}
+      {% endif %}
     </a>
 
     {% if menu.menu %}

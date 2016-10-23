@@ -8,6 +8,10 @@ register = template.Library()
 def show_menu(context):
     menu_items = [
         {
+            'path': '/2016/',
+            'icon': 'fa-home',
+            'title': 'Homepage',
+        }, {
             'path': reverse('about'),
             'title': 'PyCon CZ',
             'menu': [

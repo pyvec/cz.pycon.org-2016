@@ -51,8 +51,6 @@ header {
 
   background-color: white;
 
-  line-height: 2;
-
   &.--header {
     top: 0;
   }
@@ -62,9 +60,13 @@ header {
     margin: 0;
     padding: 0;
 
+    $size: 16px;
+    $baseline: vr-scale($size);
+    font-size: $size;
+    line-height: 2*$baseline;
+
     &.--level-2 {
       display: none;
-      margin-top: 1px;
       $size: 14px;
       $baseline: vr-scale($size);
       font-size: $size;
@@ -88,6 +90,11 @@ header {
         border-top: 5px solid white;
         border-bottom: 1px solid $main-color;
 
+        &:hover {
+          text-decoration: none;
+          border-top: 5px solid $main-color;
+        }
+
         &.--selected {
           border-top: 5px solid $main-color;
           border-bottom: 1px solid white;
@@ -99,6 +106,12 @@ header {
       .--level-2 & {
         border-bottom: 1px solid $main-color;
 
+        &:hover {
+          text-decoration: none;
+          font-weight: bold;
+          border-top: 5px solid white;
+        }
+
         &.--selected {
           border-top: 5px solid white;
           border-left: 1px solid white;
@@ -107,6 +120,10 @@ header {
           font-weight: bold;
         }
       }
+    }
+
+    &.--icon {
+      width: 50px;
     }
 
     &.--last {
