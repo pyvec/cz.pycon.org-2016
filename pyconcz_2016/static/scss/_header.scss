@@ -53,6 +53,10 @@ header {
 
   z-index: 10000;
 
+  &.--half {
+    height: 54px;
+  }
+
   .container {
     position: relative;
   }
