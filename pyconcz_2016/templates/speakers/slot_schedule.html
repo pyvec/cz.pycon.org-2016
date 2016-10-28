@@ -52,7 +52,7 @@
                 {% with talk.content_object as event %}
                   {% if talk.content_type.model == 'talk' %}
                   <li class="timeline__talk {% if event.talks.all.0.keynote %}timeline__talk--keynote{% endif %}">
-                    <span class="timeline__talk__room">Room {{ talk.room|upper }}</span>
+                    <span class="timeline__talk__room">Room {{ talk.get_room_display }}</span>
                     <span class="timeline__talk__title">
                       {% if event.talks.all.0.keynote %}Keynote: {% endif %}
                       {{ event.title }}
