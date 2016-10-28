@@ -97,9 +97,9 @@ class Workshop(models.Model):
 class Slot(models.Model):
     ROOM = (
         ('foyer', 'Foyer'),
-        ('d105',  'D105'),
-        ('d0206', 'D0206'),
-        ('d0207', 'D0207'),
+        ('d105',  'Main (D105)'),
+        ('d0206', 'Left (D0207)'),
+        ('d0207', 'Right (D0206)'),
 
         ('a112', 'A112'),
         ('a113', 'A113'),
