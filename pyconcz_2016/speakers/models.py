@@ -98,8 +98,8 @@ class Slot(models.Model):
     ROOM = (
         ('foyer', 'Foyer'),
         ('d105',  'Main (D105)'),
-        ('d0206', 'Left (D0207)'),
-        ('d0207', 'Right (D0206)'),
+        ('d0206', 'Right (D0206)'),
+        ('d0207', 'Left (D0207)'),
 
         ('a112', 'A112'),
         ('a113', 'A113'),
